@@ -10,8 +10,15 @@ export default defineConfig(({ mode }) => ({
     host: "0.0.0.0",
     port: 8081,
     strictPort: true,
-    // Remove or change the origin setting
-    // origin: "https://techupgrad.in/industry-integra",
+    // Add allowed hosts
+    allowedHosts: [
+      "techupgrad.in",
+      "www.techupgrad.in",
+      "97.74.93.54",
+      "localhost",
+    ],
+    // Keep or adjust the origin
+    origin: "https://techupgrad.in",
   },
   base: "/industry-integra/",
   plugins: [
