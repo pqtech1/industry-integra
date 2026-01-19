@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Light Theme - Black, Grey, Dark Green */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+
+    --primary: 152 69% 31%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 152 69% 31%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 152 69% 31%;
+
+    --radius: 0.75rem;
+
+    /* Module Colors */
+    --process: 199 89% 48%;
+    --process-foreground: 0 0% 100%;
+    --energy: 152 69% 31%;
+    --energy-foreground: 0 0% 100%;
+    --building: 38 92% 50%;
+    --building-foreground: 0 0% 100%;
+    --factory: 263 70% 50%;
+    --factory-foreground: 0 0% 100%;
+
+    /* Extended palette */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+    --critical: 0 84% 60%;
+    --critical-foreground: 0 0% 100%;
+
+    /* Chart colors */
+    --chart-1: 152 69% 31%;
+    --chart-2: 199 89% 48%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 263 70% 50%;
+    --chart-5: 0 84% 60%;
+    --chart-6: 172 66% 50%;
+
+    /* Gradients */
+    --gradient-process: linear-gradient(
+      135deg,
+      hsl(199, 89%, 48%),
+      hsl(217, 91%, 60%)
+    );
+    --gradient-energy: linear-gradient(
+      135deg,
+      hsl(152, 69%, 31%),
+      hsl(142, 76%, 36%)
+    );
+    --gradient-building: linear-gradient(
+      135deg,
+      hsl(38, 92%, 50%),
+      hsl(25, 95%, 53%)
+    );
+    --gradient-factory: linear-gradient(
+      135deg,
+      hsl(263, 70%, 50%),
+      hsl(280, 87%, 45%)
+    );
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(152, 69%, 31%),
+      hsl(142, 76%, 36%)
+    );
+    --gradient-dark: linear-gradient(135deg, hsl(0, 0%, 15%), hsl(0, 0%, 25%));
+
+    /* Glass effect */
+    --glass-bg: hsla(0, 0%, 100%, 0.9);
+    --glass-border: hsla(0, 0%, 0%, 0.1);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 9%;
+    --sidebar-primary: 152 69% 31%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 9%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 152 69% 31%;
+  }
+}
+
+@layer base {
+  body {
+    @apply font-sans;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--secondary));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .gradient-process {
+    background: var(--gradient-process);
+  }
+
+  .gradient-energy {
+    background: var(--gradient-energy);
+  }
+
+  .gradient-building {
+    background: var(--gradient-building);
+  }
+
+  .gradient-factory {
+    background: var(--gradient-factory);
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-dark {
+    background: var(--gradient-dark);
+  }
+
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 20px -10px hsl(var(--primary));
+    }
+    to {
+      box-shadow: 0 0 30px -5px hsl(var(--primary));
+    }
+  }
+
+  .font-mono {
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  /* Module specific borders */
+  .border-module-energy {
+    border-color: hsl(var(--energy));
+  }
+
+  .border-module-process {
+    border-color: hsl(var(--process));
+  }
+
+  .border-module-building {
+    border-color: hsl(var(--building));
+  }
+
+  .border-module-factory {
+    border-color: hsl(var(--factory));
+  }
+}
+
+html,body{
+  font-family: Inter, system-ui, sans-serif;
+}
