@@ -78,7 +78,7 @@ import Unauthorized from "./components/Unauthorized";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/industry-integra">
       <AuthProvider>
         <Routes>
           {/* Public Routes */}
