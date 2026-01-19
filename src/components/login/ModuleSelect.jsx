@@ -83,7 +83,7 @@ export default function ModuleSelect() {
               <div>
                 <img
                   src="plant-master-logo.png"
-                  alt="Plant Master Logo"
+                  alt="Industry Integra Logo"
                   className="w-64"
                 />
               </div>

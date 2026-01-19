@@ -64,7 +64,7 @@ export default function FactorySidebar() {
           <div className="p-4 border-b border-gray-200">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <img src="plant-master-logo.png" alt="Plant MAster Logo" />
+                <img src="plant-master-logo.png" alt="Industry Integra Logo" />
               </div>
               <Button
                 variant="ghost"
