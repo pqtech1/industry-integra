@@ -7,10 +7,18 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
-    host: "::",
-    port: 8080,
+    host: "0.0.0.0",
+    port: 8081,
+    strictPort: true,
+    // This is important for proxying
+    origin: "https://techupgrad.in/industry-integra",
   },
-  plugins: [react(),tailwindcss(), mode === "development" && componentTagger()].filter(Boolean),
+  base: "/industry-integra/",
+  plugins: [
+    react(),
+    tailwindcss(),
+    mode === "development" && componentTagger(),
+  ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
