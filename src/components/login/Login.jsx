@@ -78,8 +78,6 @@ export default function Login() {
     },
   ];
 
-
-
   const modules = [
     { icon: GitBranch, label: "Process", color: "text-blue-600" },
     { icon: Zap, label: "Energy", color: "text-yellow-600" },
@@ -112,13 +110,13 @@ export default function Login() {
           <div className="text-center">
             <div className="flex items-center justify-center gap-3">
               <div className="text-left">
-                <img src="plant-master-logo.png" alt="Industry Integra 360" className="w-96" />
+                <img
+                  src="plant-master-logo.png"
+                  alt="Industry Integra 360"
+                  className=""
+                />
               </div>
             </div>
-            <p className="text-sm italic text-gray-600 max-w-2xl mx-auto">
-              Master Every Process, Power Every Plant. From Factory Floor to
-              Smart Operations.
-            </p>
           </div>
 
           {/* Mudules */}
@@ -199,15 +197,11 @@ export default function Login() {
           {/* Mobile Header */}
           <div className="mb-8 text-center lg:hidden">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                <Cpu className="h-6 w-6 text-white" />
-              </div>
-              <div className="text-left">
-                <h2 className="text-2xl font-bold text-white">PlantMaster</h2>
-                <p className="text-xs font-medium tracking-widest text-white/80">
-                  INDUSTRIAL AUTOMATION
-                </p>
-              </div>
+              <img
+                src="plant-master-logo.png"
+                alt="Industry Integra 360"
+                className="rounded-lg"
+              />
             </div>
             <h3 className="text-xl font-bold text-white">Welcome Back</h3>
             <p className="mt-1 text-sm text-white/80">

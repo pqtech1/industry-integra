@@ -76,7 +76,7 @@ export default function ProcessSidebar() {
           {/* Logo Section */}
           <div>
             <div className="flex items-center justify-between">
-              <img src="plant-master-logo.png" alt="PlantMaster" />
+              <img src="../plant-master-logo.png" alt="PlantMaster" />
             </div>
           </div>
 
