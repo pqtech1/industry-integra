@@ -10,8 +10,8 @@ export default defineConfig(({ mode }) => ({
     host: "0.0.0.0",
     port: 8081,
     strictPort: true,
-    // This is important for proxying
-    origin: "https://techupgrad.in/industry-integra",
+    // Remove or change the origin setting
+    // origin: "https://techupgrad.in/industry-integra",
   },
   base: "/industry-integra/",
   plugins: [
