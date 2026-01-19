@@ -82,7 +82,7 @@ export default function ModuleSelect() {
             <div className="flex items-center gap-3">
               <div>
                 <img
-                  src="/plant-master-logo.png"
+                  src="plant-master-logo.png"
                   alt="Plant Master Logo"
                   className="w-64"
                 />

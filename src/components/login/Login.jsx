@@ -112,7 +112,7 @@ export default function Login() {
           <div className="text-center">
             <div className="flex items-center justify-center gap-3">
               <div className="text-left">
-                <img src="/plant-master-logo.png" alt="Industry Integra 360" className="w-96" />
+                <img src="plant-master-logo.png" alt="Industry Integra 360" className="w-96" />
               </div>
             </div>
             <p className="text-sm italic text-gray-600 max-w-2xl mx-auto">
