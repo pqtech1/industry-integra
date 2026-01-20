@@ -141,7 +141,7 @@ export default function ModuleSelect() {
         {/* Modules Grid */}
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center">
-            Select Automation Module
+            Select Module
           </h2>
           <p className="text-gray-600 text-center mb-8">
             Choose a module to access its specialized dashboard
