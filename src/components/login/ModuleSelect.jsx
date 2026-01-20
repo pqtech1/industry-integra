@@ -28,7 +28,7 @@ export default function ModuleSelect() {
   const modules = [
     {
       id: "process",
-      title: "Process Automation",
+      title: "Process",
       description:
         "Monitor and control industrial processes with real-time analytics",
       icon: GitBranch,
@@ -38,7 +38,7 @@ export default function ModuleSelect() {
     },
     {
       id: "energy",
-      title: "Energy Automation",
+      title: "Energy",
       description: "Optimize energy consumption and manage power distribution",
       icon: Zap,
       color: "from-amber-500 to-yellow-500",
@@ -47,7 +47,7 @@ export default function ModuleSelect() {
     },
     {
       id: "building",
-      title: "Building Automation",
+      title: "Building",
       description: "Control HVAC, lighting, security, and building systems",
       icon: Building2,
       color: "from-purple-500 to-pink-500",
@@ -56,7 +56,7 @@ export default function ModuleSelect() {
     },
     {
       id: "factory",
-      title: "Factory Automation",
+      title: "Factory",
       description: "Manage production lines, equipment, and factory operations",
       icon: Factory,
       color: "from-green-500 to-emerald-500",
