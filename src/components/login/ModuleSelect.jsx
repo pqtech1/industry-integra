@@ -245,7 +245,7 @@ export default function ModuleSelect() {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
             <div>
-              © {new Date().getFullYear()} PlantMaster Pro • Positive Quadrant
+              © {new Date().getFullYear()} Industry INTEGRA 360 • Positive Quadrant
               Technologies LLP
             </div>
             <div className="flex items-center gap-4 mt-2 md:mt-0">

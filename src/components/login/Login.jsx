@@ -213,7 +213,7 @@ export default function Login() {
           <div className="mb-8 text-center hidden lg:block">
             <h2 className="text-3xl font-bold text-white mb-2">Welcome Back</h2>
             <p className="text-lg text-white/90">
-              Sign in to access your PlantMaster dashboard
+              Sign in to access your Industry INTEGRA 360 dashboard
             </p>
           </div>
 

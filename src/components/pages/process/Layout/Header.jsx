@@ -141,7 +141,7 @@ const Header = ({
                   </div>
                   <div>
                     <p className="text-sm font-bold text-gray-900">
-                      PlantMaster
+                      Industry INTEGRA 360
                     </p>
                     <p className="text-xs text-gray-500">Process</p>
                   </div>
