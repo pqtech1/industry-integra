@@ -15,6 +15,7 @@ import {
   Thermometer,
   Users,
   Zap,
+  X,
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLocation } from "react-router-dom";
@@ -36,7 +37,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-const Header = () => {
+const Header = ({ onMenuClick, mobileSidebarOpen }) => {
   const { user, logout } = useAuth();
   const location = useLocation();
   const [searchOpen, setSearchOpen] = useState(false);
@@ -77,19 +78,29 @@ const Header = () => {
 
   return (
     <TooltipProvider>
-      <header className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
+      <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="h-16 px-4 lg:px-6">
           <div className="flex items-center justify-between h-full">
             {/* Left Section */}
             <div className="flex items-center gap-4">
               {/* Mobile Menu Button */}
-              <Button variant="ghost" size="icon" className="lg:hidden">
-                <Menu className="h-5 w-5" />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="lg:hidden"
+                onClick={onMenuClick}
+                data-menu-button
+              >
+                {mobileSidebarOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
               </Button>
 
               {/* Logo/Brand for mobile */}
               <div className="lg:hidden flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-green-800 to-emerald-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-br from-blue-800 to-cyan-600 rounded-lg flex items-center justify-center">
                   <Building2 className="h-4 w-4 text-white" />
                 </div>
                 <div>
@@ -104,11 +115,11 @@ const Header = () => {
               <div className="hidden lg:flex items-center gap-2">
                 <div className="flex items-center gap-2 text-sm">
                   <div className="flex items-center gap-2 text-gray-600">
-                    <Building2 className="h-4 w-4 text-green-600" />
+                    <Building2 className="h-4 w-4 text-blue-600" />
                     <span className="font-medium">Smart Building</span>
                   </div>
                   <ChevronDown className="h-4 w-4 text-gray-400 rotate-270" />
-                  <span className="font-bold text-emerald-600">
+                  <span className="font-bold text-blue-600">
                     {getPageTitle()}
                   </span>
                 </div>
@@ -121,7 +132,7 @@ const Header = () => {
                 <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                 <Input
                   placeholder="Search rooms, sensors, equipment..."
-                  className="pl-10 bg-gray-50 border-gray-300 focus:bg-white focus:border-green-600 focus:ring-green-600"
+                  className="pl-10 bg-gray-50 border-gray-300 focus:bg-white focus:border-blue-600 focus:ring-blue-600"
                 />
               </div>
             </div>
@@ -174,7 +185,7 @@ const Header = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="text-gray-600 hover:text-green-700"
+                      className="text-gray-600 hover:text-blue-700"
                     >
                       <Thermometer className="h-5 w-5" />
                     </Button>
@@ -187,7 +198,7 @@ const Header = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="text-gray-600 hover:text-green-700"
+                      className="text-gray-600 hover:text-blue-700"
                     >
                       <Settings className="h-5 w-5" />
                     </Button>
@@ -200,7 +211,7 @@ const Header = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="text-gray-600 hover:text-green-700"
+                      className="text-gray-600 hover:text-blue-700"
                     >
                       <HelpCircle className="h-5 w-5" />
                     </Button>
@@ -244,7 +255,7 @@ const Header = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="relative text-gray-600 hover:text-green-700"
+                      className="relative text-gray-600 hover:text-blue-700"
                     >
                       <Bell className="h-5 w-5" />
                       <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
@@ -261,7 +272,7 @@ const Header = () => {
                     variant="ghost"
                     className="gap-2 px-2 hover:bg-gray-100"
                   >
-                    <div className="w-9 h-9 bg-gradient-to-br from-green-800 to-emerald-600 rounded-lg flex items-center justify-center">
+                    <div className="w-9 h-9 bg-gradient-to-br from-blue-800 to-cyan-600 rounded-lg flex items-center justify-center">
                       <User className="h-4 w-4 text-white" />
                     </div>
                     <div className="hidden lg:block text-left">
@@ -279,7 +290,7 @@ const Header = () => {
                   className="w-56 bg-white border border-gray-200"
                   align="end"
                 >
-                  <DropdownMenuLabel className="font-normal bg-gradient-to-r from-green-50 to-white">
+                  <DropdownMenuLabel className="font-normal bg-gradient-to-r from-blue-50 to-white">
                     <div className="flex flex-col space-y-1">
                       <p className="text-sm font-medium leading-none">
                         {user?.name}
@@ -292,15 +303,15 @@ const Header = () => {
                   <DropdownMenuSeparator />
 
                   <DropdownMenuGroup>
-                    <DropdownMenuItem className="focus:bg-green-50 focus:text-green-700">
+                    <DropdownMenuItem className="focus:bg-blue-50 focus:text-blue-700">
                       <User className="mr-2 h-4 w-4" />
                       <span>Building Profile</span>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="focus:bg-green-50 focus:text-green-700">
+                    <DropdownMenuItem className="focus:bg-blue-50 focus:text-blue-700">
                       <Building2 className="mr-2 h-4 w-4" />
                       <span>Floor Plans</span>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="focus:bg-green-50 focus:text-green-700">
+                    <DropdownMenuItem className="focus:bg-blue-50 focus:text-blue-700">
                       <Settings className="mr-2 h-4 w-4" />
                       <span>Building Settings</span>
                     </DropdownMenuItem>
@@ -309,11 +320,11 @@ const Header = () => {
                   <DropdownMenuSeparator />
 
                   <DropdownMenuGroup>
-                    <DropdownMenuItem className="focus:bg-green-50 focus:text-green-700">
+                    <DropdownMenuItem className="focus:bg-blue-50 focus:text-blue-700">
                       <Shield className="mr-2 h-4 w-4" />
                       <span>Security Settings</span>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="focus:bg-green-50 focus:text-green-700">
+                    <DropdownMenuItem className="focus:bg-blue-50 focus:text-blue-700">
                       <HelpCircle className="mr-2 h-4 w-4" />
                       <span>Facilities Support</span>
                     </DropdownMenuItem>
@@ -340,7 +351,7 @@ const Header = () => {
                 <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                 <Input
                   placeholder="Search building data..."
-                  className="pl-10 bg-gray-50 border-green-200 focus:border-green-600"
+                  className="pl-10 bg-gray-50 border-blue-200 focus:border-blue-600"
                   autoFocus
                 />
               </div>

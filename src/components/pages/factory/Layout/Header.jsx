@@ -15,6 +15,7 @@ import {
   LineChart,
   Clock,
   Zap,
+  X,
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLocation } from "react-router-dom";
@@ -36,7 +37,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-const Header = () => {
+const Header = ({ onMenuClick, mobileSidebarOpen }) => {
   const { user, logout } = useAuth();
   const location = useLocation();
   const [searchOpen, setSearchOpen] = useState(false);
@@ -77,19 +78,29 @@ const Header = () => {
 
   return (
     <TooltipProvider>
-      <header className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
+      <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="h-16 px-4 lg:px-6">
           <div className="flex items-center justify-between h-full">
             {/* Left Section */}
             <div className="flex items-center gap-4">
               {/* Mobile Menu Button */}
-              <Button variant="ghost" size="icon" className="lg:hidden">
-                <Menu className="h-5 w-5" />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="lg:hidden"
+                onClick={onMenuClick}
+                data-menu-button
+              >
+                {mobileSidebarOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
               </Button>
 
               {/* Logo/Brand for mobile */}
               <div className="lg:hidden flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-green-800 to-emerald-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-br from-orange-800 to-amber-600 rounded-lg flex items-center justify-center">
                   <Factory className="h-4 w-4 text-white" />
                 </div>
                 <div>
@@ -261,7 +272,7 @@ const Header = () => {
                     variant="ghost"
                     className="gap-2 px-2 hover:bg-gray-100"
                   >
-                    <div className="w-9 h-9 bg-gradient-to-br from-green-800 to-emerald-600 rounded-lg flex items-center justify-center">
+                    <div className="w-9 h-9 bg-gradient-to-br from-orange-800 to-amber-600 rounded-lg flex items-center justify-center">
                       <User className="h-4 w-4 text-white" />
                     </div>
                     <div className="hidden lg:block text-left">

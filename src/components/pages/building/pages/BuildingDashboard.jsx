@@ -666,7 +666,7 @@ export default function BuildingDashboard() {
   const [lightingLevel, setLightingLevel] = useState([75]);
 
   return (
-    <div className="flex-1 space-y-6 p-6">
+    <div className="flex-1 space-y-6 ">
       {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
@@ -738,7 +738,7 @@ export default function BuildingDashboard() {
         {/* Left Column */}
         <div className="lg:col-span-2 space-y-6">
           {/* Building Zones Grid */}
-          <div className="bg-white rounded-2xl shadow-xl p-6">
+          <div className="bg-white rounded-2xl shadow-xl ">
             <div className="flex justify-between items-center mb-6">
               <div>
                 <h2 className="text-xl font-bold text-gray-900">
@@ -767,7 +767,7 @@ export default function BuildingDashboard() {
           </div>
 
           {/* Energy Analytics */}
-          <div className="bg-white rounded-2xl shadow-xl p-6">
+          <div className="bg-white rounded-2xl shadow-xl ">
             <div className="flex justify-between items-center mb-6">
               <div>
                 <h2 className="text-xl font-bold text-gray-900">
@@ -868,7 +868,7 @@ export default function BuildingDashboard() {
           </div>
 
           {/* Device Consumption Table */}
-          <div className="bg-white rounded-2xl shadow-xl p-6">
+          <div className="bg-white rounded-2xl shadow-xl ">
             <div className="flex justify-between items-center mb-6">
               <div>
                 <h2 className="text-xl font-bold text-gray-900">
@@ -986,7 +986,7 @@ export default function BuildingDashboard() {
         {/* Right Column */}
         <div className="space-y-6">
           {/* System Health */}
-          <div className="bg-white rounded-2xl shadow-xl p-6">
+          <div className="bg-white rounded-2xl shadow-xl ">
             <h2 className="text-xl font-bold text-gray-900 mb-6">
               System Health
             </h2>
@@ -1051,7 +1051,7 @@ export default function BuildingDashboard() {
           </div>
 
           {/* Energy Distribution */}
-          <div className="bg-white rounded-2xl shadow-xl p-6">
+          <div className="bg-white rounded-2xl shadow-xl ">
             <h2 className="text-xl font-bold text-gray-900 mb-6">
               Energy Distribution
             </h2>
@@ -1106,7 +1106,7 @@ export default function BuildingDashboard() {
           </div>
 
           {/* Quick Controls */}
-          <div className="bg-white rounded-2xl shadow-xl p-6">
+          <div className="bg-white rounded-2xl shadow-xl">
             <h2 className="text-xl font-bold text-gray-900 mb-6">
               Quick Controls
             </h2>
@@ -1198,7 +1198,7 @@ export default function BuildingDashboard() {
       </div>
 
       {/* Environmental Monitoring */}
-      <div className="bg-white rounded-2xl shadow-xl p-6">
+      <div className="bg-white rounded-2xl shadow-xl">
         <div className="flex justify-between items-center mb-6">
           <div>
             <h2 className="text-xl font-bold text-gray-900">

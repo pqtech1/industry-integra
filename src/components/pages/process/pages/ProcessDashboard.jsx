@@ -287,39 +287,46 @@ export default function ProcessDashboard() {
   return (
     <div className="space-y-6">
       {/* Header with Controls */}
-      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
-        <div>
-          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 tracking-tight">
+      <div className="flex flex-col gap-4">
+        {/* Title Section */}
+        <div className="space-y-2">
+          <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
             Process Automation Dashboard
           </h1>
-          <p className="text-gray-500 mt-1">
+          <p className="text-sm text-gray-500 sm:text-base">
             Real-time monitoring and analytics of production processes
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center space-x-2">
+
+        {/* All Controls in one line */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          {/* Live Mode - Left side */}
+          <div className="flex items-center gap-2 order-2 sm:order-1">
             <Switch id="live-mode" defaultChecked />
-            <Label htmlFor="live-mode" className="text-sm">
+            <Label htmlFor="live-mode" className="text-sm whitespace-nowrap">
               Live Mode
             </Label>
           </div>
-          <Select defaultValue="week" onValueChange={setTimeRange}>
-            <SelectTrigger className="w-[140px] bg-white">
-              <SelectValue placeholder="Select period" />
-            </SelectTrigger>
 
-            <SelectContent className="bg-white">
-              <SelectItem value="today">Today</SelectItem>
-              <SelectItem value="week">This Week</SelectItem>
-              <SelectItem value="month">This Month</SelectItem>
-              <SelectItem value="quarter">This Quarter</SelectItem>
-            </SelectContent>
-          </Select>
+          {/* Time Range & Export - Right side */}
+          <div className="flex items-center gap-3 order-1 sm:order-2">
+            <Select defaultValue="week" onValueChange={setTimeRange}>
+              <SelectTrigger className="w-full sm:w-[140px]">
+                <SelectValue placeholder="Select period" />
+              </SelectTrigger>
+              <SelectContent className="bg-white">
+                <SelectItem value="today">Today</SelectItem>
+                <SelectItem value="week">This Week</SelectItem>
+                <SelectItem value="month">This Month</SelectItem>
+                <SelectItem value="quarter">This Quarter</SelectItem>
+              </SelectContent>
+            </Select>
 
-          <Button variant="outline" size="sm">
-            <Download className="mr-2 h-4 w-4" />
-            Export
-          </Button>
+            <Button variant="outline" size="sm" className="whitespace-nowrap">
+              <Download className="mr-2 h-4 w-4" />
+              Export
+            </Button>
+          </div>
         </div>
       </div>
 

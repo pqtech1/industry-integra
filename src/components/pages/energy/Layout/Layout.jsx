@@ -1,16 +1,39 @@
-// components/pages/process/Layout/Layout.jsx
-import React from "react";
+// components/pages/energy/Layout/Layout.jsx
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
 export default function EnergyLayout() {
+  const [collapsed, setCollapsed] = useState(false);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+
+  const handleToggleCollapse = () => {
+    setCollapsed(!collapsed);
+  };
+
+  const handleMobileToggle = () => {
+    setMobileSidebarOpen(!mobileSidebarOpen);
+  };
+
+  const handleMobileClose = () => {
+    setMobileSidebarOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      <Header
+        onMenuClick={handleMobileToggle}
+        mobileSidebarOpen={mobileSidebarOpen}
+      />
       <div className="flex">
-        <Sidebar />
-        <main className="flex-1 p-6">
+        <Sidebar
+          collapsed={collapsed}
+          onToggleCollapse={handleToggleCollapse}
+          mobileSidebarOpen={mobileSidebarOpen}
+          onMobileClose={handleMobileClose}
+        />
+        <main className="flex-1 p-4 lg:p-6 min-h-[calc(100vh-4rem)] overflow-auto">
           <Outlet />
         </main>
       </div>
