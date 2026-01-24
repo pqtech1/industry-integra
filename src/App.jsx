@@ -1,12 +1,17 @@
 // App.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
+
+// Import tracking service and wrapper
+import { trackingService } from "./services/trackingService";
+import TrackingWrapper from "./components/TrackingWrapper";
 
 import Login from "./components/login/Login";
 import ModuleSelect from "./components/login/ModuleSelect";
@@ -70,27 +75,129 @@ import FactoryWorkforce from "./components/pages/factory/pages/FactoryWorkforce"
 import FactoryMachines from "./components/pages/factory/pages/FactoryMachines";
 import FactoryEnergy from "./components/pages/factory/pages/FactoryEnergy";
 
-
 // Unauthorized page
 import Unauthorized from "./components/Unauthorized";
+import Home from "./components/landing/Landing";
 
+// Component to handle route changes and track all navigation
+const RouteChangeTracker = () => {
+  const location = useLocation();
 
+  useEffect(() => {
+    // Track every route change with a small delay to ensure page is loaded
+    const timer = setTimeout(() => {
+      trackingService.trackPageVisit();
+
+      // Also track module/page specific info for better analytics
+      const path = location.pathname;
+      const searchParams = new URLSearchParams(location.search);
+      const params = {};
+
+      // Convert search params to object (including campaign_id, lead_id, email, etc.)
+      searchParams.forEach((value, key) => {
+        params[key] = value;
+      });
+
+      // Extract module and page info from URL
+      const pathParts = path.split("/").filter(Boolean);
+      if (pathParts.length > 0) {
+        const module = pathParts[0];
+        const page = pathParts[1] || "dashboard";
+
+        // Track module navigation with all query parameters
+        trackingService.trackEvent("module_navigation", {
+          module: module,
+          page: page,
+          full_path: path,
+          ...params,
+        });
+      }
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [location]);
+
+  return null;
+};
 
 function App() {
+  // Initialize tracking on app load
+  useEffect(() => {
+    // Initialize tracking service
+    trackingService.init();
+
+    // Track initial app load with query parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const params = {};
+    urlParams.forEach((value, key) => {
+      params[key] = value;
+    });
+
+    trackingService.trackEvent("app_loaded", {
+      app_name: "Industry Integra",
+      version: "1.0.0",
+      ...params,
+    });
+
+    // Set up session heartbeat to keep track of active sessions
+    const heartbeatInterval = setInterval(() => {
+      trackingService.trackEvent("session_heartbeat", {
+        active_time: Math.floor(
+          (Date.now() - trackingService.sessionStartTime) / 1000,
+        ),
+      });
+    }, 300000); // Every 5 minutes
+
+    // Cleanup on app unmount
+    return () => {
+      clearInterval(heartbeatInterval);
+      trackingService.destroy();
+    };
+  }, []);
+
   return (
     <Router basename="/industry-integra">
       <AuthProvider>
+        {/* RouteChangeTracker listens to all route changes and triggers tracking */}
+        <RouteChangeTracker />
+
         <Routes>
-          {/* Public Routes */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/unauthorized" element={<Unauthorized />} />
+          {/* Public Routes - Wrapped in TrackingWrapper */}
+          <Route
+            path="/"
+            element={
+              <TrackingWrapper>
+                <Home />
+              </TrackingWrapper>
+            }
+          />
+
+          <Route
+            path="/login"
+            element={
+              <TrackingWrapper>
+                <Login />
+              </TrackingWrapper>
+            }
+          />
+
+          <Route
+            path="/unauthorized"
+            element={
+              <TrackingWrapper>
+                <Unauthorized />
+              </TrackingWrapper>
+            }
+          />
 
           {/* Module Selection Page - Only for Master Admin */}
           <Route
             path="/modules"
             element={
               <ProtectedRoute allowedRoles={["master"]}>
-                <ModuleSelect />
+                <TrackingWrapper>
+                  <ModuleSelect />
+                </TrackingWrapper>
               </ProtectedRoute>
             }
           />
@@ -100,22 +207,21 @@ function App() {
             path="/process"
             element={
               <ProtectedRoute allowedRoles={["master", "user"]}>
-                <ProcessLayout />
+                <TrackingWrapper>
+                  <ProcessLayout />
+                </TrackingWrapper>
               </ProtectedRoute>
             }
           >
             <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<ProcessDashboard />} />
-
             <Route path="throughput" element={<ProcessThroughput />} />
             <Route path="time-metrics" element={<ProcessTimeMetrics />} />
             <Route path="backlog" element={<ProcessBacklog />} />
-
             <Route path="automation" element={<ProcessAutomation />} />
             <Route path="resources" element={<ProcessResources />} />
             <Route path="quality" element={<ProcessQuality />} />
             <Route path="compliance" element={<ProcessCompliance />} />
-
             <Route path="cost-roi" element={<ProcessCostROI />} />
             <Route path="failures" element={<ProcessFailures />} />
             <Route path="sla-recovery" element={<ProcessSLARecovery />} />
@@ -128,7 +234,9 @@ function App() {
               <ProtectedRoute
                 allowedRoles={["master", "user", "energy-manager"]}
               >
-                <EnergyLayout />
+                <TrackingWrapper>
+                  <EnergyLayout />
+                </TrackingWrapper>
               </ProtectedRoute>
             }
           >
@@ -158,7 +266,9 @@ function App() {
                   "building-admin",
                 ]}
               >
-                <BuildingLayout />
+                <TrackingWrapper>
+                  <BuildingLayout />
+                </TrackingWrapper>
               </ProtectedRoute>
             }
           >
@@ -192,7 +302,9 @@ function App() {
                   "factory-admin",
                 ]}
               >
-                <FactoryLayout />
+                <TrackingWrapper>
+                  <FactoryLayout />
+                </TrackingWrapper>
               </ProtectedRoute>
             }
           >
@@ -211,8 +323,7 @@ function App() {
             <Route path="energy" element={<FactoryEnergy />} />
           </Route>
 
-          {/* Default Routes */}
-          <Route path="/" element={<Navigate to="/login" replace />} />
+          {/* Catch-all route - redirect to login */}
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </AuthProvider>
