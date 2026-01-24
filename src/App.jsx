@@ -1,4 +1,4 @@
-// App.jsx
+// App.jsx - CORRECTED VERSION
 import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -9,9 +9,8 @@ import {
 } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 
-// Import tracking service and wrapper
+
 import { trackingService } from "./services/trackingService";
-import TrackingWrapper from "./components/TrackingWrapper";
 
 import Login from "./components/login/Login";
 import ModuleSelect from "./components/login/ModuleSelect";
@@ -79,125 +78,76 @@ import FactoryEnergy from "./components/pages/factory/pages/FactoryEnergy";
 import Unauthorized from "./components/Unauthorized";
 import Home from "./components/landing/Landing";
 
-// Component to handle route changes and track all navigation
-const RouteChangeTracker = () => {
+// Single Tracking Component - SIMPLIFIED
+const TrackingListener = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Track every route change with a small delay to ensure page is loaded
-    const timer = setTimeout(() => {
-      trackingService.trackPageVisit();
+    // Use requestAnimationFrame for better timing
+    let animationFrameId;
+    let timeoutId;
 
-      // Also track module/page specific info for better analytics
-      const path = location.pathname;
-      const searchParams = new URLSearchParams(location.search);
-      const params = {};
+    const trackPage = () => {
+      // Clear any pending timeouts
+      if (timeoutId) clearTimeout(timeoutId);
 
-      // Convert search params to object (including campaign_id, lead_id, email, etc.)
-      searchParams.forEach((value, key) => {
-        params[key] = value;
-      });
+      // Schedule tracking with proper debouncing
+      timeoutId = setTimeout(() => {
+        trackingService.trackPageVisit();
+      }, 300); // 300ms debounce
+    };
 
-      // Extract module and page info from URL
-      const pathParts = path.split("/").filter(Boolean);
-      if (pathParts.length > 0) {
-        const module = pathParts[0];
-        const page = pathParts[1] || "dashboard";
+    // Use requestAnimationFrame to batch updates
+    animationFrameId = requestAnimationFrame(trackPage);
 
-        // Track module navigation with all query parameters
-        trackingService.trackEvent("module_navigation", {
-          module: module,
-          page: page,
-          full_path: path,
-          ...params,
-        });
-      }
-    }, 200);
+    return () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [location.pathname, location.search]); // Only track when path or query params change
 
-    return () => clearTimeout(timer);
-  }, [location]);
-
-  return null;
+  return null; // This component doesn't render anything
 };
 
 function App() {
-  // Initialize tracking on app load
+  // Initialize tracking on app load - RUNS ONLY ONCE
   useEffect(() => {
-    // Initialize tracking service
+    console.log("App mounted - Initializing tracking");
+
+    // Initialize the tracking service
     trackingService.init();
 
-    // Track initial app load with query parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const params = {};
-    urlParams.forEach((value, key) => {
-      params[key] = value;
-    });
+    // Track initial page load after a delay
+    const initialTimer = setTimeout(() => {
+      trackingService.trackPageVisit();
+    }, 800);
 
-    trackingService.trackEvent("app_loaded", {
-      app_name: "Industry Integra",
-      version: "1.0.0",
-      ...params,
-    });
-
-    // Set up session heartbeat to keep track of active sessions
-    const heartbeatInterval = setInterval(() => {
-      trackingService.trackEvent("session_heartbeat", {
-        active_time: Math.floor(
-          (Date.now() - trackingService.sessionStartTime) / 1000,
-        ),
-      });
-    }, 300000); // Every 5 minutes
-
-    // Cleanup on app unmount
+    // Cleanup
     return () => {
-      clearInterval(heartbeatInterval);
+      console.log("App unmounting - Cleaning up tracking");
+      clearTimeout(initialTimer);
       trackingService.destroy();
     };
-  }, []);
+  }, []); // Empty dependency array - runs only once
 
   return (
     <Router basename="/industry-integra">
       <AuthProvider>
-        {/* RouteChangeTracker listens to all route changes and triggers tracking */}
-        <RouteChangeTracker />
+        {/* SINGLE tracking listener at root level */}
+        <TrackingListener />
 
         <Routes>
-          {/* Public Routes - Wrapped in TrackingWrapper */}
-          <Route
-            path="/"
-            element={
-              <TrackingWrapper>
-                <Home />
-              </TrackingWrapper>
-            }
-          />
+      
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
 
-          <Route
-            path="/login"
-            element={
-              <TrackingWrapper>
-                <Login />
-              </TrackingWrapper>
-            }
-          />
-
-          <Route
-            path="/unauthorized"
-            element={
-              <TrackingWrapper>
-                <Unauthorized />
-              </TrackingWrapper>
-            }
-          />
-
-          {/* Module Selection Page - Only for Master Admin */}
+          {/* Module Selection Page */}
           <Route
             path="/modules"
             element={
               <ProtectedRoute allowedRoles={["master"]}>
-                <TrackingWrapper>
-                  <ModuleSelect />
-                </TrackingWrapper>
+                <ModuleSelect />
               </ProtectedRoute>
             }
           />
@@ -207,9 +157,7 @@ function App() {
             path="/process"
             element={
               <ProtectedRoute allowedRoles={["master", "user"]}>
-                <TrackingWrapper>
-                  <ProcessLayout />
-                </TrackingWrapper>
+                <ProcessLayout />
               </ProtectedRoute>
             }
           >
@@ -234,9 +182,7 @@ function App() {
               <ProtectedRoute
                 allowedRoles={["master", "user", "energy-manager"]}
               >
-                <TrackingWrapper>
-                  <EnergyLayout />
-                </TrackingWrapper>
+                <EnergyLayout />
               </ProtectedRoute>
             }
           >
@@ -266,9 +212,7 @@ function App() {
                   "building-admin",
                 ]}
               >
-                <TrackingWrapper>
-                  <BuildingLayout />
-                </TrackingWrapper>
+                <BuildingLayout />
               </ProtectedRoute>
             }
           >
@@ -302,9 +246,7 @@ function App() {
                   "factory-admin",
                 ]}
               >
-                <TrackingWrapper>
-                  <FactoryLayout />
-                </TrackingWrapper>
+                <FactoryLayout />
               </ProtectedRoute>
             }
           >
@@ -323,7 +265,7 @@ function App() {
             <Route path="energy" element={<FactoryEnergy />} />
           </Route>
 
-          {/* Catch-all route - redirect to login */}
+          {/* Catch-all route */}
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </AuthProvider>
