@@ -30,9 +30,7 @@ import {
   Package,
   BatteryCharging,
   Home,
-
   Contact,
- 
 } from "lucide-react";
 import {
   LineChart,
@@ -236,146 +234,14 @@ const Landing = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-600 to-emerald-800 flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">I</span>
-                </div>
-                <div>
-                  <div className="font-bold text-slate-900">Industry</div>
-                  <div className="text-xs text-emerald-600 font-semibold">
-                    INTEGRA 360
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="hidden md:flex items-center space-x-8">
-              <a
-                href="#"
-                className="text-slate-600 hover:text-slate-900 transition-colors"
-              >
-                Home
-              </a>
-              <a
-                href="#"
-                className="text-slate-600 hover:text-slate-900 transition-colors"
-              >
-                Modules
-              </a>
-              <a
-                href="#"
-                className="text-slate-600 hover:text-slate-900 transition-colors"
-              >
-                Benefits
-              </a>
-              <a
-                href="#"
-                className="text-slate-600 hover:text-slate-900 transition-colors"
-              >
-                Industries
-              </a>
-              <a
-                href="#"
-                className="text-slate-600 hover:text-slate-900 transition-colors"
-              >
-                Contact
-              </a>
-              <button
-                onClick={() => setShowDemoModal(true)}
-                className="px-6 py-2 bg-gradient-to-r from-emerald-600 to-emerald-800 text-white rounded-lg hover:from-emerald-700 hover:to-emerald-900 transition-all duration-300 shadow-lg shadow-emerald-500/25"
-              >
-                Try Demo
-              </button>
-            </div>
-
-            <button
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-          </div>
-
-          {/* Mobile menu */}
-          {isMenuOpen && (
-            <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-b border-slate-200 py-4">
-              <div className="flex flex-col space-y-4 px-4">
-                <a
-                  href="#"
-                  className="text-slate-600 hover:text-slate-900 transition-colors"
-                >
-                  Home
-                </a>
-                <a
-                  href="#"
-                  className="text-slate-600 hover:text-slate-900 transition-colors"
-                >
-                  Modules
-                </a>
-                <a
-                  href="#"
-                  className="text-slate-600 hover:text-slate-900 transition-colors"
-                >
-                  Benefits
-                </a>
-                <a
-                  href="#"
-                  className="text-slate-600 hover:text-slate-900 transition-colors"
-                >
-                  Industries
-                </a>
-                <a
-                  href="#"
-                  className="text-slate-600 hover:text-slate-900 transition-colors"
-                >
-                  Contact
-                </a>
-                <button
-                  onClick={() => setShowDemoModal(true)}
-                  className="px-6 py-2 bg-gradient-to-r from-emerald-600 to-emerald-800 text-white rounded-lg hover:from-emerald-700 hover:to-emerald-900 transition-all"
-                >
-                  Try Demo
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center space-x-2">
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg shadow-emerald-500/30">
-                    <span className="text-white font-bold text-2xl">I</span>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-slate-900">
-                      Industry <span className="text-emerald-600">INTEGRA</span>{" "}
-                      360
-                    </div>
-                    <div className="text-sm text-slate-600 font-medium">
-                      Master Every Process, Power Every Plant
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
                 End-to-End Industrial Automation
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-800">
+                <span className="text-green-700">
                   One Unified Control Platform
                 </span>
               </h1>
@@ -872,131 +738,7 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid md:grid-cols-4 gap-12">
-            <div>
-              <div className="flex items-center space-x-2 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">I</span>
-                </div>
-                <div>
-                  <div className="font-bold text-lg">Industry</div>
-                  <div className="text-sm text-emerald-300 font-semibold">
-                    INTEGRA 360
-                  </div>
-                </div>
-              </div>
-              <p className="text-slate-400">
-                Master Every Process, Power Every Plant, From Factory Floor To
-                Smart Operations.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-lg mb-6">Modules</h4>
-              <ul className="space-y-3">
-                <li>
-                  <a
-                    href="#"
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    Building Automation
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    Process Automation
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    Factory Automation
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    Energy Automation
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-lg mb-6">Company</h4>
-              <ul className="space-y-3">
-                <li>
-                  <a
-                    href="#"
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    Contact
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    Terms of Service
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-lg mb-6">Contact</h4>
-              <ul className="space-y-3">
-                <li className="flex items-center space-x-2 text-slate-400">
-                  <Phone className="w-4 h-4" />
-                  <span>+1 (555) 123-4567</span>
-                </li>
-                <li className="flex items-center space-x-2 text-slate-400">
-                  <Mail className="w-4 h-4" />
-                  <span>info@integra360.tech</span>
-                </li>
-                <li className="flex items-center space-x-2 text-slate-400">
-                  <MapPin className="w-4 h-4" />
-                  <span>123 Industrial Blvd, Suite 400</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-slate-800 mt-12 pt-8 text-center text-slate-400">
-            <p>
-              © {new Date().getFullYear()} Industry INTEGRA 360. All rights
-              reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+    
 
       {/* Brochure Modal */}
       {showBrochureModal && (

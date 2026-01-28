@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 
-
 import { trackingService } from "./services/trackingService";
 
 import Login from "./components/login/Login";
@@ -77,6 +76,11 @@ import FactoryEnergy from "./components/pages/factory/pages/FactoryEnergy";
 // Unauthorized page
 import Unauthorized from "./components/Unauthorized";
 import Home from "./components/landing/Landing";
+import Layout from "./components/landing/layout/Layout";
+import Landing from "./components/landing/Landing";
+import Homepage from "./components/landing/Home";
+
+
 
 // Single Tracking Component - SIMPLIFIED
 const TrackingListener = () => {
@@ -137,8 +141,10 @@ function App() {
         <TrackingListener />
 
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Homepage />} />
+          </Route>
+
           <Route path="/login" element={<Login />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
 
