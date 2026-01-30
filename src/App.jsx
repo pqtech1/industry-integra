@@ -79,6 +79,15 @@ import Home from "./components/landing/Landing";
 import Layout from "./components/landing/layout/Layout";
 import Landing from "./components/landing/Landing";
 import Homepage from "./components/landing/Home";
+import PlatformArchitecture from "./components/landing/PlatformArchitecture";
+import WhatIsJewelIntegra from "./components/landing/WhatIsIndustryIntegra;";
+import WhatIsIndustryIntegra from "./components/landing/WhatIsIndustryIntegra;";
+import ProcessManufacturing from "./components/landing/modules/ProcessManufacturing";
+import EnergyManagement from "./components/landing/modules/EnergyManagement";
+import BuildingAutomationModulePage from "./components/landing/modules/BuildingAutomation";
+import SmartFactory from "./components/landing/modules/SmartFactory";
+import SolutionsPage from "./components/landing/solutions/SolutionsPage";
+import ServicesPage from "./components/landing/services/ServicesPage";
 
 
 
@@ -143,6 +152,42 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Homepage />} />
+            <Route
+              path="/what-is-industry-integra-360"
+              element={<WhatIsIndustryIntegra />}
+            />
+            <Route
+              path="/platform-architecture"
+              element={<PlatformArchitecture />}
+            />
+            <Route
+              path="/industry-integra-for-process"
+              element={<ProcessManufacturing />}
+            />
+            <Route
+              path="/industry-integra-for-energy"
+              element={<EnergyManagement />}
+            />
+            <Route
+              path="/industry-integra-for-building"
+              element={<BuildingAutomationModulePage />}
+            />
+            <Route
+              path="/industry-integra-for-factory"
+              element={<SmartFactory />}
+            />
+            <Route
+              path="/solutions"
+              element={<SolutionsPage />}
+            />
+            <Route
+              path="/services"
+              element={<ServicesPage />}
+            />
+            <Route
+              path="/support"
+              element={<ServicesPage />}
+            />
           </Route>
 
           <Route path="/login" element={<Login />} />

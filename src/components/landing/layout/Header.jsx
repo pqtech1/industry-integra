@@ -112,7 +112,7 @@ const Header = () => {
                           </h4>
                           <div className="space-y-2">
                             <Link
-                              to="/platform/overview"
+                              to="/what-is-industry-integra-360"
                               className="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 group transition-all duration-200 hover:shadow-sm"
                             >
                               <div className="h-8 w-8 rounded-lg bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition-colors">
@@ -128,7 +128,7 @@ const Header = () => {
                               </div>
                             </Link>
                             <Link
-                              to="/platform/architecture"
+                              to="/platform-architecture"
                               className="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 group transition-all duration-200 hover:shadow-sm"
                             >
                               <div className="h-8 w-8 rounded-lg bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition-colors">
@@ -156,73 +156,69 @@ const Header = () => {
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-4">
                           <Link
-                            to="/modules/production"
+                            to="/industry-integra-for-process"
                             className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-green-200 hover:bg-green-50"
                           >
                             <div className="flex items-center gap-3 mb-2">
-                              <Monitor className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
+                              <Monitor className="h-5 w-5 text-green-600" />
                               <span className="text-sm font-medium text-gray-900">
-                                Production Monitoring
+                                Process Monitoring
                               </span>
                             </div>
                             <p className="text-xs text-gray-500">
-                              Real-time OEE and productivity tracking
+                              Real-time process efficiency and production
+                              insights
                             </p>
                           </Link>
+
                           <Link
-                            to="/modules/energy"
+                            to="/industry-integra-for-energy"
                             className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-green-200 hover:bg-green-50"
                           >
                             <div className="flex items-center gap-3 mb-2">
-                              <Zap className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
+                              <Zap className="h-5 w-5 text-green-600" />
                               <span className="text-sm font-medium text-gray-900">
                                 Energy Management
                               </span>
                             </div>
                             <p className="text-xs text-gray-500">
-                              Optimize energy consumption and costs
+                              Monitor and optimize energy usage and costs
                             </p>
                           </Link>
                         </div>
+
                         <div className="space-y-4">
                           <Link
-                            to="/modules/oee"
+                            to="/industry-integra-for-building"
                             className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-purple-200 hover:bg-purple-50"
                           >
                             <div className="flex items-center gap-3 mb-2">
-                              <BarChart3 className="h-5 w-5 text-purple-600 transition-transform group-hover:scale-110" />
+                              <BarChart3 className="h-5 w-5 text-purple-600" />
                               <span className="text-sm font-medium text-gray-900">
-                                OEE & KPI Systems
+                                Building Management
                               </span>
                             </div>
                             <p className="text-xs text-gray-500">
-                              Performance metrics and analytics
+                              HVAC, utilities, and building performance
+                              monitoring
                             </p>
                           </Link>
+
                           <Link
-                            to="/modules/quality"
+                            to="/industry-integra-for-factory"
                             className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-red-200 hover:bg-red-50"
                           >
                             <div className="flex items-center gap-3 mb-2">
-                              <Shield className="h-5 w-5 text-red-600 transition-transform group-hover:scale-110" />
+                              <Shield className="h-5 w-5 text-red-600" />
                               <span className="text-sm font-medium text-gray-900">
-                                Quality & Traceability
+                                Factory Intelligence
                               </span>
                             </div>
                             <p className="text-xs text-gray-500">
-                              Full traceability and compliance
+                              Quality, traceability, and compliance control
                             </p>
                           </Link>
                         </div>
-                      </div>
-                      <div className="mt-6 pt-6 border-t">
-                        <Link
-                          to="/platform/all-modules"
-                          className="text-sm font-medium text-green-600 hover:text-green-800 inline-flex items-center gap-1 group transition-all"
-                        >
-                          View all platform modules
-                          <ChevronDown className="h-4 w-4 -rotate-90 group-hover:translate-x-1 transition-transform" />
-                        </Link>
                       </div>
                     </div>
                   </div>
@@ -260,7 +256,7 @@ const Header = () => {
 
                       <div className="space-y-4">
                         <Link
-                          to="/solutions/predictive-maintenance"
+                          to="/solutions"
                           className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-all duration-200 hover:shadow-sm"
                         >
                           <Activity className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
@@ -381,7 +377,7 @@ const Header = () => {
 
                       <div className="space-y-4">
                         <Link
-                          to="/services/consulting"
+                          to="/services"
                           className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-all duration-200 hover:shadow-sm"
                         >
                           <Settings className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
@@ -480,21 +476,9 @@ const Header = () => {
                 </Link>
               </NavigationMenuItem>
 
-              <NavigationMenuItem>
-                <Link to="/resources">
-                  <NavigationMenuLink className="inline-flex h-9 items-center justify-center px-4 text-sm font-medium text-gray-700 hover:text-green-700 transition-colors duration-200">
-                    Resources
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
+              
 
-              <NavigationMenuItem>
-                <Link to="/company">
-                  <NavigationMenuLink className="inline-flex h-9 items-center justify-center px-4 text-sm font-medium text-gray-700 hover:text-green-700 transition-colors duration-200">
-                    Company
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
+              
             </NavigationMenuList>
           </NavigationMenu>
         </nav>
@@ -621,18 +605,8 @@ const Header = () => {
                       >
                         Support
                       </Link>
-                      <Link
-                        to="/resources"
-                        className="block py-3 text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all"
-                      >
-                        Resources
-                      </Link>
-                      <Link
-                        to="/company"
-                        className="block py-3 text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all"
-                      >
-                        Company
-                      </Link>
+                     
+                     
                     </div>
                   </nav>
                 </div>

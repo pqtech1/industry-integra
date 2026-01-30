@@ -248,7 +248,7 @@ const ServicesShowcase = () => {
   };
 
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className=" bg-white">
       <div className="container mx-auto px-4 md:px-6">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">

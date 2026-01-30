@@ -177,7 +177,7 @@ const industries = [
 
 export default function TailoredSolutionsPage() {
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white py-20">
+    <section className="bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
@@ -186,10 +186,10 @@ export default function TailoredSolutionsPage() {
             Industry 4.0 Solutions
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="">
             Tailored Solutions for Every Industry
           </h2>
-          <p className="text-lg md:text-xl text-gray-600">
+          <p className="">
             INTEGRA 360 delivers custom manufacturing intelligence solutions
             across all sectors.
           </p>

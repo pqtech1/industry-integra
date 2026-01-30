@@ -42,6 +42,7 @@ import TailoredSolutionsPage from "../sections/TailoredSolutionsPage";
 import InteractiveDashboard from "../sections/InteractiveDashboard";
 import ServicesShowcase from "../sections/ServicesShowcase";
 import FAQSection from "../sections/FAQSection";
+import GetInTouch from "../sections/GetInTouch";
 
 const Homepage = () => {
   // Platform features
@@ -125,84 +126,82 @@ const Homepage = () => {
     );
   }
 
-
   return (
     <div className="min-h-screen">
-      <div className="relative w-full overflow-hidden mt-5">
-        <section className="relative pb-20 pt lg:pb-28 min-h-screen">
-          <div className="container mx-auto px-4 lg:px-8 h-full">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 h-full min-h-[600px]">
-              {/* ================= LEFT CONTENT ================= */}
-              <div className="flex">
-                <div className="text-center lg:text-left max-w-xl">
-                  <div className="inline-flex items-center gap-2  py-2 rounded-full bg-green-50 text-green-700 text-sm font-medium mb-6">
-                    <Zap className="h-4 w-4" />
-                    Industry 4.0 Ready Platform
-                  </div>
+      {/* Hero Section */}
+      <section className="relative w-full overflow-hidden">
+        <div className="relative py-12 lg:py-16 min-h-[85vh] flex items-center">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 ">
+              {/* Left Content */}
+              <div className="text-center lg:text-left">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 text-green-700 text-sm font-medium mb-6">
+                  <Zap className="h-4 w-4" />
+                  Industry 4.0 Ready Platform
+                </div>
 
-                  <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                    Transform Your Manufacturing with{" "}
-                    <span className="text-green-600 whitespace-nowrap">
-                      <WordRotate
-                        words={[
-                          "Real-Time Control",
-                          "Live System Insight",
-                          "Smarter Operations",
-                          "Connected Systems",
-                        ]}
-                      />
-                    </span>
-                  </h1>
+                <h1 className="mb-6">
+                  Transform Your Manufacturing with{" "}
+                  <span className="text-green-600 whitespace-nowrap">
+                    <WordRotate
+                      words={[
+                        "Real-Time Control",
+                        "Live System Insight",
+                        "Smarter Operations",
+                        "Connected Systems",
+                      ]}
+                    />
+                  </span>
+                </h1>
 
-                  <p className="text-xl text-gray-600 mb-8">
-                    Industry{" "}
-                    <Highlighter action="underline" color="#FF9800">
-                      INTEGRA 360
-                    </Highlighter>{" "}
-                    is a unified{" "}
-                    <Highlighter action="highlight" color="#E3F2FD">
-                      Industry 4.0 platform
-                    </Highlighter>{" "}
-                    that brings together{" "}
-                    <Highlighter action="underline" color="#4CAF50">
-                      process monitoring
-                    </Highlighter>
-                    , energy management, quality tracking, and asset performance
-                    into one connected manufacturing ecosystem.
-                  </p>
+                <p className="mb-8">
+                  Industry{" "}
+                  <Highlighter action="underline" color="#FF9800">
+                    INTEGRA 360
+                  </Highlighter>{" "}
+                  is a unified{" "}
+                  <Highlighter action="highlight" color="#E3F2FD">
+                    Industry 4.0 platform
+                  </Highlighter>{" "}
+                  that brings together{" "}
+                  <Highlighter action="underline" color="#4CAF50">
+                    process monitoring
+                  </Highlighter>
+                  , energy management, quality tracking, and asset performance
+                  into one connected manufacturing ecosystem.
+                </p>
 
-                  <div className="flex flex-col sm:flex-row gap-4 lg:justify-start justify-center">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Button
+                    size="lg"
+                    className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all"
+                  >
+                    <Link
+                      to="/request-demo"
+                      className="flex items-center gap-2"
+                    >
+                      Request a Demo
+                      <ArrowRight className="h-5 w-5" />
+                    </Link>
+                  </Button>
+
+                  <Link to="/platform/overview">
                     <Button
                       size="lg"
-                      className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all"
+                      variant="outline"
+                      className="px-8 py-6 text-lg border-2"
                     >
-                      <Link
-                        to="/request-demo"
-                        className="flex items-center gap-2"
-                      >
-                        Request a Demo
-                        <ArrowRight className="h-5 w-5" />
-                      </Link>
+                      <Play className="h-5 w-5 mr-2" />
+                      Watch Platform Tour
                     </Button>
-
-                    <Link to="/platform/overview">
-                      <Button
-                        size="lg"
-                        variant="outline"
-                        className="px-8 py-6 text-lg border-2"
-                      >
-                        <Play className="h-5 w-5 mr-2" />
-                        Watch Platform Tour
-                      </Button>
-                    </Link>
-                  </div>
+                  </Link>
                 </div>
               </div>
 
-              {/* ================= RIGHT DASHBOARD ================= */}
-              <div className="flex items-center justify-end">
-                <div className="w-full max-w-md h-[600px] bg-white rounded-2xl border border-gray-200 shadow-xl flex flex-col overflow-hidden">
-                  {/* HEADER */}
+              {/* Right Dashboard */}
+              <div className="flex justify-center lg:justify-end mt-6 lg:mt-0">
+                <div className="w-full max-w-md h-[480px] lg:h-[550px] bg-white rounded-2xl border border-gray-200 shadow-xl flex flex-col overflow-hidden">
+                  {/* Header */}
                   <div className="bg-gradient-to-r from-green-600 to-emerald-600 p-4">
                     <div className="flex items-center gap-3">
                       <Factory className="h-8 w-8 text-white" />
@@ -218,8 +217,8 @@ const Homepage = () => {
                     </div>
                   </div>
 
-                  {/* 🔥 ANIMATED LIST AREA (FIXED HEIGHT) */}
-                  <div className="h-[420px] overflow-hidden p-4">
+                  {/* Animated List Area */}
+                  <div className="h-[320px] lg:h-[380px] overflow-hidden p-4">
                     <AnimatedList delay={2800}>
                       <DashboardItem
                         icon={<Activity />}
@@ -254,7 +253,7 @@ const Homepage = () => {
                     </AnimatedList>
                   </div>
 
-                  {/* FOOTER */}
+                  {/* Footer */}
                   <div className="border-t border-gray-200 p-3 bg-gray-50">
                     <div className="flex items-center justify-between text-sm text-gray-600">
                       <div className="flex items-center gap-2">
@@ -271,10 +270,11 @@ const Homepage = () => {
               </div>
             </div>
           </div>
-        </section>
-      </div>
-      {/* scrollbar bar  */}
-      <section className="pt-10">
+        </div>
+      </section>
+
+      {/* Scroll Bar */}
+      <section className="py-6">
         <ScrollVelocityContainer className="text-xl font-bold text-slate-500 md:text-2xl tracking-wide">
           <ScrollVelocityRow baseVelocity={5} direction={1}>
             REAL-TIME DATA • AI INSIGHTS • SMART FACTORY • INDUSTRY 4.0
@@ -285,28 +285,30 @@ const Homepage = () => {
           </ScrollVelocityRow>
         </ScrollVelocityContainer>
       </section>
+
       {/* Platform Capabilities */}
-      <section className="relative py-10 bg-black overflow-hidden m-5 rounded-2xl">
-        {/* Section background */}
+      <section className="relative py-10 lg:py-12 bg-black overflow-hidden mx-4 lg:mx-5 rounded-2xl">
         <LightRays className="absolute inset-0 z-0" />
 
         <div className="relative z-10 container mx-auto px-4 lg:px-8">
           {/* Header */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <h2 className="mb-4 text-white">
               The Complete Industrial Intelligence Platform
             </h2>
-            <p className="text-lg text-gray-400">
+            <p className="text-gray-400">
               Everything you need to optimize manufacturing operations, reduce
               costs, and drive continuous improvement.
             </p>
           </div>
 
-          {/* Cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {/* Cards - Now with same height */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
             {platformFeatures.map((feature, index) => (
-              <div key={index} className="relative rounded-2xl p-[1.5px]">
-                {/* Border Beam (border layer) */}
+              <div
+                key={index}
+                className="relative rounded-2xl p-[1.5px] h-full"
+              >
                 <BorderBeam
                   size={300}
                   duration={14}
@@ -316,18 +318,17 @@ const Homepage = () => {
                   colorTo="grey"
                 />
 
-                {/* Magic Card */}
-                <MagicCard className="relative rounded-2xl bg-neutral-950">
-                  <div className="p-6">
+                <MagicCard className="relative rounded-2xl bg-neutral-950 h-full flex flex-col">
+                  <div className="p-6 flex-1 flex flex-col">
                     <div className="mb-4">{feature.icon}</div>
 
-                    <h3 className="text-xl font-semibold text-white mb-3">
-                      {feature.title}
-                    </h3>
+                    <h3 className="text-white mb-3">{feature.title}</h3>
 
-                    <p className="text-gray-400 mb-4">{feature.description}</p>
+                    <p className="text-gray-400 mb-4 flex-1">
+                      {feature.description}
+                    </p>
 
-                    <div className="text-sm font-medium text-green-400">
+                    <div className="text-sm font-medium text-green-400 pt-2">
                       {feature.stat}
                     </div>
                   </div>
@@ -354,24 +355,36 @@ const Homepage = () => {
           </div>
         </div>
       </section>
-      <section className="pt-10">
+
+      {/* Industry Beam Section */}
+      <section className="py-10 lg:py-12">
         <IndustryBeamSection />
       </section>
-      {/* Industry-Specific Solutions */}
-      <section className="pt-20">
+
+      {/* Tailored Solutions */}
+      <section className="py-10 lg:py-12">
         <TailoredSolutionsPage />
       </section>
-      <section className="pt-20 bg-gray-50">
+
+      {/* Interactive Dashboard */}
+      <section className="py-10 lg:py-12 bg-gray-50">
         <InteractiveDashboard />
       </section>
-      <section className="pt-20">
+
+      {/* Services Showcase */}
+      <section className="py-10 lg:py-12">
         <ServicesShowcase />
       </section>
-      {/* FAQ's  */}
-      <section className="pt-20">
+
+      {/* FAQ Section */}
+      <section className="py-10 lg:py-12">
         <FAQSection />
       </section>
-      {/* Final CTA */}
+
+      {/* Get in Touch */}
+      <section className="py-10 lg:py-12">
+        <GetInTouch />
+      </section>
     </div>
   );
 };
