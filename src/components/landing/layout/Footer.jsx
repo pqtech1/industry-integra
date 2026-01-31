@@ -108,9 +108,9 @@ const Footer = () => {
           <div className="border-b border-gray-900 py-12">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="text-2xl lg:text-3xl font-bold mb-4">
+                <h2 className="">
                   Ready to transform your manufacturing operations?
-                </h3>
+                </h2>
                 <p className="text-gray-400 mb-6">
                   Join 1,000+ manufacturers who trust INTEGRA 360 for their
                   digital transformation.
@@ -135,7 +135,7 @@ const Footer = () => {
                 </div>
 
                 <div className="relative z-10">
-                  <h4 className="text-xl font-semibold mb-4">Stay Updated</h4>
+                  <h4 className="text-white font-bold">Stay Updated</h4>
                   <p className="text-gray-300 mb-6">
                     Get the latest insights on Industry 4.0, manufacturing
                     trends, and platform updates.

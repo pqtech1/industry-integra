@@ -12,9 +12,6 @@ import {
   FaExclamationTriangle,
   FaWater,
   FaGasPump,
-
-  FaWarehouse,
-  FaMicroscope,
   FaClipboardCheck,
   FaRobot,
   FaCloud,
@@ -31,7 +28,6 @@ import {
   FaMoneyBillWave,
   FaGlobe,
 } from "react-icons/fa";
-import { BlurFade } from "@/components/ui/blur-fade";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -40,29 +36,29 @@ const EnergyManagement = () => {
   // Energy Sector Challenges
   const challenges = [
     {
-      icon: <FaChartLine className="h-8 w-8" />,
+      icon: <FaChartLine className="h-6 w-6 md:h-8 md:w-8" />,
       title: "Peak Demand Management",
       description: "Managing energy spikes and avoiding peak demand charges",
-      color: "red",
+      color: "gray",
     },
     {
-      icon: <FaMoneyBillWave className="h-8 w-8" />,
+      icon: <FaMoneyBillWave className="h-6 w-6 md:h-8 md:w-8" />,
       title: "Cost Optimization",
       description:
         "Reducing energy expenses while maintaining operational efficiency",
-      color: "orange",
+      color: "gray",
     },
     {
-      icon: <FaLeaf className="h-8 w-8" />,
+      icon: <FaLeaf className="h-6 w-6 md:h-8 md:w-8" />,
       title: "Carbon Footprint Reduction",
       description: "Meeting sustainability goals and regulatory requirements",
       color: "green",
     },
     {
-      icon: <FaExclamationTriangle className="h-8 w-8" />,
+      icon: <FaExclamationTriangle className="h-6 w-6 md:h-8 md:w-8" />,
       title: "Grid Stability",
       description: "Ensuring reliable power supply and grid resilience",
-      color: "blue",
+      color: "gray",
     },
   ];
 
@@ -70,29 +66,29 @@ const EnergyManagement = () => {
   const solutions = [
     {
       title: "Real-time Energy Monitoring",
-      icon: <FaBolt className="h-6 w-6" />,
+      icon: <FaBolt className="h-5 w-5 md:h-6 md:w-6" />,
       features: [
         "Live energy consumption tracking",
         "Sub-metering across facilities",
         "Peak demand alerts",
         "Energy usage visualization",
       ],
-      color: "yellow",
+      color: "green",
     },
     {
       title: "Predictive Load Management",
-      icon: <FaChartBar className="h-6 w-6" />,
+      icon: <FaChartBar className="h-5 w-5 md:h-6 md:w-6" />,
       features: [
         "AI-driven load forecasting",
         "Automated demand response",
         "Peak shaving optimization",
         "Load scheduling algorithms",
       ],
-      color: "blue",
+      color: "green",
     },
     {
       title: "Renewable Integration",
-      icon: <FaSolarPanel className="h-6 w-6" />,
+      icon: <FaSolarPanel className="h-5 w-5 md:h-6 md:w-6" />,
       features: [
         "Solar production optimization",
         "Wind energy forecasting",
@@ -103,14 +99,14 @@ const EnergyManagement = () => {
     },
     {
       title: "Carbon Analytics",
-      icon: <FaLeaf className="h-6 w-6" />,
+      icon: <FaLeaf className="h-5 w-5 md:h-6 md:w-6" />,
       features: [
         "Real-time carbon tracking",
         "Scope 1, 2, 3 emissions",
         "Sustainability reporting",
         "Carbon credit management",
       ],
-      color: "purple",
+      color: "green",
     },
   ];
 
@@ -118,18 +114,18 @@ const EnergyManagement = () => {
   const sectorModules = [
     {
       sector: "Industrial Energy",
-      icon: <FaIndustry className="h-6 w-6" />,
+      icon: <FaIndustry className="h-5 w-5 md:h-6 md:w-6" />,
       capabilities: [
         "Process energy optimization",
         "Compressed air management",
         "Steam system efficiency",
         "HVAC optimization",
       ],
-      color: "blue",
+      color: "green",
     },
     {
       sector: "Commercial Buildings",
-      icon: <FaBuilding className="h-6 w-6" />,
+      icon: <FaBuilding className="h-5 w-5 md:h-6 md:w-6" />,
       capabilities: [
         "Building automation integration",
         "Lighting optimization",
@@ -140,25 +136,25 @@ const EnergyManagement = () => {
     },
     {
       sector: "Utilities & Grid",
-      icon: <FaPowerOff className="h-6 w-6" />,
+      icon: <FaPowerOff className="h-5 w-5 md:h-6 md:w-6" />,
       capabilities: [
         "Smart grid management",
         "Distribution optimization",
         "Outage prediction",
         "Grid balancing",
       ],
-      color: "orange",
+      color: "green",
     },
     {
       sector: "Renewable Energy",
-      icon: <FaWind className="h-6 w-6" />,
+      icon: <FaWind className="h-5 w-5 md:h-6 md:w-6" />,
       capabilities: [
         "Solar farm optimization",
         "Wind turbine analytics",
         "Energy storage management",
         "PPA optimization",
       ],
-      color: "yellow",
+      color: "green",
     },
   ];
 
@@ -167,13 +163,13 @@ const EnergyManagement = () => {
     {
       system: "Energy Management Systems",
       examples: ["SCADA", "BMS", "EMS", "PLC Networks"],
-      icon: <FaCogs className="h-6 w-6" />,
-      color: "blue",
+      icon: <FaCogs className="h-5 w-5 md:h-6 md:w-6" />,
+      color: "green",
     },
     {
       system: "Metering & IoT",
       examples: ["Smart Meters", "IoT Sensors", "Sub-meters", "PMUs"],
-      icon: <FaBolt className="h-6 w-6" />,
+      icon: <FaBolt className="h-5 w-5 md:h-6 md:w-6" />,
       color: "green",
     },
     {
@@ -184,8 +180,8 @@ const EnergyManagement = () => {
         "Battery BMS",
         "EV Chargers",
       ],
-      icon: <FaSolarPanel className="h-6 w-6" />,
-      color: "yellow",
+      icon: <FaSolarPanel className="h-5 w-5 md:h-6 md:w-6" />,
+      color: "green",
     },
     {
       system: "Analytics & AI",
@@ -195,8 +191,8 @@ const EnergyManagement = () => {
         "Digital Twins",
         "Forecasting Models",
       ],
-      icon: <FaChartLine className="h-6 w-6" />,
-      color: "purple",
+      icon: <FaChartLine className="h-5 w-5 md:h-6 md:w-6" />,
+      color: "green",
     },
   ];
 
@@ -204,29 +200,29 @@ const EnergyManagement = () => {
   const energySources = [
     {
       source: "Electricity",
-      icon: <FaBolt className="h-6 w-6" />,
+      icon: <FaBolt className="h-5 w-5 md:h-6 md:w-6" />,
       features: [
         "Grid power",
         "On-site generation",
         "Peak management",
         "Power quality",
       ],
-      color: "yellow",
+      color: "green",
     },
     {
       source: "Natural Gas",
-      icon: <FaGasPump className="h-6 w-6" />,
+      icon: <FaGasPump className="h-5 w-5 md:h-6 md:w-6" />,
       features: [
         "Consumption tracking",
         "Leak detection",
         "Efficiency optimization",
         "Cost analysis",
       ],
-      color: "orange",
+      color: "green",
     },
     {
       source: "Solar Energy",
-      icon: <FaSolarPanel className="h-6 w-6" />,
+      icon: <FaSolarPanel className="h-5 w-5 md:h-6 md:w-6" />,
       features: [
         "Production monitoring",
         "ROI calculation",
@@ -237,14 +233,14 @@ const EnergyManagement = () => {
     },
     {
       source: "Water & Steam",
-      icon: <FaWater className="h-6 w-8" />,
+      icon: <FaWater className="h-5 w-5 md:h-6 md:w-6" />,
       features: [
         "Water consumption",
         "Steam efficiency",
         "Leak detection",
         "Recycling tracking",
       ],
-      color: "blue",
+      color: "green",
     },
   ];
 
@@ -253,72 +249,46 @@ const EnergyManagement = () => {
     {
       metric: "15-30%",
       description: "Reduction in energy costs",
-      icon: <FaMoneyBillWave className="h-5 w-5" />,
+      icon: <FaMoneyBillWave className="h-4 w-4 md:h-5 md:w-5" />,
       color: "green",
     },
     {
       metric: "20-40%",
       description: "Reduction in peak demand",
-      icon: <FaChartLine className="h-5 w-5" />,
-      color: "blue",
+      icon: <FaChartLine className="h-4 w-4 md:h-5 md:w-5" />,
+      color: "green",
     },
     {
       metric: "25-50%",
       description: "Reduction in carbon emissions",
-      icon: <FaLeaf className="h-5 w-5" />,
-      color: "orange",
+      icon: <FaLeaf className="h-4 w-4 md:h-5 md:w-5" />,
+      color: "green",
     },
     {
       metric: "ROI < 2 years",
       description: "Typical payback period",
-      icon: <FaBolt className="h-5 w-5" />,
-      color: "purple",
+      icon: <FaBolt className="h-4 w-4 md:h-5 md:w-5" />,
+      color: "green",
     },
   ];
 
-  // Color mapping
+  // Color mapping - using only green, black, gray
   const colorClasses = {
-    blue: {
-      bg: "bg-blue-50",
-      text: "text-blue-700",
-      border: "border-blue-200",
-      iconBg: "bg-blue-100 text-blue-600",
-      gradient: "from-blue-50 to-blue-100",
-    },
     green: {
       bg: "bg-green-50",
       text: "text-green-700",
       border: "border-green-200",
       iconBg: "bg-green-100 text-green-600",
       gradient: "from-green-50 to-green-100",
+      bullet: "bg-green-500",
     },
-    purple: {
-      bg: "bg-purple-50",
-      text: "text-purple-700",
-      border: "border-purple-200",
-      iconBg: "bg-purple-100 text-purple-600",
-      gradient: "from-purple-50 to-purple-100",
-    },
-    orange: {
-      bg: "bg-orange-50",
-      text: "text-orange-700",
-      border: "border-orange-200",
-      iconBg: "bg-orange-100 text-orange-600",
-      gradient: "from-orange-50 to-orange-100",
-    },
-    yellow: {
-      bg: "bg-yellow-50",
-      text: "text-yellow-700",
-      border: "border-yellow-200",
-      iconBg: "bg-yellow-100 text-yellow-600",
-      gradient: "from-yellow-50 to-yellow-100",
-    },
-    red: {
-      bg: "bg-red-50",
-      text: "text-red-700",
-      border: "border-red-200",
-      iconBg: "bg-red-100 text-red-600",
-      gradient: "from-red-50 to-red-100",
+    gray: {
+      bg: "bg-gray-50",
+      text: "text-gray-700",
+      border: "border-gray-200",
+      iconBg: "bg-gray-100 text-gray-600",
+      gradient: "from-gray-50 to-gray-100",
+      bullet: "bg-gray-500",
     },
   };
 
@@ -326,218 +296,198 @@ const EnergyManagement = () => {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section
-        className="relative py-24 overflow-hidden bg-cover bg-center bg-no-repeat"
+        className="relative py-8 md:py-12 overflow-hidden px-4"
         style={{ backgroundImage: "url('modules/energy-bg.webp')" }}
       >
-        {/* Dark + brand-tinted overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-green-900/40 to-black/60" />
-
-        {/* Optional subtle noise / depth (remove if not needed) */}
         <div className="absolute inset-0 bg-black/20" />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="container mx-auto relative">
           <div className="max-w-5xl mx-auto">
-            <BlurFade delay={0.1} inView>
-              <div className="text-center">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-green-300 text-sm font-medium mb-6 border border-white/20 backdrop-blur">
-                  <FaBolt className="h-4 w-4" />
-                  Energy Management Solution
-                </div>
-
-                {/* Heading */}
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-green-400 via-yellow-300 to-blue-400 bg-clip-text text-transparent">
-                  Industry-Integra Energy Intelligence
-                </h1>
-
-                {/* Subheading */}
-                <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
-                  AI-driven energy optimization, real-time consumption
-                  visibility, and sustainability insights—built for
-                  enterprise-scale operations.
-                </p>
-
-                {/* CTA */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg shadow-lg">
-                    <Link to="/energy/demo" className="flex items-center gap-2">
-                      <FaBolt className="h-5 w-5" />
-                      Request Energy Demo
-                    </Link>
-                  </Button>
-
-                  <Button
-                    variant="outline"
-                    className="px-8 py-6 text-lg bg-white text-black hover:bg-slate-950 hover:text-white"
-                  >
-                    <Link
-                      to="/contact/energy-expert"
-                      className="flex items-center gap-2"
-                    >
-                      <FaUsers className="h-5 w-5" />
-                      Consult Energy Specialist
-                    </Link>
-                  </Button>
-                </div>
+            <div className="text-center">
+              <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-white/10 text-green-300 text-xs md:text-sm font-medium mb-4 md:mb-6 border border-white/20 backdrop-blur">
+                <FaBolt className="h-3 w-3 md:h-4 md:w-4" />
+                Energy Management Solution
               </div>
-            </BlurFade>
+
+              <h1 className="mb-4 md:mb-6 text-white">
+                Industry-Integra Energy Intelligence
+              </h1>
+
+              <p className="mb-4 md:mb-6 text-gray-200">
+                AI-driven energy optimization, real-time consumption visibility,
+                and sustainability insights—built for enterprise-scale
+                operations.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+                <Button className="bg-green-600 hover:bg-green-700 text-white px-6 md:px-8 py-4 md:py-6 text-base md:text-lg font-semibold rounded-lg shadow-xl">
+                  <Link to="/energy/demo" className="flex items-center gap-2">
+                    <FaBolt className="h-4 w-4 md:h-5 md:w-5" />
+                    Request Energy Demo
+                  </Link>
+                </Button>
+
+                <Button
+                  variant="outline"
+                  className="px-6 md:px-8 py-4 md:py-6 text-base md:text-lg bg-white text-black hover:bg-gray-900 hover:text-white rounded-lg shadow-xl"
+                >
+                  <Link
+                    to="/contact/energy-expert"
+                    className="flex items-center gap-2"
+                  >
+                    <FaUsers className="h-4 w-4 md:h-5 md:w-5" />
+                    Consult Energy Specialist
+                  </Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Energy Challenges */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="py-8 md:py-12 bg-white px-4">
+        <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
-            <BlurFade delay={0.2} inView>
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Modern Energy Management Challenges
-                </h2>
-                <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-                  Organizations face complex energy challenges that require
-                  intelligent solutions.
-                </p>
-              </div>
-            </BlurFade>
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="mb-4">Modern Energy Management Challenges</h2>
+              <p className="text-gray-600">
+                Organizations face complex energy challenges that require
+                intelligent solutions.
+              </p>
+            </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-12">
               {challenges.map((challenge, index) => {
-                const colors = colorClasses[challenge.color];
+                const colors =
+                  challenge.color === "green"
+                    ? colorClasses.green
+                    : colorClasses.gray;
                 return (
-                  <BlurFade key={index} delay={0.3 + index * 0.1} inView>
-                    <div className="relative group">
-                      <BorderBeam
-                        size={250}
-                        duration={12}
-                        borderWidth={2}
-                        className="rounded-xl"
-                        colorFrom="#f59e0b"
-                        colorTo="#10b981"
-                      />
+                  <div key={index} className="relative group">
+                    <BorderBeam
+                      size={200}
+                      duration={12}
+                      borderWidth={2}
+                      className="rounded-xl"
+                      colorFrom="#10b981"
+                      colorTo="#6b7280"
+                    />
 
+                    <div
+                      className={`bg-white rounded-xl border ${colors.border} p-4 md:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 h-full`}
+                    >
                       <div
-                        className={`bg-white rounded-xl border ${colors.border} p-6 shadow-sm hover:shadow-md transition-shadow h-full`}
+                        className={`p-2 md:p-3 rounded-lg ${colors.iconBg} inline-flex mb-3 md:mb-4`}
                       >
-                        <div
-                          className={`p-3 rounded-lg ${colors.iconBg} inline-flex mb-4`}
-                        >
-                          {challenge.icon}
-                        </div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">
-                          {challenge.title}
-                        </h3>
-                        <p className="text-gray-600">{challenge.description}</p>
+                        {challenge.icon}
                       </div>
+                      <h3 className="mb-1 md:mb-2">{challenge.title}</h3>
+                      <p className="text-gray-600 text-sm md:text-base">
+                        {challenge.description}
+                      </p>
                     </div>
-                  </BlurFade>
+                  </div>
                 );
               })}
             </div>
 
-            {/* How Industry-Integra Energy Works */}
-            <BlurFade delay={0.4} inView>
-              <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 md:p-12 border border-green-200 mb-20">
-                <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-                  Intelligent Energy Management Framework
-                </h2>
+            <div className="bg-gradient-to-r from-green-50 to-gray-50 rounded-xl md:rounded-2xl p-6 md:p-8 lg:p-10 border border-green-200 shadow-xl">
+              <h2 className="mb-4 md:mb-6 text-center">
+                Intelligent Energy Management Framework
+              </h2>
 
-                <div className="grid md:grid-cols-4 gap-6">
-                  {[
-                    {
-                      step: "1",
-                      title: "Monitor",
-                      description:
-                        "Collect real-time energy data from all sources",
-                      icon: <FaBolt className="h-6 w-6" />,
-                    },
-                    {
-                      step: "2",
-                      title: "Analyze",
-                      description: "Apply AI to identify savings opportunities",
-                      icon: <FaChartLine className="h-6 w-6" />,
-                    },
-                    {
-                      step: "3",
-                      title: "Optimize",
-                      description: "Automate energy-saving actions",
-                      icon: <FaSync className="h-6 w-6" />,
-                    },
-                    {
-                      step: "4",
-                      title: "Sustain",
-                      description: "Track and report sustainability metrics",
-                      icon: <FaLeaf className="h-6 w-6" />,
-                    },
-                  ].map((step, index) => (
-                    <div key={index} className="text-center">
-                      <div className="h-12 w-12 bg-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                        {step.step}
-                      </div>
-                      <div className="p-3 rounded-lg bg-white/80 inline-flex mb-3">
-                        {step.icon}
-                      </div>
-                      <h4 className="font-bold text-gray-900 mb-2">
-                        {step.title}
-                      </h4>
-                      <p className="text-sm text-gray-600">
-                        {step.description}
-                      </p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                {[
+                  {
+                    step: "1",
+                    title: "Monitor",
+                    description:
+                      "Collect real-time energy data from all sources",
+                    icon: <FaBolt className="h-5 w-5 md:h-6 md:w-6" />,
+                  },
+                  {
+                    step: "2",
+                    title: "Analyze",
+                    description: "Apply AI to identify savings opportunities",
+                    icon: <FaChartLine className="h-5 w-5 md:h-6 md:w-6" />,
+                  },
+                  {
+                    step: "3",
+                    title: "Optimize",
+                    description: "Automate energy-saving actions",
+                    icon: <FaSync className="h-5 w-5 md:h-6 md:w-6" />,
+                  },
+                  {
+                    step: "4",
+                    title: "Sustain",
+                    description: "Track and report sustainability metrics",
+                    icon: <FaLeaf className="h-5 w-5 md:h-6 md:w-6" />,
+                  },
+                ].map((step, index) => (
+                  <div key={index} className="text-center">
+                    <div className="h-10 w-10 md:h-12 md:w-12 bg-green-600 text-white rounded-full flex items-center justify-center text-base md:text-lg font-bold mx-auto mb-3 md:mb-4">
+                      {step.step}
                     </div>
-                  ))}
-                </div>
+                    <div className="p-2 md:p-3 rounded-lg bg-white/80 inline-flex mb-2 md:mb-3 shadow-sm">
+                      {step.icon}
+                    </div>
+                    <h4 className="mb-1 md:mb-2">{step.title}</h4>
+                    <p className="text-xs md:text-sm text-gray-600">
+                      {step.description}
+                    </p>
+                  </div>
+                ))}
               </div>
-            </BlurFade>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Energy Solutions */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="py-8 md:py-12 bg-gradient-to-b from-gray-50 to-white px-4">
+        <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
-            <BlurFade delay={0.5} inView>
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Comprehensive Energy Intelligence Solutions
-                </h2>
-                <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-                  End-to-end energy management across your entire enterprise.
-                </p>
-              </div>
-            </BlurFade>
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="mb-4">
+                Comprehensive Energy Intelligence Solutions
+              </h2>
+              <p className="text-gray-600">
+                End-to-end energy management across your entire enterprise.
+              </p>
+            </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               {solutions.map((solution, index) => {
-                const colors = colorClasses[solution.color];
+                const colors = colorClasses.green;
                 return (
-                  <BlurFade key={index} delay={0.6 + index * 0.1} inView>
+                  <div
+                    key={index}
+                    className={`bg-white rounded-xl border ${colors.border} p-4 md:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 h-full`}
+                  >
                     <div
-                      className={`bg-white rounded-xl border ${colors.border} p-6 shadow-sm hover:shadow-md transition-shadow h-full`}
+                      className={`p-2 md:p-3 rounded-lg ${colors.iconBg} inline-flex mb-3 md:mb-4`}
                     >
-                      <div
-                        className={`p-3 rounded-lg ${colors.iconBg} inline-flex mb-4`}
-                      >
-                        {solution.icon}
-                      </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">
-                        {solution.title}
-                      </h3>
-                      <ul className="space-y-3">
-                        {solution.features.map((feature, i) => (
-                          <li
-                            key={i}
-                            className="flex items-center gap-3 text-gray-700"
-                          >
-                            <div
-                              className={`h-2 w-2 rounded-full ${colors.iconBg}`}
-                            />
-                            <span className="text-sm">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      {solution.icon}
                     </div>
-                  </BlurFade>
+                    <h3 className="mb-3 md:mb-4">{solution.title}</h3>
+                    <ul className="space-y-2 md:space-y-3">
+                      {solution.features.map((feature, i) => (
+                        <li
+                          key={i}
+                          className="flex items-center gap-2 md:gap-3 text-gray-700"
+                        >
+                          <div
+                            className={`h-1.5 w-1.5 rounded-full ${colors.bullet}`}
+                          />
+                          <span className="text-sm md:text-base">
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 );
               })}
             </div>
@@ -546,163 +496,138 @@ const EnergyManagement = () => {
       </section>
 
       {/* Energy Sources Management */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="py-8 md:py-12 bg-white px-4">
+        <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
-            <BlurFade delay={0.7} inView>
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Multi-Source Energy Management
-                </h2>
-                <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-                  Monitor and optimize all your energy sources in one unified
-                  platform.
-                </p>
-              </div>
-            </BlurFade>
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="mb-4">Multi-Source Energy Management</h2>
+              <p className="text-gray-600">
+                Monitor and optimize all your energy sources in one unified
+                platform.
+              </p>
+            </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-12">
               {energySources.map((source, index) => {
-                const colors = colorClasses[source.color];
+                const colors = colorClasses.green;
                 return (
-                  <BlurFade key={index} delay={0.8 + index * 0.1} inView>
-                    <div
-                      className={`bg-gradient-to-br ${colors.gradient} rounded-xl border ${colors.border} p-6 shadow-sm`}
-                    >
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className={`p-2 rounded-lg ${colors.iconBg}`}>
-                          {source.icon}
-                        </div>
-                        <h3 className="text-lg font-bold text-gray-900">
-                          {source.source}
-                        </h3>
+                  <div
+                    key={index}
+                    className={`bg-gradient-to-br ${colors.gradient} rounded-xl border ${colors.border} p-4 md:p-6 shadow-xl`}
+                  >
+                    <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                      <div
+                        className={`p-1.5 md:p-2 rounded-lg ${colors.iconBg}`}
+                      >
+                        {source.icon}
                       </div>
-                      <ul className="space-y-2">
-                        {source.features.map((item, i) => (
-                          <li
-                            key={i}
-                            className="flex items-center gap-2 text-gray-700"
-                          >
-                            <div className="h-1.5 w-1.5 rounded-full bg-current" />
-                            <span className="text-sm">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <h3>{source.source}</h3>
                     </div>
-                  </BlurFade>
+                    <ul className="space-y-1.5 md:space-y-2">
+                      {source.features.map((item, i) => (
+                        <li
+                          key={i}
+                          className="flex items-center gap-1.5 md:gap-2 text-gray-700"
+                        >
+                          <div className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                          <span className="text-sm md:text-base">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 );
               })}
             </div>
 
-            {/* Energy Automation Dashboard */}
-            <section className="py-16 bg-white">
-              <div className="container mx-auto px-4 md:px-6">
-                <div className="max-w-7xl mx-auto">
-                  <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                      Energy Automation Dashboard
-                    </h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto">
-                      Real-time visibility and control over your entire
-                      manufacturing operations
-                    </p>
+            <div className="text-center mb-6 md:mb-8">
+              <h2 className="mb-3 md:mb-4">Energy Automation Dashboard</h2>
+              <p className="text-gray-600">
+                Real-time visibility and control over your entire energy
+                operations
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl md:rounded-2xl border-2 border-gray-800 p-3 md:p-4 shadow-2xl">
+              <div className="h-[300px] md:h-[400px] lg:h-[500px] overflow-y-auto rounded-lg">
+                <img
+                  src="dashboards/energy-dashboard.png"
+                  alt="Energy Automation Dashboard"
+                  className="w-full h-auto"
+                />
+              </div>
+
+              <p className="text-center text-gray-600 mt-3 md:mt-4 text-sm md:text-base">
+                Interactive dashboard delivering real-time insights and control
+                across all energy systems.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-6 md:mt-8">
+              {[
+                { label: "Active Meters", value: "48", color: "green" },
+                { label: "Today's Usage", value: "12450 kWh", color: "green" },
+                { label: "Energy Saved", value: "28.5%", color: "green" },
+                { label: "CO₂ Reduced", value: "245 t", color: "green" },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl p-3 md:p-4 border border-gray-200 text-center shadow-lg"
+                >
+                  <div className="text-lg md:text-xl font-bold text-green-600 mb-0.5 md:mb-1">
+                    {item.value}
                   </div>
-
-                  {/* Dashboard Container */}
-                  <div className="bg-gray-50 rounded-2xl border-2 border-slate-800 p-4">
-                    <div className="h-[600px] overflow-y-auto rounded-lg">
-                      {/* Dashboard Image Placeholder */}
-
-                      {
-                        // Replace this placeholder with your actual dashboard image:
-                        <img
-                          src="dashboards/energy-dashboard.png"
-                          alt="Energy Automation Dashboard"
-                          className="w-full h-auto"
-                        />
-                      }
-                    </div>
-                  </div>
-
-                  {/* Dashboard Features */}
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
-                    {[
-                      { label: "Production Lines", value: "12", color: "blue" },
-                      { label: "Active Machines", value: "48", color: "green" },
-                      {
-                        label: "Today's Output",
-                        value: "12,450",
-                        color: "purple",
-                      },
-                      { label: "OEE Score", value: "86.5%", color: "orange" },
-                    ].map((item, index) => (
-                      <div
-                        key={index}
-                        className="bg-white rounded-xl p-4 border border-gray-200 text-center"
-                      >
-                        <div
-                          className={`text-2xl font-bold text-${item.color}-600 mb-1`}
-                        >
-                          {item.value}
-                        </div>
-                        <div className="text-sm text-gray-600">
-                          {item.label}
-                        </div>
-                      </div>
-                    ))}
+                  <div className="text-xs md:text-sm text-gray-600">
+                    {item.label}
                   </div>
                 </div>
-              </div>
-            </section>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Sector Specific Solutions */}
-      <section className="py-20 bg-gradient-to-br from-green-50 to-blue-50">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="py-8 md:py-12 bg-gradient-to-br from-green-50 to-gray-50 px-4">
+        <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
-            <BlurFade delay={1.0} inView>
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Industry-Specific Energy Solutions
-                </h2>
-                <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-                  Tailored energy management for different sectors and
-                  applications.
-                </p>
-              </div>
-            </BlurFade>
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="mb-4">Industry-Specific Energy Solutions</h2>
+              <p className="text-gray-600">
+                Tailored energy management for different sectors and
+                applications.
+              </p>
+            </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               {sectorModules.map((module, index) => {
-                const colors = colorClasses[module.color];
+                const colors = colorClasses.green;
                 return (
-                  <BlurFade key={index} delay={1.1 + index * 0.1} inView>
-                    <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow h-full">
-                      <div
-                        className={`p-3 rounded-lg ${colors.iconBg} inline-flex mb-4`}
-                      >
-                        {module.icon}
-                      </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">
-                        {module.sector}
-                      </h3>
-                      <ul className="space-y-3">
-                        {module.capabilities.map((capability, i) => (
-                          <li
-                            key={i}
-                            className="flex items-center gap-3 text-gray-700"
-                          >
-                            <div
-                              className={`h-2 w-2 rounded-full ${colors.iconBg}`}
-                            />
-                            <span className="text-sm">{capability}</span>
-                          </li>
-                        ))}
-                      </ul>
+                  <div
+                    key={index}
+                    className="bg-white rounded-xl border border-gray-200 p-4 md:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 h-full"
+                  >
+                    <div
+                      className={`p-2 md:p-3 rounded-lg ${colors.iconBg} inline-flex mb-3 md:mb-4`}
+                    >
+                      {module.icon}
                     </div>
-                  </BlurFade>
+                    <h3 className="mb-3 md:mb-4">{module.sector}</h3>
+                    <ul className="space-y-2 md:space-y-3">
+                      {module.capabilities.map((capability, i) => (
+                        <li
+                          key={i}
+                          className="flex items-center gap-2 md:gap-3 text-gray-700"
+                        >
+                          <div
+                            className={`h-1.5 w-1.5 rounded-full ${colors.bullet}`}
+                          />
+                          <span className="text-sm md:text-base">
+                            {capability}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 );
               })}
             </div>
@@ -711,49 +636,46 @@ const EnergyManagement = () => {
       </section>
 
       {/* Integration & Technology */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="py-8 md:py-12 bg-white px-4">
+        <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
-            <BlurFade delay={1.2} inView>
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Seamless Energy System Integration
-                </h2>
-                <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-                  Connect with your existing energy infrastructure and systems.
-                </p>
-              </div>
-            </BlurFade>
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="mb-4">Seamless Energy System Integration</h2>
+              <p className="text-gray-600">
+                Connect with your existing energy infrastructure and systems.
+              </p>
+            </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               {integrations.map((integration, index) => {
-                const colors = colorClasses[integration.color];
+                const colors = colorClasses.green;
                 return (
-                  <BlurFade key={index} delay={1.3 + index * 0.1} inView>
-                    <div
-                      className={`bg-gradient-to-br ${colors.gradient} rounded-xl border ${colors.border} p-6 shadow-sm`}
-                    >
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className={`p-2 rounded-lg ${colors.iconBg}`}>
-                          {integration.icon}
-                        </div>
-                        <h3 className="text-lg font-bold text-gray-900">
-                          {integration.system}
-                        </h3>
+                  <div
+                    key={index}
+                    className={`bg-gradient-to-br ${colors.gradient} rounded-xl border ${colors.border} p-4 md:p-6 shadow-xl`}
+                  >
+                    <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                      <div
+                        className={`p-1.5 md:p-2 rounded-lg ${colors.iconBg}`}
+                      >
+                        {integration.icon}
                       </div>
-                      <ul className="space-y-2">
-                        {integration.examples.map((example, i) => (
-                          <li
-                            key={i}
-                            className="flex items-center gap-2 text-gray-700"
-                          >
-                            <div className="h-1.5 w-1.5 rounded-full bg-current" />
-                            <span className="text-sm">{example}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <h3>{integration.system}</h3>
                     </div>
-                  </BlurFade>
+                    <ul className="space-y-1.5 md:space-y-2">
+                      {integration.examples.map((example, i) => (
+                        <li
+                          key={i}
+                          className="flex items-center gap-1.5 md:gap-2 text-gray-700"
+                        >
+                          <div className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                          <span className="text-sm md:text-base">
+                            {example}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 );
               })}
             </div>
@@ -762,167 +684,161 @@ const EnergyManagement = () => {
       </section>
 
       {/* Benefits & ROI */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="py-8 md:py-12 bg-gradient-to-b from-gray-50 to-white px-4">
+        <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
-            <BlurFade delay={1.4} inView>
-              <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 md:p-12 border border-green-200">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
-                  <div>
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                      Proven Energy Savings & Sustainability Impact
-                    </h2>
-                    <p className="text-gray-600 mb-6">
-                      Industry-Integra delivers measurable results across energy
-                      and sustainability metrics:
-                    </p>
+            <div className="bg-gradient-to-r from-green-50 to-gray-50 rounded-xl md:rounded-2xl p-6 md:p-8 lg:p-10 border border-green-200 shadow-xl">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div>
+                  <h2 className="mb-4 md:mb-6">
+                    Proven Energy Savings & Sustainability Impact
+                  </h2>
+                  <p className="text-gray-600 mb-4 md:mb-6">
+                    Industry-Integra delivers measurable results across energy
+                    and sustainability metrics:
+                  </p>
 
-                    <div className="grid grid-cols-2 gap-4 mb-8">
-                      {benefits.map((benefit, i) => {
-                        const colors = colorClasses[benefit.color];
-                        return (
-                          <div
-                            key={i}
-                            className={`${colors.bg} rounded-lg p-4 border ${colors.border}`}
-                          >
-                            <div className="flex items-center gap-2 mb-2">
-                              <div className={`p-1 rounded ${colors.iconBg}`}>
-                                {benefit.icon}
-                              </div>
-                              <div className="text-2xl font-bold text-gray-900">
-                                {benefit.metric}
-                              </div>
-                            </div>
-                            <p className="text-sm text-gray-600">
-                              {benefit.description}
-                            </p>
-                          </div>
-                        );
-                      })}
-                    </div>
-
-                    <ul className="space-y-3">
-                      {[
-                        "Automated demand response participation",
-                        "Real-time energy price optimization",
-                        "Predictive maintenance for energy equipment",
-                        "Automated sustainability reporting",
-                        "Integration with carbon credit markets",
-                        "Compliance with energy regulations",
-                      ].map((item, i) => (
-                        <li
+                  <div className="grid grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
+                    {benefits.map((benefit, i) => {
+                      const colors = colorClasses.green;
+                      return (
+                        <div
                           key={i}
-                          className="flex items-center gap-3 text-gray-700"
+                          className={`${colors.bg} rounded-lg p-3 md:p-4 border ${colors.border} shadow-sm`}
                         >
-                          <div className="h-2 w-2 rounded-full bg-green-500" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                          <div className="flex items-center gap-1.5 md:gap-2 mb-1.5 md:mb-2">
+                            <div className={`p-1 rounded ${colors.iconBg}`}>
+                              {benefit.icon}
+                            </div>
+                            <div className="text-lg md:text-xl font-bold text-gray-900">
+                              {benefit.metric}
+                            </div>
+                          </div>
+                          <p className="text-xs md:text-sm text-gray-600">
+                            {benefit.description}
+                          </p>
+                        </div>
+                      );
+                    })}
                   </div>
 
-                  <div className="text-center">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-green-700 text-sm font-medium mb-6 border border-green-200">
-                      <FaGlobe className="h-4 w-4" />
-                      Global Impact Tracking
-                    </div>
+                  <ul className="space-y-2 md:space-y-3">
+                    {[
+                      "Automated demand response participation",
+                      "Real-time energy price optimization",
+                      "Predictive maintenance for energy equipment",
+                      "Automated sustainability reporting",
+                      "Integration with carbon credit markets",
+                      "Compliance with energy regulations",
+                    ].map((item, i) => (
+                      <li
+                        key={i}
+                        className="flex items-center gap-2 md:gap-3 text-gray-700"
+                      >
+                        <div className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                        <span className="text-sm md:text-base">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-                    <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-lg mb-6">
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="text-left">
-                          <div className="text-sm text-gray-500">
-                            Monthly Savings
-                          </div>
-                          <div className="font-bold text-gray-900 text-2xl">
-                            $124,850
-                          </div>
+                <div className="text-center">
+                  <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-white text-green-700 text-xs md:text-sm font-medium mb-4 md:mb-6 border border-green-200 shadow-sm">
+                    <FaGlobe className="h-3 w-3 md:h-4 md:w-4" />
+                    Global Impact Tracking
+                  </div>
+
+                  <div className="bg-white rounded-xl border border-gray-200 p-4 md:p-6 shadow-lg mb-4 md:mb-6">
+                    <div className="flex items-center justify-between mb-4 md:mb-6">
+                      <div className="text-left">
+                        <div className="text-xs md:text-sm text-gray-500">
+                          Monthly Savings
                         </div>
-                        <div className="text-right">
-                          <div className="text-sm text-gray-500">
-                            Carbon Reduced
-                          </div>
-                          <div className="font-bold text-green-600 text-2xl">
-                            245 tCO₂
-                          </div>
+                        <div className="font-bold text-gray-900 text-lg md:text-xl">
+                          $124,850
                         </div>
                       </div>
-
-                      <div className="space-y-4">
-                        <div>
-                          <div className="flex justify-between text-sm mb-1">
-                            <span className="text-gray-600">
-                              Energy Cost Reduction
-                            </span>
-                            <span className="font-medium">28%</span>
-                          </div>
-                          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                            <div
-                              className="h-full bg-green-500 rounded-full"
-                              style={{ width: "28%" }}
-                            />
-                          </div>
+                      <div className="text-right">
+                        <div className="text-xs md:text-sm text-gray-500">
+                          Carbon Reduced
                         </div>
-
-                        <div>
-                          <div className="flex justify-between text-sm mb-1">
-                            <span className="text-gray-600">
-                              Renewable Energy Usage
-                            </span>
-                            <span className="font-medium">42%</span>
-                          </div>
-                          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                            <div
-                              className="h-full bg-blue-500 rounded-full"
-                              style={{ width: "42%" }}
-                            />
-                          </div>
-                        </div>
-
-                        <div>
-                          <div className="flex justify-between text-sm mb-1">
-                            <span className="text-gray-600">
-                              Peak Demand Reduction
-                            </span>
-                            <span className="font-medium">35%</span>
-                          </div>
-                          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                            <div
-                              className="h-full bg-yellow-500 rounded-full"
-                              style={{ width: "35%" }}
-                            />
-                          </div>
+                        <div className="font-bold text-green-600 text-lg md:text-xl">
+                          245 tCO₂
                         </div>
                       </div>
                     </div>
 
-                    <p className="text-gray-600 text-sm">
-                      Track your energy and sustainability performance in
-                      real-time
-                    </p>
+                    <div className="space-y-3 md:space-y-4">
+                      <div>
+                        <div className="flex justify-between text-xs md:text-sm mb-1">
+                          <span className="text-gray-600">
+                            Energy Cost Reduction
+                          </span>
+                          <span className="font-medium">28%</span>
+                        </div>
+                        <div className="h-1.5 md:h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-green-500 rounded-full"
+                            style={{ width: "28%" }}
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between text-xs md:text-sm mb-1">
+                          <span className="text-gray-600">
+                            Renewable Energy Usage
+                          </span>
+                          <span className="font-medium">42%</span>
+                        </div>
+                        <div className="h-1.5 md:h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-green-500 rounded-full"
+                            style={{ width: "42%" }}
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between text-xs md:text-sm mb-1">
+                          <span className="text-gray-600">
+                            Peak Demand Reduction
+                          </span>
+                          <span className="font-medium">35%</span>
+                        </div>
+                        <div className="h-1.5 md:h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-green-500 rounded-full"
+                            style={{ width: "35%" }}
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </div>
+
+                  <p className="text-gray-600 text-xs md:text-sm">
+                    Track your energy and sustainability performance in
+                    real-time
+                  </p>
                 </div>
               </div>
-            </BlurFade>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Implementation Timeline */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="py-8 md:py-12 bg-white px-4">
+        <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
-            <BlurFade delay={1.5} inView>
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Quick Implementation, Rapid ROI
-                </h2>
-                <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-                  Start seeing energy savings in weeks, not years.
-                </p>
-              </div>
-            </BlurFade>
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="mb-4">Quick Implementation, Rapid ROI</h2>
+              <p className="text-gray-600">
+                Start seeing energy savings in weeks, not years.
+              </p>
+            </div>
 
-            <div className="grid md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
               {[
                 {
                   phase: "Assessment",
@@ -932,7 +848,7 @@ const EnergyManagement = () => {
                     "Meter installation",
                     "Baseline establishment",
                   ],
-                  color: "blue",
+                  color: "green",
                 },
                 {
                   phase: "Monitoring",
@@ -952,7 +868,7 @@ const EnergyManagement = () => {
                     "Automated controls",
                     "Savings validation",
                   ],
-                  color: "yellow",
+                  color: "green",
                 },
                 {
                   phase: "Expansion",
@@ -962,47 +878,45 @@ const EnergyManagement = () => {
                     "Advanced features",
                     "Continuous improvement",
                   ],
-                  color: "purple",
+                  color: "green",
                 },
               ].map((phase, index) => {
-                const colors = colorClasses[phase.color];
+                const colors = colorClasses.green;
                 return (
-                  <BlurFade key={index} delay={1.6 + index * 0.1} inView>
-                    <div className="relative">
-                      <div
-                        className={`${colors.bg} rounded-xl border ${colors.border} p-6 h-full`}
-                      >
-                        <div className="flex items-center justify-between mb-4">
-                          <h3 className="font-bold text-gray-900">
-                            {phase.phase}
-                          </h3>
-                          <span
-                            className={`text-sm px-2 py-1 rounded-full ${colors.text} ${colors.iconBg}`}
-                          >
-                            {phase.duration}
-                          </span>
-                        </div>
-                        <ul className="space-y-2">
-                          {phase.activities.map((activity, i) => (
-                            <li
-                              key={i}
-                              className="flex items-center gap-2 text-sm text-gray-600"
-                            >
-                              <div
-                                className={`h-1.5 w-1.5 rounded-full ${colors.iconBg}`}
-                              />
-                              {activity}
-                            </li>
-                          ))}
-                        </ul>
+                  <div key={index} className="relative">
+                    <div
+                      className={`${colors.bg} rounded-xl border ${colors.border} p-4 md:p-6 h-full shadow-xl`}
+                    >
+                      <div className="flex items-center justify-between mb-3 md:mb-4">
+                        <h3 className="font-semibold text-gray-900">
+                          {phase.phase}
+                        </h3>
+                        <span
+                          className={`text-xs md:text-sm px-2 py-1 rounded-full ${colors.text} ${colors.iconBg}`}
+                        >
+                          {phase.duration}
+                        </span>
                       </div>
-                      {index < 3 && (
-                        <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2">
-                          <div className="w-6 h-0.5 bg-gray-300" />
-                        </div>
-                      )}
+                      <ul className="space-y-1.5 md:space-y-2">
+                        {phase.activities.map((activity, i) => (
+                          <li
+                            key={i}
+                            className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-gray-600"
+                          >
+                            <div
+                              className={`h-1.5 w-1.5 rounded-full ${colors.bullet}`}
+                            />
+                            {activity}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </BlurFade>
+                    {index < 3 && (
+                      <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2">
+                        <div className="w-6 h-0.5 bg-gray-300" />
+                      </div>
+                    )}
+                  </div>
                 );
               })}
             </div>
@@ -1011,66 +925,80 @@ const EnergyManagement = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-yellow-50 via-green-50 to-blue-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <BlurFade delay={1.7} inView>
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6 border border-green-200">
-                <FaBolt className="h-4 w-4" />
-                Power Your Energy Transformation
-              </div>
+      <section className="py-8 md:py-12 bg-gradient-to-r from-green-50 via-gray-50 to-green-50 px-4">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 md:px-6 py-1.5 md:py-3 rounded-full bg-green-100 text-green-700 text-xs md:text-sm font-medium mb-4 md:mb-6 border border-green-200 shadow-lg">
+              <FaBolt className="h-3 w-3 md:h-4 md:w-4" />
+              Power Your Energy Transformation
+            </div>
 
-              <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
-                Start Saving Energy & Reducing Costs Today
-              </h2>
+            <h2 className="mb-4 md:mb-6">
+              Start Saving Energy & Reducing Costs Today
+            </h2>
 
-              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                Join thousands of organizations worldwide that have transformed
-                their energy management with Industry-Integra's intelligent
-                platform.
-              </p>
+            <p className="text-gray-600 mb-6 md:mb-8">
+              Join thousands of organizations worldwide that have transformed
+              their energy management with Industry-Integra's intelligent
+              platform.
+            </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg">
-                  <Link to="/energy/demo" className="flex items-center gap-2">
-                    <FaBolt className="h-5 w-5" />
-                    Schedule Energy Audit & Demo
-                  </Link>
-                </Button>
-                <Button
-                  variant="outline"
-                  className="px-8 py-6 text-lg border-2"
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+              <Button className="bg-green-600 hover:bg-green-700 text-white px-6 md:px-8 py-4 md:py-6 text-base md:text-lg font-semibold rounded-lg shadow-xl">
+                <Link to="/energy/demo" className="flex items-center gap-2">
+                  <FaBolt className="h-4 w-4 md:h-5 md:w-5" />
+                  Schedule Energy Audit & Demo
+                </Link>
+              </Button>
+              <Button
+                variant="outline"
+                className="px-6 md:px-8 py-4 md:py-6 text-base md:text-lg border-2 border-black text-black hover:bg-gray-50 rounded-lg shadow-xl"
+              >
+                <Link
+                  to="/resources/energy-case-studies"
+                  className="flex items-center gap-2"
                 >
-                  <Link
-                    to="/resources/energy-case-studies"
-                    className="flex items-center gap-2"
-                  >
-                    <FaChartLine className="h-5 w-5" />
-                    View Energy Savings Case Studies
-                  </Link>
-                </Button>
-              </div>
+                  <FaChartLine className="h-4 w-4 md:h-5 md:w-5" />
+                  View Energy Savings Case Studies
+                </Link>
+              </Button>
+            </div>
 
-              <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
-                <div className="text-center">
-                  <div className="text-sm text-gray-500">Energy Saved</div>
-                  <div className="font-bold text-gray-900">2.4 TWh</div>
+            <div className="mt-6 md:mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="text-xs md:text-sm text-gray-500">
+                  Energy Saved
                 </div>
-                <div className="text-center">
-                  <div className="text-sm text-gray-500">Cost Savings</div>
-                  <div className="font-bold text-gray-900">$480M+</div>
+                <div className="font-bold text-gray-900 text-sm md:text-base">
+                  2.4 TWh
                 </div>
-                <div className="text-center">
-                  <div className="text-sm text-gray-500">Carbon Reduced</div>
-                  <div className="font-bold text-gray-900">1.2M tCO₂</div>
+              </div>
+              <div className="text-center">
+                <div className="text-xs md:text-sm text-gray-500">
+                  Cost Savings
                 </div>
-                <div className="text-center">
-                  <div className="text-sm text-gray-500">Clients Worldwide</div>
-                  <div className="font-bold text-gray-900">850+</div>
+                <div className="font-bold text-gray-900 text-sm md:text-base">
+                  $480M+
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-xs md:text-sm text-gray-500">
+                  Carbon Reduced
+                </div>
+                <div className="font-bold text-gray-900 text-sm md:text-base">
+                  1.2M tCO₂
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-xs md:text-sm text-gray-500">
+                  Clients Worldwide
+                </div>
+                <div className="font-bold text-gray-900 text-sm md:text-base">
+                  850+
                 </div>
               </div>
             </div>
-          </BlurFade>
+          </div>
         </div>
       </section>
     </div>

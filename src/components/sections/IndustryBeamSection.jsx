@@ -138,7 +138,7 @@ export default function PlatformIntegration() {
   }, []);
 
   return (
-    <section className="py-10 lg:py-12 bg-white">
+    <section className="py-10 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
@@ -152,7 +152,7 @@ export default function PlatformIntegration() {
         {/* Visualization */}
         <div
           ref={containerRef}
-          className="relative mx-auto max-w-6xl h-[350px] sm:h-[400px] md:h-[620px] lg:h-[680px]"
+          className="relative mx-auto max-w-6xl h-[350px] sm:h-[400px] md:h-[580px] lg:h-[600px]"
         >
           <canvas
             ref={canvasRef}
@@ -196,8 +196,8 @@ export default function PlatformIntegration() {
                   alt="INTEGRA 360"
                   className="w-28 lg:w-32 mx-auto mb-4"
                 />
-                <p className="text-sm text-gray-600 mb-6">
-                  Unified Industrial Intelligence Platform
+                <p className="font-bold">
+                  Industry <span className="text-green-600">INTEGRA</span> 360
                 </p>
 
                 <div className="space-y-2 text-sm text-gray-600">

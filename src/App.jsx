@@ -88,6 +88,7 @@ import BuildingAutomationModulePage from "./components/landing/modules/BuildingA
 import SmartFactory from "./components/landing/modules/SmartFactory";
 import SolutionsPage from "./components/landing/solutions/SolutionsPage";
 import ServicesPage from "./components/landing/services/ServicesPage";
+import SupportPage from "./components/landing/support/SupportPage";
 
 
 
@@ -186,7 +187,7 @@ function App() {
             />
             <Route
               path="/support"
-              element={<ServicesPage />}
+              element={<SupportPage />}
             />
           </Route>
 

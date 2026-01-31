@@ -267,16 +267,19 @@ const ServicesShowcase = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="space-y-12">
+        <div className="space-y-8">
           {services.map((serviceGroup, index) => {
             const colors = colorClasses[serviceGroup.color];
 
             return (
-              <div key={index} className="space-y-6">
+              <div key={index} className="">
                 {/* Category Header */}
-                <div className="flex items-center justify-between">
+                <div className="flex justify-between">
+                  {/* Left Side: Icon + Title */}
                   <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${colors.iconBg}`}>
+                    <div
+                      className={`p-2 rounded-lg ${colors.iconBg} flex items-center justify-center`}
+                    >
                       {serviceGroup.category === "Professional Services" && (
                         <Users className="h-5 w-5" />
                       )}
@@ -296,18 +299,24 @@ const ServicesShowcase = () => {
                         <Shield className="h-5 w-5" />
                       )}
                     </div>
-                    <h3 className={`text-xl font-bold ${colors.text}`}>
+
+                    <h3
+                      className={`text-xl mt-4 font-bold leading-none ${colors.text}`}
+                    >
                       {serviceGroup.category}
                     </h3>
                   </div>
 
-                  {/* View More Link */}
+                  {/* Right Side: View More */}
                   <Link
-                    to={`/services/${serviceGroup.category.toLowerCase().replace(/ & /g, "-").replace(/\s+/g, "-")}`}
+                    to={`/services/${serviceGroup.category
+                      .toLowerCase()
+                      .replace(/ & /g, "-")
+                      .replace(/\s+/g, "-")}`}
                     className={`flex items-center gap-1 text-sm font-medium ${colors.button} hover:underline`}
                   >
                     View More
-                    <ArrowRight className="h-3 w-3" />
+                    <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
 

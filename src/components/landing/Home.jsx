@@ -140,7 +140,7 @@ const Homepage = () => {
                   Industry 4.0 Ready Platform
                 </div>
 
-                <h1 className="mb-6">
+                <h1 className="">
                   Transform Your Manufacturing with{" "}
                   <span className="text-green-600 whitespace-nowrap">
                     <WordRotate
@@ -150,6 +150,7 @@ const Homepage = () => {
                         "Smarter Operations",
                         "Connected Systems",
                       ]}
+                      className="text-green-600"
                     />
                   </span>
                 </h1>
@@ -367,7 +368,7 @@ const Homepage = () => {
       </section>
 
       {/* Interactive Dashboard */}
-      <section className="py-10 lg:py-12 bg-gray-50">
+      <section className="p-4 py-10 lg:py-12  bg-gray-50">
         <InteractiveDashboard />
       </section>
 
@@ -382,8 +383,12 @@ const Homepage = () => {
       </section>
 
       {/* Get in Touch */}
-      <section className="py-10 lg:py-12">
-        <GetInTouch />
+      <section
+        className="relative w-full  bg-cover bg-center overflow-hidden py-10 md:py-12"
+        style={{ backgroundImage: "url('get-in-touch-bg.webp')" }}
+      >
+        {/* Dark overlay only */}
+        <div className="absolute inset-0 bg-black/70" /> <GetInTouch />
       </section>
     </div>
   );

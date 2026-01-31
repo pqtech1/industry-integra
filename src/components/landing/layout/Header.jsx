@@ -66,7 +66,7 @@ const Header = () => {
             <img src="logo.png" alt="Industry INTEGRA Logo" />
           </div>
           <div className="flex flex-col">
-            <span className="text-lg font-bold text-gray-900">
+            <span className="text-lg lg:text-2xl font-bold text-gray-900">
               Industry <span className="text-green-600">INTEGRA</span> 360
             </span>
           </div>
@@ -513,7 +513,7 @@ const Header = () => {
             </SheetTrigger>
             <SheetContent
               side="left"
-              className="w-[320px] sm:w-[380px] p-0 border-0 shadow-2xl"
+              className="w-[320px] sm:w-[380px] p-0 border-0 shadow-2xl bg-white"
             >
               <div className="flex flex-col h-full">
                 <div className="p-6">

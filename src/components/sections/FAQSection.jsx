@@ -186,20 +186,20 @@ const FAQSection = () => {
 
         {/* FAQ Content - Centered */}
         <div className="max-w-4xl mx-auto">
-          <div className="space-y-6">
+          <div className="">
             {faqCategories.map((category, categoryIndex) => {
               const colors = colorClasses[category.color];
 
               return (
-                <div key={categoryIndex} className="space-y-3">
+                <div key={categoryIndex} className="">
                   {/* Category Header */}
-                  <div className="flex items-center gap-3 justify-center mb-2">
+                  <div className="flex items-center  gap-3 justify-center">
                     <div
                       className={`p-2 rounded-lg ${colors.iconBg} ${colors.text}`}
                     >
                       {category.icon}
                     </div>
-                    <h3 className={`text-lg font-semibold ${colors.text}`}>
+                    <h3 className={`text-lg mt-3 font-semibold ${colors.text}`}>
                       {category.category}
                     </h3>
                   </div>

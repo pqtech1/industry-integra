@@ -28,6 +28,7 @@ import {
   FaBuilding,
   FaCar,
   FaFlask,
+  FaChevronRight,
 } from "react-icons/fa";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { Button } from "@/components/ui/button";

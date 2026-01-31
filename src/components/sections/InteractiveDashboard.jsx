@@ -75,14 +75,14 @@ const InteractiveDashboard = () => {
     systems.find((system) => system.id === activeTab) || systems[0];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="">
             Dashboard Gallery
-          </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          </h2>
+          <p className="">
             A simple gallery showcasing our four main dashboard interfaces.
             Select a dashboard to view its details.
           </p>
@@ -114,14 +114,14 @@ const InteractiveDashboard = () => {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1">
                         <h3
-                          className={`font-semibold ${isActive ? colors.text : "text-gray-800"}`}
+                          className={`text-base font-semibold ${isActive ? colors.text : "text-gray-800"}`}
                         >
                           {system.title}
                         </h3>
                         {isActive && <ChevronRight className="h-4 w-4" />}
                       </div>
 
-                      <p className="text-sm text-gray-600 line-clamp-2">
+                      <p className="line-clamp-2">
                         {system.description}
                       </p>
 
