@@ -80,8 +80,7 @@ import Layout from "./components/landing/layout/Layout";
 import Landing from "./components/landing/Landing";
 import Homepage from "./components/landing/Home";
 import PlatformArchitecture from "./components/landing/PlatformArchitecture";
-import WhatIsJewelIntegra from "./components/landing/WhatIsIndustryIntegra;";
-import WhatIsIndustryIntegra from "./components/landing/WhatIsIndustryIntegra;";
+import WhatIsIndustryIntegra from "./components/landing/WhatIsIndustryIntegra";
 import ProcessManufacturing from "./components/landing/modules/ProcessManufacturing";
 import EnergyManagement from "./components/landing/modules/EnergyManagement";
 import BuildingAutomationModulePage from "./components/landing/modules/BuildingAutomation";
@@ -90,7 +89,9 @@ import SolutionsPage from "./components/landing/solutions/SolutionsPage";
 import ServicesPage from "./components/landing/services/ServicesPage";
 import SupportPage from "./components/landing/support/SupportPage";
 
-
+// Admin Pages
+import AdminLayout from "./components/admin/Layout/Layout";
+import AdminDashboard from "./components/admin/pages/Dashboard";
 
 // Single Tracking Component - SIMPLIFIED
 const TrackingListener = () => {
@@ -177,18 +178,9 @@ function App() {
               path="/industry-integra-for-factory"
               element={<SmartFactory />}
             />
-            <Route
-              path="/solutions"
-              element={<SolutionsPage />}
-            />
-            <Route
-              path="/services"
-              element={<ServicesPage />}
-            />
-            <Route
-              path="/support"
-              element={<SupportPage />}
-            />
+            <Route path="/solutions" element={<SolutionsPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/support" element={<SupportPage />} />
           </Route>
 
           <Route path="/login" element={<Login />} />
@@ -315,6 +307,20 @@ function App() {
             <Route path="workforce" element={<FactoryWorkforce />} />
             <Route path="machines" element={<FactoryMachines />} />
             <Route path="energy" element={<FactoryEnergy />} />
+          </Route>
+
+       
+          {/* Admin License Management */}
+          <Route
+            path="/admin-license-management"
+            element={
+              <ProtectedRoute allowedRoles={["master", "admin"]}>
+                <AdminLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<AdminDashboard />} />
+          
           </Route>
 
           {/* Catch-all route */}
