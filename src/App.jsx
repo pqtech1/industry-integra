@@ -91,7 +91,12 @@ import SupportPage from "./components/landing/support/SupportPage";
 
 // Admin Pages
 import AdminLayout from "./components/admin/Layout/Layout";
-import AdminDashboard from "./components/admin/pages/Dashboard";
+import AdminDashboard from "./components/admin/license/Dashboard";
+
+// Admin Configuration Pages
+import ScadaConfiguration from "./components/admin/configuration/ScadaConfiguration";
+import TableConfiguration from "./components/admin/configuration/TableConfiguration";
+import MachineTables from "./components/admin/configuration/MachineTables";
 
 // Single Tracking Component - SIMPLIFIED
 const TrackingListener = () => {
@@ -309,18 +314,21 @@ function App() {
             <Route path="energy" element={<FactoryEnergy />} />
           </Route>
 
-       
           {/* Admin License Management */}
-          <Route
-            path="/admin-license-management"
-            element={
-              <ProtectedRoute allowedRoles={["master", "admin"]}>
-                <AdminLayout />
-              </ProtectedRoute>
-            }
-          >
+          <Route path="/admin-license-management" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
-          
+            <Route
+              path="scada-configuration"
+              element={<ScadaConfiguration />}
+            />
+            <Route
+              path="table-configuration"
+              element={<TableConfiguration />}
+            />
+            <Route
+              path="machine-tables/:module_id"
+              element={<MachineTables />}
+            />{" "}
           </Route>
 
           {/* Catch-all route */}
