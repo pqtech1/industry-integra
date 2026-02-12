@@ -6,7 +6,6 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,18 +16,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Database, Plus } from "lucide-react";
+import { Database, Edit, Plus } from "lucide-react";
 import toast from "react-hot-toast";
 import api from "../../../api/api";
 
 const ScadaConfiguration = () => {
   const [modules, setModules] = useState([]);
   const [loadingModules, setLoadingModules] = useState(true);
-  const [activeModuleId, setActiveModuleId] = useState(null);
+  const [activeModule, setActiveModule] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   const [formData, setFormData] = useState({
+    id: null,
     connection_url: "",
     protocol: "",
     connection_activated: "Yes",
@@ -37,19 +38,44 @@ const ScadaConfiguration = () => {
   });
 
   useEffect(() => {
-    const fetchModules = async () => {
-      try {
-        const res = await api.get("/license/modules");
-        setModules(res.data);
-      } catch (error) {
-        toast.error("Failed to load modules");
-      } finally {
-        setLoadingModules(false);
-      }
-    };
-
     fetchModules();
   }, []);
+
+  const fetchModules = async () => {
+    try {
+      setLoadingModules(true);
+      const res = await api.get("/license/modules");
+
+      // Fetch SCADA configurations for all modules
+      const modulesWithConfig = await Promise.all(
+        res.data.map(async (module) => {
+          try {
+            const configRes = await api.get(
+              `/scada-master/module/${module.id}`,
+            );
+            return {
+              ...module,
+              configured: true,
+              scadaConfig: configRes.data.data,
+            };
+          } catch (error) {
+            // 404 means no configuration exists
+            return {
+              ...module,
+              configured: false,
+              scadaConfig: null,
+            };
+          }
+        }),
+      );
+
+      setModules(modulesWithConfig);
+    } catch (error) {
+      toast.error("Failed to load modules");
+    } finally {
+      setLoadingModules(false);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,52 +84,102 @@ const ScadaConfiguration = () => {
 
   const resetForm = () => {
     setFormData({
+      id: null,
       connection_url: "",
       protocol: "",
       connection_activated: "Yes",
       scada_system: "",
       scada_type: "Redundant",
     });
+    setIsEditing(false);
+    setActiveModule(null);
   };
 
-  const handleSubmit = async () => {
-    if (!activeModuleId) {
-      toast.error("Please select a module.");
-      return;
-    }
+  const handleAddClick = (module) => {
+    setActiveModule(module);
+    setIsEditing(false);
+    resetForm();
+    setOpenDialog(true);
+  };
 
+  const handleEditClick = (module) => {
+    setActiveModule(module);
+    setIsEditing(true);
+    setFormData({
+      id: module.scadaConfig.id,
+      connection_url: module.scadaConfig.connection_url || "",
+      protocol: module.scadaConfig.protocol || "",
+      connection_activated: module.scadaConfig.connection_activated || "Yes",
+      scada_system: module.scadaConfig.scada_system || "",
+      scada_type: module.scadaConfig.scada_type || "Redundant",
+    });
+    setOpenDialog(true);
+  };
+
+  const validateForm = () => {
     if (!formData.connection_url.trim()) {
       toast.error("Connection URL is required.");
-      return;
+      return false;
     }
 
     if (!formData.scada_system.trim()) {
       toast.error("SCADA System is required.");
-      return;
+      return false;
     }
 
     if (!formData.protocol.trim()) {
       toast.error("Protocol is required.");
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleSubmit = async () => {
+    if (!activeModule) {
+      toast.error("Please select a module.");
+      return;
+    }
+
+    if (!validateForm()) {
       return;
     }
 
     try {
       setSubmitting(true);
 
-      const payload = {
-        ...formData,
-        module_id: activeModuleId,
-      };
+      let response;
 
-      const response = await api.post("/scada-master", payload);
+      if (isEditing) {
+        // Update existing configuration
+        response = await api.put(`/scada-master/${formData.id}`, {
+          connection_url: formData.connection_url,
+          protocol: formData.protocol,
+          connection_activated: formData.connection_activated,
+          scada_system: formData.scada_system,
+          scada_type: formData.scada_type,
+        });
+        toast.success("SCADA configuration updated successfully.");
+      } else {
+        // Create new configuration
+        const payload = {
+          ...formData,
+          module_id: activeModule.id,
+        };
+        response = await api.post("/scada-master", payload);
+        toast.success(response.data.message);
+      }
 
-      toast.success(response.data.message);
+      // Refresh modules data
+      await fetchModules();
 
       resetForm();
       setOpenDialog(false);
     } catch (error) {
       if (error.response) {
-        if (error.response.status === 422) {
+        if (error.response.status === 409) {
+          toast.error("Configuration already exists for this module.");
+        } else if (error.response.status === 422) {
           const errors = error.response.data.errors;
           Object.values(errors).forEach((errArray) => {
             toast.error(errArray[0]);
@@ -149,122 +225,158 @@ const ScadaConfiguration = () => {
                 <p className="text-gray-500 mt-1 text-sm">
                   {module.description}
                 </p>
+
+                
               </div>
 
-              <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-                <DialogTrigger asChild>
-                  <Button
-                    onClick={() => {
-                      setActiveModuleId(module.id);
-                      setOpenDialog(true);
-                    }}
-                    className="bg-black text-white transition-all duration-200 hover:bg-gray-800"
-                  >
+              <Button
+                onClick={() =>
+                  module.configured
+                    ? handleEditClick(module)
+                    : handleAddClick(module)
+                }
+                className={`transition-all duration-200 ${
+                  module.configured
+                    ? "bg-green-600 text-white hover:bg-green-700"
+                    : "bg-black text-white hover:bg-gray-800"
+                }`}
+              >
+                {module.configured ? (
+                  <>
+                    <Edit size={16} className="mr-1" />
+                    Edit Configuration
+                  </>
+                ) : (
+                  <>
                     <Plus size={16} className="mr-1" />
-                    Add
-                  </Button>
-                </DialogTrigger>
-
-                <DialogContent className="sm:max-w-lg bg-white rounded-xl shadow-2xl">
-                  <DialogHeader>
-                    <DialogTitle>
-                      Add {module.title} SCADA Configuration
-                    </DialogTitle>
-                  </DialogHeader>
-
-                  <div className="space-y-4 mt-4">
-                    <div className="space-y-2">
-                      <Label>Connection URL</Label>
-                      <Input
-                        name="connection_url"
-                        value={formData.connection_url}
-                        onChange={handleChange}
-                        placeholder="Enter connection URL"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label>SCADA System</Label>
-                      <Input
-                        name="scada_system"
-                        value={formData.scada_system}
-                        onChange={handleChange}
-                        placeholder="Enter SCADA system"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label>Protocol</Label>
-                      <Input
-                        name="protocol"
-                        value={formData.protocol}
-                        onChange={handleChange}
-                        placeholder="Enter protocol"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label>Connection Activated</Label>
-                      <Select
-                        value={formData.connection_activated}
-                        onValueChange={(val) =>
-                          setFormData((prev) => ({
-                            ...prev,
-                            connection_activated: val,
-                          }))
-                        }
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select status" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Yes">Yes</SelectItem>
-                          <SelectItem value="No">No</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label>SCADA Type</Label>
-                      <Select
-                        value={formData.scada_type}
-                        onValueChange={(val) =>
-                          setFormData((prev) => ({
-                            ...prev,
-                            scada_type: val,
-                          }))
-                        }
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select type" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Redundant">Redundant</SelectItem>
-                          <SelectItem value="Main">Main</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  <DialogFooter>
-                    <Button
-                      onClick={handleSubmit}
-                      disabled={submitting}
-                      className="bg-green-600 text-white transition-all duration-200 hover:bg-green-700 flex items-center justify-center"
-                    >
-                      {submitting ? (
-                        <span className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                      ) : (
-                        "Save"
-                      )}
-                    </Button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
+                    Add Configuration
+                  </>
+                )}
+              </Button>
             </div>
           ))}
         </div>
       )}
+
+      {/* Configuration Dialog */}
+      <Dialog
+        open={openDialog}
+        onOpenChange={(open) => {
+          if (!open) {
+            resetForm();
+          }
+          setOpenDialog(open);
+        }}
+      >
+        <DialogContent className="sm:max-w-lg bg-white rounded-xl shadow-2xl">
+          <DialogHeader>
+            <DialogTitle>
+              {isEditing
+                ? `Edit ${activeModule?.title} SCADA Configuration`
+                : `Add ${activeModule?.title} SCADA Configuration`}
+            </DialogTitle>
+          </DialogHeader>
+
+          <div className="space-y-4 mt-4">
+            <div className="space-y-2">
+              <Label>Connection URL</Label>
+              <Input
+                name="connection_url"
+                value={formData.connection_url}
+                onChange={handleChange}
+                placeholder="Enter connection URL"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label>SCADA System</Label>
+              <Input
+                name="scada_system"
+                value={formData.scada_system}
+                onChange={handleChange}
+                placeholder="Enter SCADA system"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label>Protocol</Label>
+              <Input
+                name="protocol"
+                value={formData.protocol}
+                onChange={handleChange}
+                placeholder="Enter protocol"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label>Connection Activated</Label>
+              <Select
+                value={formData.connection_activated}
+                onValueChange={(val) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    connection_activated: val,
+                  }))
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select status" />
+                </SelectTrigger>
+                <SelectContent className="bg-white">
+                  <SelectItem value="Yes">Yes</SelectItem>
+                  <SelectItem value="No">No</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <Label>SCADA Type</Label>
+              <Select
+                value={formData.scada_type}
+                onValueChange={(val) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    scada_type: val,
+                  }))
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Redundant">Redundant</SelectItem>
+                  <SelectItem value="Main">Main</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => {
+                resetForm();
+                setOpenDialog(false);
+              }}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={handleSubmit}
+              disabled={submitting}
+              className="bg-green-600 text-white transition-all duration-200 hover:bg-green-700 flex items-center justify-center"
+            >
+              {submitting ? (
+                <span className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+              ) : isEditing ? (
+                "Update"
+              ) : (
+                "Save"
+              )}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

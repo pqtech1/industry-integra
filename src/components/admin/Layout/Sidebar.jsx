@@ -27,10 +27,10 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen }) => {
         {/* Logo */}
         <div className="h-16 flex items-center justify-center">
           {collapsed ? (
-            <img src="logo.png" alt="Logo" className="h-8 w-8 object-contain" />
+            <img src="/logo.png" alt="Logo" className="h-8 w-8 object-contain" />
           ) : (
             <div className="flex items-center gap-2">
-              <img src="logo.png" alt="Logo" className="h-8 w-8 object-contain" />
+              <img src="/logo.png" alt="Logo" className="h-8 w-8 object-contain" />
               <span className="text-lg font-bold text-black">
                 Industry <span className="text-green-600">INTEGRA</span> 360
               </span>

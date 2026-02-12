@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import toast from "react-hot-toast";
 import { Database, Plus } from "lucide-react";
 import api from "../../../api/api";
-import { useNavigate ,Link} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const TableConfiguration = () => {
   const [modules, setModules] = useState([]);

@@ -23,7 +23,7 @@ const Layout = () => {
           setMobileOpen={setMobileOpen}
         />
 
-        {/* <TopNav /> */}
+        <TopNav />
 
         <main className="flex-1 overflow-y-auto p-6">
           <Outlet />

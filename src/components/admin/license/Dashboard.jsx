@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { UploadCloud, FileText, X } from "lucide-react";
 import toast from "react-hot-toast";
 import api from "../../../api/api";
@@ -7,6 +7,24 @@ const Dashboard = () => {
   const [file, setFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [licenseImported, setLicenseImported] = useState(false);
+  const [checkingLicense, setCheckingLicense] = useState(true);
+
+  // ✅ Check license when page loads
+  useEffect(() => {
+    const checkLicenseStatus = async () => {
+      try {
+        const res = await api.get("/license/status");
+        setLicenseImported(res.data.imported);
+      } catch (error) {
+        toast.error("Unable to verify license status.");
+      } finally {
+        setCheckingLicense(false);
+      }
+    };
+
+    checkLicenseStatus();
+  }, []);
 
   const handleFileChange = (e) => {
     const selected = e.target.files[0];
@@ -46,6 +64,9 @@ const Dashboard = () => {
       });
 
       toast.success(response.data.message);
+
+      // ✅ Disable everything after successful upload
+      setLicenseImported(true);
       setFile(null);
       setUploadProgress(0);
     } catch (error) {
@@ -71,8 +92,27 @@ const Dashboard = () => {
       </div>
 
       <div className="bg-white shadow-xl rounded-2xl p-8 space-y-6">
-        <label className="flex flex-col items-center justify-center w-full h-56 px-6 transition bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100">
-          <input type="file" className="hidden" onChange={handleFileChange} />
+        {/* Optional success banner */}
+        {licenseImported && (
+          <div className="bg-green-50 text-green-700 p-3 rounded-lg text-center font-medium">
+            License already imported.
+          </div>
+        )}
+
+        {/* Upload Area */}
+        <label
+          className={`flex flex-col items-center justify-center w-full h-56 px-6 transition rounded-xl ${
+            licenseImported
+              ? "bg-gray-200 cursor-not-allowed"
+              : "bg-gray-50 hover:bg-gray-100 cursor-pointer"
+          }`}
+        >
+          <input
+            type="file"
+            className="hidden"
+            onChange={handleFileChange}
+            disabled={licenseImported}
+          />
 
           <UploadCloud size={40} className="text-green-600 mb-3" />
 
@@ -85,7 +125,8 @@ const Dashboard = () => {
           </p>
         </label>
 
-        {file && (
+        {/* Selected File */}
+        {file && !licenseImported && (
           <div className="space-y-3">
             <div className="flex items-center justify-between bg-gray-50 px-4 py-3 rounded-lg shadow-sm">
               <div className="flex items-center gap-3">
@@ -107,7 +148,6 @@ const Dashboard = () => {
               </button>
             </div>
 
-            {/* Progress Bar */}
             {loading && (
               <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
                 <div
@@ -119,16 +159,23 @@ const Dashboard = () => {
           </div>
         )}
 
+        {/* Upload Button */}
         <button
           onClick={handleSubmit}
-          disabled={loading}
+          disabled={loading || licenseImported || checkingLicense}
           className={`w-full py-3 font-medium shadow-md transition rounded-lg ${
-            loading
+            licenseImported
               ? "bg-gray-400 cursor-not-allowed text-white"
-              : "bg-green-600 hover:bg-green-700 text-white"
+              : loading
+                ? "bg-gray-400 cursor-not-allowed text-white"
+                : "bg-green-600 hover:bg-green-700 text-white"
           }`}
         >
-          {loading ? `Uploading ${uploadProgress}%...` : "Upload License"}
+          {licenseImported
+            ? "License Already Imported"
+            : loading
+              ? `Uploading ${uploadProgress}%...`
+              : "Upload License"}
         </button>
       </div>
     </div>

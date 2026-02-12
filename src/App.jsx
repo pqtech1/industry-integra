@@ -8,6 +8,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
+import { ConfirmDialogProvider } from "@omit/react-confirm-dialog";
 
 import { trackingService } from "./services/trackingService";
 
@@ -97,6 +98,7 @@ import AdminDashboard from "./components/admin/license/Dashboard";
 import ScadaConfiguration from "./components/admin/configuration/ScadaConfiguration";
 import TableConfiguration from "./components/admin/configuration/TableConfiguration";
 import MachineTables from "./components/admin/configuration/MachineTables";
+import MachineDetailsPage from "./components/admin/configuration/MachineDetailsPage";
 
 // Single Tracking Component - SIMPLIFIED
 const TrackingListener = () => {
@@ -151,191 +153,200 @@ function App() {
   }, []); // Empty dependency array - runs only once
 
   return (
-    <Router basename="/industry-integra">
-      <AuthProvider>
-        {/* SINGLE tracking listener at root level */}
-        <TrackingListener />
+    <ConfirmDialogProvider>
+      <Router basename="/industry-integra">
+        <AuthProvider>
+          {/* SINGLE tracking listener at root level */}
+          <TrackingListener />
 
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Homepage />} />
-            <Route
-              path="/what-is-industry-integra-360"
-              element={<WhatIsIndustryIntegra />}
-            />
-            <Route
-              path="/platform-architecture"
-              element={<PlatformArchitecture />}
-            />
-            <Route
-              path="/industry-integra-for-process"
-              element={<ProcessManufacturing />}
-            />
-            <Route
-              path="/industry-integra-for-energy"
-              element={<EnergyManagement />}
-            />
-            <Route
-              path="/industry-integra-for-building"
-              element={<BuildingAutomationModulePage />}
-            />
-            <Route
-              path="/industry-integra-for-factory"
-              element={<SmartFactory />}
-            />
-            <Route path="/solutions" element={<SolutionsPage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/support" element={<SupportPage />} />
-          </Route>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Homepage />} />
+              <Route
+                path="/what-is-industry-integra-360"
+                element={<WhatIsIndustryIntegra />}
+              />
+              <Route
+                path="/platform-architecture"
+                element={<PlatformArchitecture />}
+              />
+              <Route
+                path="/industry-integra-for-process"
+                element={<ProcessManufacturing />}
+              />
+              <Route
+                path="/industry-integra-for-energy"
+                element={<EnergyManagement />}
+              />
+              <Route
+                path="/industry-integra-for-building"
+                element={<BuildingAutomationModulePage />}
+              />
+              <Route
+                path="/industry-integra-for-factory"
+                element={<SmartFactory />}
+              />
+              <Route path="/solutions" element={<SolutionsPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/support" element={<SupportPage />} />
+            </Route>
 
-          <Route path="/login" element={<Login />} />
-          <Route path="/unauthorized" element={<Unauthorized />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/unauthorized" element={<Unauthorized />} />
 
-          {/* Module Selection Page */}
-          <Route
-            path="/modules"
-            element={
-              <ProtectedRoute allowedRoles={["master"]}>
-                <ModuleSelect />
-              </ProtectedRoute>
-            }
-          />
-
-          {/* Process Module Routes */}
-          <Route
-            path="/process"
-            element={
-              <ProtectedRoute allowedRoles={["master", "user"]}>
-                <ProcessLayout />
-              </ProtectedRoute>
-            }
-          >
-            <Route index element={<Navigate to="dashboard" replace />} />
-            <Route path="dashboard" element={<ProcessDashboard />} />
-            <Route path="throughput" element={<ProcessThroughput />} />
-            <Route path="time-metrics" element={<ProcessTimeMetrics />} />
-            <Route path="backlog" element={<ProcessBacklog />} />
-            <Route path="automation" element={<ProcessAutomation />} />
-            <Route path="resources" element={<ProcessResources />} />
-            <Route path="quality" element={<ProcessQuality />} />
-            <Route path="compliance" element={<ProcessCompliance />} />
-            <Route path="cost-roi" element={<ProcessCostROI />} />
-            <Route path="failures" element={<ProcessFailures />} />
-            <Route path="sla-recovery" element={<ProcessSLARecovery />} />
-          </Route>
-
-          {/* Energy Module Routes */}
-          <Route
-            path="/energy"
-            element={
-              <ProtectedRoute
-                allowedRoles={["master", "user", "energy-manager"]}
-              >
-                <EnergyLayout />
-              </ProtectedRoute>
-            }
-          >
-            <Route index element={<Navigate to="dashboard" replace />} />
-            <Route path="dashboard" element={<EnergyDashboard />} />
-            <Route path="consumption" element={<EnergyConsumption />} />
-            <Route path="cost" element={<EnergyCost />} />
-            <Route path="demand" element={<EnergyDemand />} />
-            <Route path="load-profile" element={<EnergyLoadProfile />} />
-            <Route path="efficiency" element={<EnergyEfficiency />} />
-            <Route path="power-quality" element={<EnergyPowerQuality />} />
-            <Route path="renewables" element={<EnergyRenewables />} />
-            <Route path="emissions" element={<EnergyEmissions />} />
-            <Route path="automation" element={<EnergyAutomation />} />
-            <Route path="alerts" element={<EnergyAlerts />} />
-          </Route>
-
-          {/* Building Module Routes */}
-          <Route
-            path="/building"
-            element={
-              <ProtectedRoute
-                allowedRoles={[
-                  "master",
-                  "user",
-                  "facilities-manager",
-                  "building-admin",
-                ]}
-              >
-                <BuildingLayout />
-              </ProtectedRoute>
-            }
-          >
-            <Route index element={<Navigate to="dashboard" replace />} />
-            <Route path="dashboard" element={<BuildingDashboard />} />
-            <Route path="occupancy" element={<BuildingOccupancy />} />
+            {/* Module Selection Page */}
             <Route
-              path="space-utilization"
-              element={<BuildingSpaceUtilization />}
+              path="/modules"
+              element={
+                <ProtectedRoute allowedRoles={["master"]}>
+                  <ModuleSelect />
+                </ProtectedRoute>
+              }
             />
-            <Route path="comfort" element={<BuildingComfort />} />
-            <Route path="air-quality" element={<BuildingAirQuality />} />
-            <Route path="energy" element={<BuildingEnergy />} />
-            <Route path="lighting" element={<BuildingLighting />} />
-            <Route path="hvac" element={<BuildingHVAC />} />
-            <Route path="automation" element={<BuildingAutomation />} />
-            <Route path="maintenance" element={<BuildingMaintenance />} />
-            <Route path="safety" element={<BuildingSafety />} />
-            <Route path="access-control" element={<BuildingAccessControl />} />
-          </Route>
 
-          {/* Factory Module Routes */}
-          <Route
-            path="/factory"
-            element={
-              <ProtectedRoute
-                allowedRoles={[
-                  "master",
-                  "user",
-                  "production-manager",
-                  "factory-admin",
-                ]}
-              >
-                <FactoryLayout />
-              </ProtectedRoute>
-            }
-          >
-            <Route index element={<Navigate to="dashboard" replace />} />
-            <Route path="dashboard" element={<FactoryDashboard />} />
-            <Route path="performance" element={<FactoryPerformance />} />
-            <Route path="production" element={<FactoryProduction />} />
-            <Route path="downtime" element={<FactoryDowntime />} />
-            <Route path="quality" element={<FactoryQuality />} />
-            <Route path="maintenance" element={<FactoryMaintenance />} />
-            <Route path="automation" element={<FactoryAutomation />} />
-            <Route path="alerts" element={<FactoryAlerts />} />
-            <Route path="safety" element={<FactorySafety />} />
-            <Route path="workforce" element={<FactoryWorkforce />} />
-            <Route path="machines" element={<FactoryMachines />} />
-            <Route path="energy" element={<FactoryEnergy />} />
-          </Route>
+            {/* Process Module Routes */}
+            <Route
+              path="/process"
+              element={
+                <ProtectedRoute allowedRoles={["master", "user"]}>
+                  <ProcessLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Navigate to="dashboard" replace />} />
+              <Route path="dashboard" element={<ProcessDashboard />} />
+              <Route path="throughput" element={<ProcessThroughput />} />
+              <Route path="time-metrics" element={<ProcessTimeMetrics />} />
+              <Route path="backlog" element={<ProcessBacklog />} />
+              <Route path="automation" element={<ProcessAutomation />} />
+              <Route path="resources" element={<ProcessResources />} />
+              <Route path="quality" element={<ProcessQuality />} />
+              <Route path="compliance" element={<ProcessCompliance />} />
+              <Route path="cost-roi" element={<ProcessCostROI />} />
+              <Route path="failures" element={<ProcessFailures />} />
+              <Route path="sla-recovery" element={<ProcessSLARecovery />} />
+            </Route>
 
-          {/* Admin License Management */}
-          <Route path="/admin-license-management" element={<AdminLayout />}>
-            <Route index element={<AdminDashboard />} />
+            {/* Energy Module Routes */}
             <Route
-              path="scada-configuration"
-              element={<ScadaConfiguration />}
-            />
-            <Route
-              path="table-configuration"
-              element={<TableConfiguration />}
-            />
-            <Route
-              path="machine-tables/:module_id"
-              element={<MachineTables />}
-            />{" "}
-          </Route>
+              path="/energy"
+              element={
+                <ProtectedRoute
+                  allowedRoles={["master", "user", "energy-manager"]}
+                >
+                  <EnergyLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Navigate to="dashboard" replace />} />
+              <Route path="dashboard" element={<EnergyDashboard />} />
+              <Route path="consumption" element={<EnergyConsumption />} />
+              <Route path="cost" element={<EnergyCost />} />
+              <Route path="demand" element={<EnergyDemand />} />
+              <Route path="load-profile" element={<EnergyLoadProfile />} />
+              <Route path="efficiency" element={<EnergyEfficiency />} />
+              <Route path="power-quality" element={<EnergyPowerQuality />} />
+              <Route path="renewables" element={<EnergyRenewables />} />
+              <Route path="emissions" element={<EnergyEmissions />} />
+              <Route path="automation" element={<EnergyAutomation />} />
+              <Route path="alerts" element={<EnergyAlerts />} />
+            </Route>
 
-          {/* Catch-all route */}
-          <Route path="*" element={<Navigate to="/login" replace />} />
-        </Routes>
-      </AuthProvider>
-    </Router>
+            {/* Building Module Routes */}
+            <Route
+              path="/building"
+              element={
+                <ProtectedRoute
+                  allowedRoles={[
+                    "master",
+                    "user",
+                    "facilities-manager",
+                    "building-admin",
+                  ]}
+                >
+                  <BuildingLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Navigate to="dashboard" replace />} />
+              <Route path="dashboard" element={<BuildingDashboard />} />
+              <Route path="occupancy" element={<BuildingOccupancy />} />
+              <Route
+                path="space-utilization"
+                element={<BuildingSpaceUtilization />}
+              />
+              <Route path="comfort" element={<BuildingComfort />} />
+              <Route path="air-quality" element={<BuildingAirQuality />} />
+              <Route path="energy" element={<BuildingEnergy />} />
+              <Route path="lighting" element={<BuildingLighting />} />
+              <Route path="hvac" element={<BuildingHVAC />} />
+              <Route path="automation" element={<BuildingAutomation />} />
+              <Route path="maintenance" element={<BuildingMaintenance />} />
+              <Route path="safety" element={<BuildingSafety />} />
+              <Route
+                path="access-control"
+                element={<BuildingAccessControl />}
+              />
+            </Route>
+
+            {/* Factory Module Routes */}
+            <Route
+              path="/factory"
+              element={
+                <ProtectedRoute
+                  allowedRoles={[
+                    "master",
+                    "user",
+                    "production-manager",
+                    "factory-admin",
+                  ]}
+                >
+                  <FactoryLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Navigate to="dashboard" replace />} />
+              <Route path="dashboard" element={<FactoryDashboard />} />
+              <Route path="performance" element={<FactoryPerformance />} />
+              <Route path="production" element={<FactoryProduction />} />
+              <Route path="downtime" element={<FactoryDowntime />} />
+              <Route path="quality" element={<FactoryQuality />} />
+              <Route path="maintenance" element={<FactoryMaintenance />} />
+              <Route path="automation" element={<FactoryAutomation />} />
+              <Route path="alerts" element={<FactoryAlerts />} />
+              <Route path="safety" element={<FactorySafety />} />
+              <Route path="workforce" element={<FactoryWorkforce />} />
+              <Route path="machines" element={<FactoryMachines />} />
+              <Route path="energy" element={<FactoryEnergy />} />
+            </Route>
+
+            {/* Admin License Management */}
+            <Route path="/admin-license-management" element={<AdminLayout />}>
+              <Route index element={<AdminDashboard />} />
+              <Route
+                path="scada-configuration"
+                element={<ScadaConfiguration />}
+              />
+              <Route
+                path="table-configuration"
+                element={<TableConfiguration />}
+              />
+              <Route
+                path="machine-tables/:module_id"
+                element={<MachineTables />}
+              />{" "}
+              <Route
+                path="machine-tables/:module_id/:machine_id"
+                element={<MachineDetailsPage />}
+              />
+            </Route>
+
+            {/* Catch-all route */}
+            <Route path="*" element={<Navigate to="/login" replace />} />
+          </Routes>
+        </AuthProvider>
+      </Router>
+    </ConfirmDialogProvider>
   );
 }
 
