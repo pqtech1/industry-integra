@@ -92,13 +92,19 @@ const ScadaConfiguration = () => {
       scada_type: "Redundant",
     });
     setIsEditing(false);
-    setActiveModule(null);
   };
 
   const handleAddClick = (module) => {
     setActiveModule(module);
     setIsEditing(false);
-    resetForm();
+    setFormData({
+      id: null,
+      connection_url: "",
+      protocol: "",
+      connection_activated: "Yes",
+      scada_system: "",
+      scada_type: "Redundant",
+    });
     setOpenDialog(true);
   };
 
@@ -161,11 +167,18 @@ const ScadaConfiguration = () => {
         });
         toast.success("SCADA configuration updated successfully.");
       } else {
-        // Create new configuration
+        // Create new configuration - ONLY send the required fields
         const payload = {
-          ...formData,
-          module_id: activeModule.id,
+          module_id: activeModule.id, // Make sure this is included
+          connection_url: formData.connection_url,
+          protocol: formData.protocol,
+          connection_activated: formData.connection_activated,
+          scada_system: formData.scada_system,
+          scada_type: formData.scada_type,
         };
+
+        console.log("Sending payload:", payload); // Debug log
+
         response = await api.post("/scada-master", payload);
         toast.success(response.data.message);
       }
@@ -176,14 +189,19 @@ const ScadaConfiguration = () => {
       resetForm();
       setOpenDialog(false);
     } catch (error) {
+      console.error("Error details:", error.response?.data); // Debug log
       if (error.response) {
         if (error.response.status === 409) {
           toast.error("Configuration already exists for this module.");
         } else if (error.response.status === 422) {
           const errors = error.response.data.errors;
-          Object.values(errors).forEach((errArray) => {
-            toast.error(errArray[0]);
-          });
+          if (errors) {
+            Object.values(errors).forEach((errArray) => {
+              toast.error(errArray[0]);
+            });
+          } else {
+            toast.error(error.response.data.message || "Validation error");
+          }
         } else if (error.response.status === 403) {
           toast.error(error.response.data.message);
         } else if (error.response.status === 500) {
@@ -225,8 +243,6 @@ const ScadaConfiguration = () => {
                 <p className="text-gray-500 mt-1 text-sm">
                   {module.description}
                 </p>
-
-                
               </div>
 
               <Button
@@ -264,6 +280,7 @@ const ScadaConfiguration = () => {
         onOpenChange={(open) => {
           if (!open) {
             resetForm();
+            setActiveModule(null); // Reset activeModule when dialog closes
           }
           setOpenDialog(open);
         }}
