@@ -7,7 +7,6 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-
 } from "@/components/ui/table";
 import {
   Tooltip,
@@ -15,7 +14,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
 import { Card, CardContent } from "@/components/ui/card";
 import {
   RefreshCw,
@@ -156,9 +154,17 @@ const MachinesPage = () => {
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleFetchLatest}
-              className="bg-green-600 hover:bg-green-700 text-white"
+              disabled={fetching}
+              className="bg-green-600 hover:bg-green-700 text-white disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Fetch Tables
+              {fetching ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                  Fetching...
+                </>
+              ) : (
+                "Fetch Tables"
+              )}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
@@ -175,7 +181,7 @@ const MachinesPage = () => {
         <Button
           onClick={() => setShowConfirmDialog(true)}
           disabled={fetching}
-          className="bg-gradient-to-r from-emerald-600 to-green-600 text-white hover:from-emerald-700 hover:to-green-700 flex items-center gap-2 shadow-lg hover:shadow-xl transition-all"
+          className="bg-gradient-to-r from-emerald-600 to-green-600 text-white hover:from-emerald-700 hover:to-green-700 flex items-center gap-2 shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {fetching ? (
             <>
@@ -282,10 +288,20 @@ const MachinesPage = () => {
               </p>
               <Button
                 onClick={() => setShowConfirmDialog(true)}
-                className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-md"
+                disabled={fetching}
+                className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <RefreshCw size={16} className="mr-2" />
-                Fetch Latest Tables
+                {fetching ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                    Fetching...
+                  </>
+                ) : (
+                  <>
+                    <RefreshCw size={16} className="mr-2" />
+                    Fetch Latest Tables
+                  </>
+                )}
               </Button>
             </div>
           ) : (

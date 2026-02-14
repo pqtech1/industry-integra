@@ -262,14 +262,7 @@ const FAQSection = () => {
               manufacturing operations.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <button className="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors">
-                Contact Support
-              </button>
-              <button className="px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors">
-                Schedule Consultation
-              </button>
-            </div>
+            
           </div>
         </div>
       </div>

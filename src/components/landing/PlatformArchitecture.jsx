@@ -780,14 +780,7 @@ const PlatformArchitecture = () => {
               manufacturing operations.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mb-4 md:mb-6">
-              <button className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-lg hover:shadow-2xl hover:shadow-green-200 transition-all duration-300 hover:scale-105 text-sm md:text-base shadow-xl">
-                Request Architecture Review
-              </button>
-              <button className="px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-black text-black font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 text-sm md:text-base shadow-xl">
-                Download Technical Whitepaper
-              </button>
-            </div>
+           
 
             <p className="text-gray-500 text-sm">
               Get detailed specifications, benchmarks, and case studies

@@ -1,8 +1,7 @@
 // components/pages/process/Layout/Header.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Search,
-  Bell,
   HelpCircle,
   Settings,
   User,
@@ -12,6 +11,9 @@ import {
   GitBranch,
   Shield,
   X,
+  Loader2,
+  Power,
+  PowerOff,
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLocation } from "react-router-dom";
@@ -32,11 +34,76 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import toast from "react-hot-toast";
+import api from "../../../../api/api";
 
 const Header = ({ onMenuClick, mobileSidebarOpen }) => {
   const { user, logout } = useAuth();
   const location = useLocation();
   const [searchOpen, setSearchOpen] = useState(false);
+  const [isRunning, setIsRunning] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [actionInProgress, setActionInProgress] = useState(null); // 'start' or 'stop'
+
+  const checkEngineStatus = async () => {
+    try {
+      const res = await api.get("/engine/status");
+      setIsRunning(res.data.running);
+    } catch (error) {
+      console.error("Failed to check engine status:", error);
+      setIsRunning(false);
+    }
+  };
+
+  useEffect(() => {
+    // Initial status check
+    checkEngineStatus();
+
+    // Poll for status every 3 seconds
+    const interval = setInterval(() => checkEngineStatus(), 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleStartEngine = async () => {
+    try {
+      setActionInProgress("start");
+      setIsLoading(true);
+
+      const response = await api.post("/engine/start");
+
+      if (response.data.status === "started") {
+        toast.success("Engine is running");
+        await checkEngineStatus();
+      }
+    } catch (error) {
+      console.error("Failed to start engine:", error);
+      toast.error("Failed to start engine");
+    } finally {
+      setActionInProgress(null);
+      setIsLoading(false);
+    }
+  };
+
+  const handleStopEngine = async () => {
+    try {
+      setActionInProgress("stop");
+      setIsLoading(true);
+
+      const response = await api.post("/engine/stop");
+
+      if (response.data.status === "stopped") {
+        toast.success("Engine stopped successfully");
+        await checkEngineStatus();
+      }
+    } catch (error) {
+      console.error("Failed to stop engine:", error);
+      toast.error("Failed to stop engine");
+    } finally {
+      setActionInProgress(null);
+      setIsLoading(false);
+    }
+  };
 
   // Get current page title from path
   const getPageTitle = () => {
@@ -149,7 +216,7 @@ const Header = ({ onMenuClick, mobileSidebarOpen }) => {
               </Tooltip>
 
               {/* Desktop Quick Actions */}
-              <div className="hidden lg:flex items-center gap-1">
+              <div className="hidden lg:flex items-center gap-2">
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button
@@ -176,20 +243,90 @@ const Header = ({ onMenuClick, mobileSidebarOpen }) => {
                   <TooltipContent>Help & Support</TooltipContent>
                 </Tooltip>
 
-                {/* Notifications */}
-                <Tooltip>
-                  <TooltipTrigger asChild>
+                {/* Engine Control Buttons */}
+                <div className="flex items-center gap-2 ml-2 border-l border-gray-200 pl-2">
+                  {!isRunning ? (
                     <Button
-                      variant="ghost"
-                      size="icon"
-                      className="relative text-gray-600 hover:text-green-700"
+                      onClick={handleStartEngine}
+                      disabled={isLoading}
+                      className="bg-green-600 hover:bg-green-700 text-white min-w-[120px] cursor-pointer"
+                      size="sm"
                     >
-                      <Bell className="h-5 w-5" />
-                      <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                      {actionInProgress === "start" ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Starting...
+                        </>
+                      ) : (
+                        <>
+                          <Power className="mr-2 h-4 w-4" />
+                          Start Engine
+                        </>
+                      )}
                     </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>Notifications (3)</TooltipContent>
-                </Tooltip>
+                  ) : (
+                    <Button
+                      onClick={handleStopEngine}
+                      disabled={isLoading}
+                      className="bg-red-600 hover:bg-red-700 text-white min-w-[120px] cursor-pointer"
+                      size="sm"
+                    >
+                      {actionInProgress === "stop" ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Stopping...
+                        </>
+                      ) : (
+                        <>
+                          <PowerOff className="mr-2 h-4 w-4" />
+                          Stop Engine
+                        </>
+                      )}
+                    </Button>
+                  )}
+
+                  {/* Status Indicator */}
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div className="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-200">
+                        {/* Animated Dot */}
+                        <span className="relative flex h-3 w-3">
+                          <span
+                            className={`absolute inline-flex h-full w-full rounded-full ${
+                              isRunning
+                                ? "bg-green-400 animate-ping"
+                                : "bg-gray-400"
+                            } opacity-75`}
+                          ></span>
+                          <span
+                            className={`relative inline-flex rounded-full h-3 w-3 ${
+                              isRunning ? "bg-green-600" : "bg-gray-600"
+                            }`}
+                          ></span>
+                        </span>
+
+                        {/* Text Badge */}
+                        <span
+                          className={`text-xs font-medium ${
+                            isRunning ? "text-green-700" : "text-gray-700"
+                          }`}
+                        >
+                          {isRunning ? "Engine Running" : "Engine Stopped"}
+                        </span>
+
+                        {isLoading && (
+                          <Loader2 className="h-3 w-3 animate-spin text-gray-500 ml-1" />
+                        )}
+                      </div>
+                    </TooltipTrigger>
+
+                    <TooltipContent>
+                      {isRunning
+                        ? "Desktop EXE is currently active"
+                        : "Desktop EXE is not running"}
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
               </div>
 
               {/* User Profile Dropdown */}
@@ -197,7 +334,7 @@ const Header = ({ onMenuClick, mobileSidebarOpen }) => {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="gap-2 px-2 hover:bg-gray-100"
+                    className="gap-2 px-2 hover:bg-gray-100 cursor-pointer"
                   >
                     <div className="w-9 h-9 bg-gradient-to-br from-green-800 to-emerald-600 rounded-lg flex items-center justify-center">
                       <User className="h-4 w-4 text-white" />
@@ -230,15 +367,15 @@ const Header = ({ onMenuClick, mobileSidebarOpen }) => {
                   <DropdownMenuSeparator />
 
                   <DropdownMenuGroup>
-                    <DropdownMenuItem className="focus:bg-green-50 focus:text-green-700">
+                    <DropdownMenuItem className="focus:bg-green-50 focus:text-green-700 cursor-pointer">
                       <User className="mr-2 h-4 w-4" />
                       <span>Profile</span>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="focus:bg-green-50 focus:text-green-700">
+                    <DropdownMenuItem className="focus:bg-green-50 focus:text-green-700 cursor-pointer">
                       <Settings className="mr-2 h-4 w-4" />
                       <span>Account Settings</span>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="focus:bg-green-50 focus:text-green-700">
+                    <DropdownMenuItem className="focus:bg-green-50 focus:text-green-700 cursor-pointer">
                       <Shield className="mr-2 h-4 w-4" />
                       <span>Security</span>
                     </DropdownMenuItem>
@@ -247,11 +384,11 @@ const Header = ({ onMenuClick, mobileSidebarOpen }) => {
                   <DropdownMenuSeparator />
 
                   <DropdownMenuGroup>
-                    <DropdownMenuItem className="focus:bg-green-50 focus:text-green-700">
+                    <DropdownMenuItem className="focus:bg-green-50 focus:text-green-700 cursor-pointer">
                       <HelpCircle className="mr-2 h-4 w-4" />
                       <span>Help & Support</span>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="focus:bg-green-50 focus:text-green-700">
+                    <DropdownMenuItem className="focus:bg-green-50 focus:text-green-700 cursor-pointer">
                       <Settings className="mr-2 h-4 w-4" />
                       <span>Preferences</span>
                     </DropdownMenuItem>
@@ -260,7 +397,7 @@ const Header = ({ onMenuClick, mobileSidebarOpen }) => {
                   <DropdownMenuSeparator />
 
                   <DropdownMenuItem
-                    className="text-red-600 focus:text-red-600 focus:bg-red-50"
+                    className="text-red-600 focus:text-red-600 focus:bg-red-50 cursor-pointer"
                     onClick={logout}
                   >
                     <LogOut className="mr-2 h-4 w-4" />

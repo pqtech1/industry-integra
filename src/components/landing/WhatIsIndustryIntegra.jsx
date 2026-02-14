@@ -273,8 +273,6 @@ const WhatIsIndustryIntegra = () => {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative py-8 md:py-12 overflow-hidden px-4">
-        
-
         <div className="container mx-auto relative">
           <div className="max-w-4xl mx-auto">
             <div className="text-center">
@@ -296,24 +294,6 @@ const WhatIsIndustryIntegra = () => {
                 predictive analytics, and automated optimization across
                 production, maintenance, quality, and energy management.
               </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="bg-black hover:bg-gray-800 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-semibold rounded-lg shadow-lg">
-                  <Link to="/request-demo" className="flex items-center gap-3">
-                    <FaRocket className="h-5 w-5" />
-                    Request Platform Demo
-                  </Link>
-                </Button>
-                <Button
-                  variant="outline"
-                  className="px-6 md:px-8 py-5 md:py-6 text-base md:text-lg border-2 border-black text-black hover:bg-gray-50 rounded-lg"
-                >
-                  <Link to="/platform/tour" className="flex items-center gap-3">
-                    <FaGlobe className="h-5 w-5" />
-                    Take Platform Tour
-                  </Link>
-                </Button>
-              </div>
             </div>
           </div>
         </div>
@@ -780,21 +760,27 @@ const WhatIsIndustryIntegra = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mb-6 md:mb-8">
-              <Button className="bg-black hover:bg-gray-800 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-semibold rounded-lg shadow-lg">
-                <Link to="/request-demo" className="flex items-center gap-3">
-                  <FaChartLine className="h-5 w-5" />
-                  Schedule a Personalized Demo
-                </Link>
-              </Button>
-              <Button
-                variant="outline"
-                className="px-6 md:px-8 py-5 md:py-6 text-base md:text-lg border-2 border-black text-black hover:bg-gray-50 rounded-lg"
+              {/* Demo Link */}
+              <a
+                href="https://positivequadrant.in/contact-us"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-black hover:bg-gray-800 text-white px-6 md:px-8  text-base md:text-lg font-semibold rounded-lg shadow-lg flex items-center justify-center  transition-all duration-300"
               >
-                <Link to="/contact" className="flex items-center gap-3">
-                  <FaUsers className="h-5 w-5" />
-                  Talk to Our Experts
-                </Link>
-              </Button>
+                <FaChartLine className="h-5 w-5" />
+                Schedule a Personalized Demo
+              </a>
+
+              {/* Contact Link */}
+              <a
+                href="https://positivequadrant.in/contact-us"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 md:px-8 py-2 text-base md:text-lg border-2 border-black text-black hover:bg-gray-50 rounded-lg flex items-center justify-center gap-3 transition-all duration-300"
+              >
+                <FaUsers className="h-5 w-5" />
+                Talk to Our Experts
+              </a>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-3xl mx-auto">

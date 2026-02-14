@@ -128,37 +128,7 @@ const Footer = () => {
                 </div>
               </div>
 
-              <div className="bg-black/90 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 relative overflow-hidden">
-                {/* Meteor inside the newsletter card for effect */}
-                <div className="absolute top-0 right-0 w-full h-full overflow-hidden">
-                  <Meteors number={3} color="#10B981" speed="slow" />
-                </div>
-
-                <div className="relative z-10">
-                  <h4 className="text-white font-bold">Stay Updated</h4>
-                  <p className="text-gray-300 mb-6">
-                    Get the latest insights on Industry 4.0, manufacturing
-                    trends, and platform updates.
-                  </p>
-
-                  <div className="flex gap-3">
-                    <input
-                      type="email"
-                      placeholder="Enter your work email"
-                      className="flex-1 bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent backdrop-blur-sm"
-                    />
-                    <Button className="bg-green-600 hover:bg-green-700 whitespace-nowrap shadow-lg">
-                      Subscribe
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </div>
-
-                  <p className="text-xs text-gray-500 mt-3">
-                    By subscribing, you agree to our Privacy Policy. Unsubscribe
-                    anytime.
-                  </p>
-                </div>
-              </div>
+              
             </div>
           </div>
 

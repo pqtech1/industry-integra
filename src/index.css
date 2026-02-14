@@ -111,6 +111,7 @@
 @layer base {
   body {
     @apply font-sans;
+    overflow-x: hidden;
   }
 
   /* Custom scrollbar */

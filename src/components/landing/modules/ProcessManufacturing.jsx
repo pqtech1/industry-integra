@@ -450,30 +450,7 @@ const ProcessManufacturing = () => {
                 efficiency and quality
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-                <Button className="bg-white text-gray-900 hover:bg-gray-100 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg font-semibold rounded-lg shadow-xl">
-                  <Link
-                    to="/process-automation/demo"
-                    className="flex items-center gap-3"
-                  >
-                    <FaRocket className="h-4 w-4 md:h-5 md:w-5" />
-                    Schedule Process Demo
-                  </Link>
-                </Button>
-
-                <Button
-                  variant="outline"
-                  className="px-6 md:px-8 py-4 md:py-6 text-base md:text-lg border-2 border-white text-white hover:bg-white/10 rounded-lg shadow-xl"
-                >
-                  <Link
-                    to="/contact/process-expert"
-                    className="flex items-center gap-3"
-                  >
-                    <FaUsers className="h-4 w-4 md:h-5 md:w-5" />
-                    Talk to Process Expert
-                  </Link>
-                </Button>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -1075,27 +1052,7 @@ const ProcessManufacturing = () => {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-              <Button className="bg-white text-gray-900 hover:bg-gray-100 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg font-semibold rounded-lg shadow-xl">
-                <Link
-                  to="/process-automation/demo"
-                  className="flex items-center gap-3"
-                >
-                  <FaRocket className="h-4 w-4 md:h-5 md:w-5" />
-                  Request Process Demo
-                </Link>
-              </Button>
-
-              <Button className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg font-semibold rounded-lg shadow-xl">
-                <Link
-                  to="/contact/process-analysis"
-                  className="flex items-center gap-3"
-                >
-                  <FaChartLine className="h-4 w-4 md:h-5 md:w-5" />
-                  Get Process Assessment
-                </Link>
-              </Button>
-            </div>
+            
 
             <p className="text-gray-400 mt-4 md:mt-6 text-xs md:text-sm">
               Implementation in 6-10 weeks • 24/7 process support •

@@ -99,6 +99,10 @@ import ScadaConfiguration from "./components/admin/configuration/ScadaConfigurat
 import TableConfiguration from "./components/admin/configuration/TableConfiguration";
 import MachineTables from "./components/admin/configuration/MachineTables";
 import MachineDetailsPage from "./components/admin/configuration/MachineDetailsPage";
+import AiProcessAutomation from "./components/landing/ai-solutions/AiProcessAutomation";
+import AiEnergyAutomation from "./components/landing/ai-solutions/AiEnergyAutomation";
+import AiBuildingAutomation from "./components/landing/ai-solutions/AiBuildingAutomation";
+import AiFactoryAutomation from "./components/landing/ai-solutions/AiFactoryAutomation";
 
 // Single Tracking Component - SIMPLIFIED
 const TrackingListener = () => {
@@ -189,6 +193,10 @@ function App() {
               <Route path="/solutions" element={<SolutionsPage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/support" element={<SupportPage />} />
+              <Route path="/ai-solutions-for-process-automation" element={<AiProcessAutomation />} />
+              <Route path="/ai-solutions-for-energy-automation" element={<AiEnergyAutomation />} />
+              <Route path="/ai-solutions-for-building-automation" element={<AiBuildingAutomation />} />
+              <Route path="/ai-solutions-for-factory-automation" element={<AiFactoryAutomation />} />
             </Route>
 
             <Route path="/login" element={<Login />} />

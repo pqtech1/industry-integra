@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Menu,
   ChevronDown,
@@ -39,9 +39,11 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { HashLink } from "react-router-hash-link";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,6 +52,14 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Simple function to handle link clicks
+  const handleLinkClick = (path) => {
+    // Navigate to the path
+    navigate(path);
+    // Scroll to top
+    window.scrollTo(0, 0);
+  };
 
   return (
     <header
@@ -61,7 +71,7 @@ const Header = () => {
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
         {/* Logo */}
-        <Link to="/" className="flex items-center">
+        <HashLink to="/" className="flex items-center cursor-pointer" smooth>
           <div className="flex h-15 w-15 items-center justify-center">
             <img src="logo.png" alt="Industry INTEGRA Logo" />
           </div>
@@ -70,13 +80,13 @@ const Header = () => {
               Industry <span className="text-green-600">INTEGRA</span> 360
             </span>
           </div>
-        </Link>
+        </HashLink>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:block">
           <NavigationMenu>
             <NavigationMenuList className="gap-0">
-              {/* Platform Dropdown - Two Columns */}
+              {/* Platform Dropdown */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700 transition-colors duration-200">
                   Platform
@@ -111,9 +121,10 @@ const Header = () => {
                             Platform Overview
                           </h4>
                           <div className="space-y-2">
-                            <Link
+                            <HashLink
                               to="/what-is-industry-integra-360"
                               className="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 group transition-all duration-200 hover:shadow-sm"
+                              smooth
                             >
                               <div className="h-8 w-8 rounded-lg bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition-colors">
                                 <Target className="h-4 w-4 text-green-600" />
@@ -126,10 +137,11 @@ const Header = () => {
                                   Learn about our platform
                                 </div>
                               </div>
-                            </Link>
-                            <Link
+                            </HashLink>
+                            <HashLink
                               to="/platform-architecture"
                               className="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 group transition-all duration-200 hover:shadow-sm"
+                              smooth
                             >
                               <div className="h-8 w-8 rounded-lg bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition-colors">
                                 <Server className="h-4 w-4 text-green-600" />
@@ -142,7 +154,7 @@ const Header = () => {
                                   Scalable and reliable design
                                 </div>
                               </div>
-                            </Link>
+                            </HashLink>
                           </div>
                         </div>
                       </div>
@@ -155,9 +167,10 @@ const Header = () => {
                       </h4>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-4">
-                          <Link
+                          <HashLink
                             to="/industry-integra-for-process"
                             className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-green-200 hover:bg-green-50"
+                            smooth
                           >
                             <div className="flex items-center gap-3 mb-2">
                               <Monitor className="h-5 w-5 text-green-600" />
@@ -169,11 +182,12 @@ const Header = () => {
                               Real-time process efficiency and production
                               insights
                             </p>
-                          </Link>
+                          </HashLink>
 
-                          <Link
+                          <HashLink
                             to="/industry-integra-for-energy"
                             className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-green-200 hover:bg-green-50"
+                            smooth
                           >
                             <div className="flex items-center gap-3 mb-2">
                               <Zap className="h-5 w-5 text-green-600" />
@@ -184,16 +198,17 @@ const Header = () => {
                             <p className="text-xs text-gray-500">
                               Monitor and optimize energy usage and costs
                             </p>
-                          </Link>
+                          </HashLink>
                         </div>
 
                         <div className="space-y-4">
-                          <Link
+                          <HashLink
                             to="/industry-integra-for-building"
-                            className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-purple-200 hover:bg-purple-50"
+                            className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-green-200 hover:bg-green-50"
+                            smooth
                           >
                             <div className="flex items-center gap-3 mb-2">
-                              <BarChart3 className="h-5 w-5 text-purple-600" />
+                              <BarChart3 className="h-5 w-5 text-green-600" />
                               <span className="text-sm font-medium text-gray-900">
                                 Building Management
                               </span>
@@ -202,14 +217,15 @@ const Header = () => {
                               HVAC, utilities, and building performance
                               monitoring
                             </p>
-                          </Link>
+                          </HashLink>
 
-                          <Link
+                          <HashLink
                             to="/industry-integra-for-factory"
-                            className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-red-200 hover:bg-red-50"
+                            className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-green-200 hover:bg-green-50"
+                            smooth
                           >
                             <div className="flex items-center gap-3 mb-2">
-                              <Shield className="h-5 w-5 text-red-600" />
+                              <Shield className="h-5 w-5 text-green-600" />
                               <span className="text-sm font-medium text-gray-900">
                                 Factory Intelligence
                               </span>
@@ -217,7 +233,7 @@ const Header = () => {
                             <p className="text-xs text-gray-500">
                               Quality, traceability, and compliance control
                             </p>
-                          </Link>
+                          </HashLink>
                         </div>
                       </div>
                     </div>
@@ -225,7 +241,129 @@ const Header = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              {/* Solutions Dropdown - Two Columns */}
+              {/* AI Solutions Dropdown */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700 transition-colors duration-200">
+                  AI Solutions
+                </NavigationMenuTrigger>
+
+                <NavigationMenuContent className="bg-white shadow-2xl rounded-xl p-0 overflow-hidden">
+                  <div className="grid w-[950px] grid-cols-3">
+                    {/* LEFT SIDE – AI INTRO */}
+                    <div className="col-span-1 bg-gradient-to-br from-green-50 to-white p-8 border-r">
+                      <div className="mb-6">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="h-11 w-11 rounded-xl bg-green-100 flex items-center justify-center">
+                            <Cpu className="h-5 w-5 text-green-700" />
+                          </div>
+                          <h3 className="text-lg font-semibold text-gray-900">
+                            AI-Powered Automation
+                          </h3>
+                        </div>
+
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          Intelligent automation solutions powered by Artificial
+                          Intelligence, real-time analytics, and smart
+                          monitoring to optimize industrial operations.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* RIGHT SIDE – SOLUTION CARDS */}
+                    <div className="col-span-2 p-8">
+                      <div className="grid grid-cols-2 gap-6">
+                        {/* PROCESS AUTOMATION */}
+                        <HashLink
+                          to="/ai-solutions-for-process-automation"
+                          className="group rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 bg-white"
+                          smooth
+                        >
+                          <img
+                            src="modules/process-bg.webp"
+                            alt="Process Automation"
+                            className="h-32 w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                          <div className="p-4">
+                            <h4 className="text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
+                              Process Automation
+                            </h4>
+                            <p className="text-xs text-gray-500 mt-1">
+                              AI-driven production monitoring and optimization.
+                            </p>
+                          </div>
+                        </HashLink>
+
+                        {/* BUILDING AUTOMATION */}
+                        <HashLink
+                          to="/ai-solutions-for-building-automation"
+                          className="group rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 bg-white"
+                          smooth
+                        >
+                          <img
+                            src="modules/building-bg.webp"
+                            alt="Building Automation"
+                            className="h-32 w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                          <div className="p-4">
+                            <h4 className="text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
+                              Building Automation
+                            </h4>
+                            <p className="text-xs text-gray-500 mt-1">
+                              Smart HVAC, lighting, and facility intelligence.
+                            </p>
+                          </div>
+                        </HashLink>
+
+                        {/* FACTORY AUTOMATION */}
+                        <HashLink
+                          to="/ai-solutions-for-factory-automation"
+                          className="group rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 bg-white"
+                          smooth
+                        >
+                          <img
+                            src="modules/factory-bg.webp"
+                            alt="Factory Automation"
+                            className="h-32 w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                          <div className="p-4">
+                            <h4 className="text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
+                              Factory Intelligence
+                            </h4>
+                            <p className="text-xs text-gray-500 mt-1">
+                              AI-based quality, traceability, and compliance
+                              control.
+                            </p>
+                          </div>
+                        </HashLink>
+
+                        {/* ENERGY AUTOMATION */}
+                        <HashLink
+                          to="/ai-solutions-for-energy-automation"
+                          className="group rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 bg-white"
+                          smooth
+                        >
+                          <img
+                            src="modules/energy-bg.webp"
+                            alt="Energy Automation"
+                            className="h-32 w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                          <div className="p-4">
+                            <h4 className="text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
+                              Energy Automation
+                            </h4>
+                            <p className="text-xs text-gray-500 mt-1">
+                              Intelligent energy monitoring and cost
+                              optimization.
+                            </p>
+                          </div>
+                        </HashLink>
+                      </div>
+                    </div>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* Solutions Dropdown */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700 transition-colors duration-200">
                   Solutions
@@ -255,9 +393,10 @@ const Header = () => {
                       </div>
 
                       <div className="space-y-4">
-                        <Link
-                          to="/solutions"
+                        <HashLink
+                          to="/solutions#predictive-maintenance"
                           className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-all duration-200 hover:shadow-sm"
+                          smooth
                         >
                           <Activity className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
                           <div>
@@ -268,10 +407,11 @@ const Header = () => {
                               Reduce downtime with AI insights
                             </div>
                           </div>
-                        </Link>
-                        <Link
-                          to="/solutions/energy-optimization"
+                        </HashLink>
+                        <HashLink
+                          to="/solutions#energy-optimization"
                           className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-all duration-200 hover:shadow-sm"
+                          smooth
                         >
                           <Zap className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
                           <div>
@@ -282,7 +422,7 @@ const Header = () => {
                               Cut energy costs by up to 30%
                             </div>
                           </div>
-                        </Link>
+                        </HashLink>
                       </div>
                     </div>
 
@@ -300,13 +440,14 @@ const Header = () => {
                               "FMCG",
                               "Chemical",
                             ].map((industry) => (
-                              <Link
+                              <HashLink
+                                to="/solutions#by-industry"
                                 key={industry}
-                                to={`/industries/${industry.toLowerCase()}`}
                                 className="block text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all duration-200"
+                                smooth
                               >
                                 {industry}
-                              </Link>
+                              </HashLink>
                             ))}
                           </div>
                         </div>
@@ -321,32 +462,34 @@ const Header = () => {
                               "Remote Monitoring",
                               "Industry 4.0",
                             ].map((usecase) => (
-                              <Link
+                              <HashLink
+                                to="/solutions#use-cases"
                                 key={usecase}
-                                to={`/solutions/${usecase.toLowerCase().replace(/\s+/g, "-")}`}
                                 className="block text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all duration-200"
+                                smooth
                               >
                                 {usecase}
-                              </Link>
+                              </HashLink>
                             ))}
                           </div>
                         </div>
                       </div>
                       <div className="mt-8 pt-6 border-t">
-                        <Link
-                          to="/solutions/all"
+                        <HashLink
+                          to="/solutions"
                           className="text-sm font-medium text-green-600 hover:text-green-800 inline-flex items-center gap-1 group transition-all"
+                          smooth
                         >
                           Explore all solutions
                           <ChevronDown className="h-4 w-4 -rotate-90 group-hover:translate-x-1 transition-transform" />
-                        </Link>
+                        </HashLink>
                       </div>
                     </div>
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              {/* Services Dropdown - Two Columns */}
+              {/* Services Dropdown */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700 transition-colors duration-200">
                   Services
@@ -357,8 +500,8 @@ const Header = () => {
                     <div className="p-8">
                       <div className="mb-6">
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="h-10 w-10 rounded-lg bg-purple-50 flex items-center justify-center transition-transform hover:scale-105">
-                            <Wrench className="h-5 w-5 text-purple-600" />
+                          <div className="h-10 w-10 rounded-lg bg-green-50 flex items-center justify-center transition-transform hover:scale-105">
+                            <Wrench className="h-5 w-5 text-green-600" />
                           </div>
                           <div>
                             <h3 className="text-lg font-semibold text-gray-900">
@@ -376,9 +519,10 @@ const Header = () => {
                       </div>
 
                       <div className="space-y-4">
-                        <Link
-                          to="/services"
+                        <HashLink
+                          to="/services#implementation-consulting"
                           className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-all duration-200 hover:shadow-sm"
+                          smooth
                         >
                           <Settings className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
                           <div>
@@ -389,10 +533,11 @@ const Header = () => {
                               Strategic roadmap and planning
                             </div>
                           </div>
-                        </Link>
-                        <Link
-                          to="/services/integration"
+                        </HashLink>
+                        <HashLink
+                          to="/services#system-integration"
                           className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-all duration-200 hover:shadow-sm"
+                          smooth
                         >
                           <Network className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
                           <div>
@@ -403,7 +548,7 @@ const Header = () => {
                               Seamless connectivity solutions
                             </div>
                           </div>
-                        </Link>
+                        </HashLink>
                       </div>
                     </div>
 
@@ -421,13 +566,14 @@ const Header = () => {
                               "SCADA Configuration",
                               "Data Integration",
                             ].map((service) => (
-                              <Link
+                              <HashLink
+                                to="/services#technical-services"
                                 key={service}
-                                to={`/services/${service.toLowerCase().replace(/\s+/g, "-")}`}
                                 className="block text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all duration-200"
+                                smooth
                               >
                                 {service}
-                              </Link>
+                              </HashLink>
                             ))}
                           </div>
                         </div>
@@ -442,25 +588,27 @@ const Header = () => {
                               "ERP Integration",
                               "Mobile Applications",
                             ].map((service) => (
-                              <Link
+                              <HashLink
+                                to="/services#software-services"
                                 key={service}
-                                to={`/services/${service.toLowerCase().replace(/\s+/g, "-")}`}
                                 className="block text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all duration-200"
+                                smooth
                               >
                                 {service}
-                              </Link>
+                              </HashLink>
                             ))}
                           </div>
                         </div>
                       </div>
                       <div className="mt-8 pt-6 border-t">
-                        <Link
-                          to="/services/all"
+                        <HashLink
+                          to="/services"
                           className="text-sm font-medium text-green-600 hover:text-green-800 inline-flex items-center gap-1 group transition-all"
+                          smooth
                         >
                           View all services
                           <ChevronDown className="h-4 w-4 -rotate-90 group-hover:translate-x-1 transition-transform" />
-                        </Link>
+                        </HashLink>
                       </div>
                     </div>
                   </div>
@@ -469,16 +617,14 @@ const Header = () => {
 
               {/* Simple Links */}
               <NavigationMenuItem>
-                <Link to="/support">
-                  <NavigationMenuLink className="inline-flex h-9 items-center justify-center px-4 text-sm font-medium text-gray-700 hover:text-green-700 transition-colors duration-200">
-                    Support
-                  </NavigationMenuLink>
-                </Link>
+                <HashLink
+                  to="/support"
+                  className="inline-flex h-9 items-center justify-center px-4 text-sm font-medium text-gray-700 hover:text-green-700 transition-colors duration-200"
+                  smooth
+                >
+                  Support
+                </HashLink>
               </NavigationMenuItem>
-
-              
-
-              
             </NavigationMenuList>
           </NavigationMenu>
         </nav>
@@ -486,19 +632,15 @@ const Header = () => {
         {/* Right Side: Contact & Mobile Menu */}
         <div className="flex items-center gap-4">
           {/* Animated Demo Button */}
-          <Button className="relative bg-gradient-to-r from-green-600 via-green-500 to-green-600 hover:from-green-700 hover:via-green-600 hover:to-green-700 shadow-lg hover:shadow-xl text-white transition-all duration-300 group overflow-hidden animate-gradient-x">
-            <Link
-              to="/request-demo"
-              className="flex items-center gap-2 relative z-10"
-            >
-              <span className="group-hover:scale-105 transition-transform duration-300">
-                Request Demo
-              </span>
-              <ChevronDown className="h-4 w-4 group-hover:translate-y-1 transition-transform duration-300" />
-            </Link>
-            {/* Shine effect */}
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-          </Button>
+          <a
+            href="https://positivequadrant.in/contact-us"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="relative bg-gradient-to-r from-green-600 via-green-500 to-green-600 hover:from-green-700 hover:via-green-600 hover:to-green-700 shadow-lg hover:shadow-xl text-white transition-all duration-300 group overflow-hidden animate-gradient-x">
+              Request Demo
+            </Button>
+          </a>
 
           {/* Mobile Menu Button */}
           <Sheet>
@@ -539,30 +681,34 @@ const Header = () => {
                         Platform
                       </h3>
                       <div className="space-y-2 ml-2">
-                        <Link
+                        <HashLink
                           to="/platform/overview"
                           className="block py-2 text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all"
+                          smooth
                         >
                           Overview
-                        </Link>
-                        <Link
+                        </HashLink>
+                        <HashLink
                           to="/modules/production"
                           className="block py-2 text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all"
+                          smooth
                         >
                           Production Monitoring
-                        </Link>
-                        <Link
+                        </HashLink>
+                        <HashLink
                           to="/modules/oee"
                           className="block py-2 text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all"
+                          smooth
                         >
                           OEE & KPI
-                        </Link>
-                        <Link
+                        </HashLink>
+                        <HashLink
                           to="/modules/energy"
                           className="block py-2 text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all"
+                          smooth
                         >
                           Energy Management
-                        </Link>
+                        </HashLink>
                       </div>
                     </div>
 
@@ -571,64 +717,69 @@ const Header = () => {
                         Solutions
                       </h3>
                       <div className="space-y-2 ml-2">
-                        <Link
+                        <HashLink
                           to="/solutions/predictive-maintenance"
                           className="block py-2 text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all"
+                          smooth
                         >
                           Predictive Maintenance
-                        </Link>
-                        <Link
+                        </HashLink>
+                        <HashLink
                           to="/solutions/smart-factory"
                           className="block py-2 text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all"
+                          smooth
                         >
                           Smart Factory
-                        </Link>
-                        <Link
+                        </HashLink>
+                        <HashLink
                           to="/industries/automotive"
                           className="block py-2 text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all"
+                          smooth
                         >
                           Automotive
-                        </Link>
-                        <Link
+                        </HashLink>
+                        <HashLink
                           to="/industries/pharma"
                           className="block py-2 text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all"
+                          smooth
                         >
                           Pharmaceutical
-                        </Link>
+                        </HashLink>
                       </div>
                     </div>
 
                     <div className="py-4 border-t">
-                      <Link
+                      <HashLink
                         to="/support"
                         className="block py-3 text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all"
+                        smooth
                       >
                         Support
-                      </Link>
-                     
-                     
+                      </HashLink>
                     </div>
                   </nav>
                 </div>
 
                 <div className="p-6 bg-gray-50/50">
-                  <Button className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden relative">
-                    <Link
-                      to="/request-demo"
-                      className="flex items-center justify-center gap-2 w-full relative z-10"
-                    >
+                  <a
+                    href="https://positivequadrant.in/contact-us"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="relative bg-gradient-to-r from-green-600 via-green-500 to-green-600 hover:from-green-700 hover:via-green-600 hover:to-green-700 shadow-lg hover:shadow-xl text-white transition-all duration-300 group overflow-hidden animate-gradient-x">
                       Request Demo
-                    </Link>
-                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-                  </Button>
+                    </Button>
+                  </a>
+
                   <p className="text-xs text-gray-500 text-center mt-3">
                     Need immediate help?{" "}
-                    <Link
+                    <HashLink
                       to="/contact"
                       className="text-green-600 hover:underline transition-colors"
+                      smooth
                     >
                       Contact support
-                    </Link>
+                    </HashLink>
                   </p>
                 </div>
               </div>

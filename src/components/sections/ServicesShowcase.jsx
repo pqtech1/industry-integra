@@ -370,12 +370,12 @@ const ServicesShowcase = () => {
                 </p>
               </div>
               <div className="md:w-1/3">
-                <Link
-                  to="/contact"
+                <a
+                  href="https://positivequadrant.in/contact-us"
                   className="inline-flex items-center justify-center w-full px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
                 >
                   Contact Us
-                </Link>
+                </a>
               </div>
             </div>
           </div>

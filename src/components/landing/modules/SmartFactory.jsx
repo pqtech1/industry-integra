@@ -445,27 +445,7 @@ const SmartFactory = () => {
                 that drives efficiency, quality, and productivity to new levels.
               </h2>
 
-              <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
-                <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg font-semibold rounded-lg border-2 border-green-600">
-                  <Link
-                    to="/factory-automation/demo"
-                    className="flex items-center gap-3"
-                  >
-                    <FaRocket className="h-5 w-5" />
-                    Schedule Automation Demo
-                  </Link>
-                </Button>
-
-                <Button className="bg-transparent hover:bg-white/10 text-white px-8 py-6 text-lg font-semibold rounded-lg border-2 border-white">
-                  <Link
-                    to="/contact/automation-expert"
-                    className="flex items-center gap-3"
-                  >
-                    <FaUsers className="h-5 w-5" />
-                    Talk to Automation Expert
-                  </Link>
-                </Button>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -971,7 +951,7 @@ const SmartFactory = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-black via-gray-900 to-green-900 text-white">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-black via-slate-950 to-green-600 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center">
             <div className="inline-block p-6 rounded-2xl bg-gradient-to-r from-green-600 to-green-700 mb-8">
@@ -1000,27 +980,7 @@ const SmartFactory = () => {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
-              <Button className="bg-green-600 text-white hover:bg-green-700 px-8 py-6 text-lg font-semibold rounded-lg border-2 border-green-600">
-                <Link
-                  to="/factory-automation/demo"
-                  className="flex items-center gap-3"
-                >
-                  <FaRocket className="h-5 w-5 md:h-6 md:w-6" />
-                  Request Live Demo
-                </Link>
-              </Button>
-
-              <Button className="bg-transparent text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold rounded-lg border-2 border-white">
-                <Link
-                  to="/contact/roi-analysis"
-                  className="flex items-center gap-3"
-                >
-                  <FaChartLine className="h-5 w-5 md:h-6 md:w-6" />
-                  Get Free ROI Analysis
-                </Link>
-              </Button>
-            </div>
+            
 
             <p className="text-gray-400 mt-6 md:mt-8 text-sm">
               Implementation in 8-12 weeks • 24/7 technical support •

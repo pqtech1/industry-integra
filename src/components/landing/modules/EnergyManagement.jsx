@@ -320,27 +320,7 @@ const EnergyManagement = () => {
                 operations.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-                <Button className="bg-green-600 hover:bg-green-700 text-white px-6 md:px-8 py-4 md:py-6 text-base md:text-lg font-semibold rounded-lg shadow-xl">
-                  <Link to="/energy/demo" className="flex items-center gap-2">
-                    <FaBolt className="h-4 w-4 md:h-5 md:w-5" />
-                    Request Energy Demo
-                  </Link>
-                </Button>
-
-                <Button
-                  variant="outline"
-                  className="px-6 md:px-8 py-4 md:py-6 text-base md:text-lg bg-white text-black hover:bg-gray-900 hover:text-white rounded-lg shadow-xl"
-                >
-                  <Link
-                    to="/contact/energy-expert"
-                    className="flex items-center gap-2"
-                  >
-                    <FaUsers className="h-4 w-4 md:h-5 md:w-5" />
-                    Consult Energy Specialist
-                  </Link>
-                </Button>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -943,26 +923,7 @@ const EnergyManagement = () => {
               platform.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-              <Button className="bg-green-600 hover:bg-green-700 text-white px-6 md:px-8 py-4 md:py-6 text-base md:text-lg font-semibold rounded-lg shadow-xl">
-                <Link to="/energy/demo" className="flex items-center gap-2">
-                  <FaBolt className="h-4 w-4 md:h-5 md:w-5" />
-                  Schedule Energy Audit & Demo
-                </Link>
-              </Button>
-              <Button
-                variant="outline"
-                className="px-6 md:px-8 py-4 md:py-6 text-base md:text-lg border-2 border-black text-black hover:bg-gray-50 rounded-lg shadow-xl"
-              >
-                <Link
-                  to="/resources/energy-case-studies"
-                  className="flex items-center gap-2"
-                >
-                  <FaChartLine className="h-4 w-4 md:h-5 md:w-5" />
-                  View Energy Savings Case Studies
-                </Link>
-              </Button>
-            </div>
+            
 
             <div className="mt-6 md:mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-2xl mx-auto">
               <div className="text-center">

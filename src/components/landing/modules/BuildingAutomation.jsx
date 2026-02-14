@@ -424,27 +424,7 @@ const BuildingAutomation = () => {
               </p>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
-                <Button className="bg-green-600 text-white hover:bg-green-700 px-8 py-6 text-lg font-semibold rounded-lg border-2 border-green-600">
-                  <Link
-                    to="/demo/building-automation"
-                    className="flex items-center gap-3"
-                  >
-                    <FaRocket className="h-5 w-5" />
-                    Request Live Demo
-                  </Link>
-                </Button>
-
-                <Button className="bg-transparent text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold rounded-lg border-2 border-white">
-                  <Link
-                    to="/contact/automation-expert"
-                    className="flex items-center gap-3"
-                  >
-                    <FaUsers className="h-5 w-5" />
-                    Consult Automation Specialist
-                  </Link>
-                </Button>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -921,27 +901,7 @@ const BuildingAutomation = () => {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
-              <Button className="bg-green-600 text-white hover:bg-green-700 px-8 py-6 text-lg font-semibold rounded-lg border-2 border-green-600">
-                <Link
-                  to="/demo/building-automation"
-                  className="flex items-center gap-3"
-                >
-                  <FaRocket className="h-5 w-5 md:h-6 md:w-6" />
-                  Schedule Live Demo
-                </Link>
-              </Button>
-
-              <Button className="bg-transparent text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold rounded-lg border-2 border-white">
-                <Link
-                  to="/contact/roi-analysis"
-                  className="flex items-center gap-3"
-                >
-                  <FaChartLine className="h-5 w-5 md:h-6 md:w-6" />
-                  Get Free ROI Analysis
-                </Link>
-              </Button>
-            </div>
+            
 
             <p className="text-gray-400 mt-6 md:mt-8 text-sm">
               Complete implementation in 6-8 weeks • 24/7 support •

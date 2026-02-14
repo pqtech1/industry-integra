@@ -177,16 +177,16 @@ const Homepage = () => {
                     size="lg"
                     className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all"
                   >
-                    <Link
-                      to="/request-demo"
+                    <a
+                      href="https://positivequadrant.in/contact-us"
                       className="flex items-center gap-2"
                     >
                       Request a Demo
                       <ArrowRight className="h-5 w-5" />
-                    </Link>
+                    </a>
                   </Button>
 
-                  <Link to="/platform/overview">
+                  {/* <Link to="/platform/overview">
                     <Button
                       size="lg"
                       variant="outline"
@@ -195,7 +195,7 @@ const Homepage = () => {
                       <Play className="h-5 w-5 mr-2" />
                       Watch Platform Tour
                     </Button>
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
 
@@ -339,7 +339,7 @@ const Homepage = () => {
           </div>
 
           {/* CTA */}
-          <div className="text-center">
+          {/* <div className="text-center">
             <Button
               variant="outline"
               size="lg"
@@ -353,7 +353,7 @@ const Homepage = () => {
                 <ArrowRight className="h-5 w-5" />
               </Link>
             </Button>
-          </div>
+          </div> */}
         </div>
       </section>
 
