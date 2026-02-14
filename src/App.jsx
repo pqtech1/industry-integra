@@ -8,7 +8,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
-import { ConfirmDialogProvider } from "@omit/react-confirm-dialog";
+
 
 import { trackingService } from "./services/trackingService";
 
@@ -157,7 +157,7 @@ function App() {
   }, []); // Empty dependency array - runs only once
 
   return (
-    <ConfirmDialogProvider>
+   
       <Router basename="/industry-integra">
         <AuthProvider>
           {/* SINGLE tracking listener at root level */}
@@ -354,7 +354,7 @@ function App() {
           </Routes>
         </AuthProvider>
       </Router>
-    </ConfirmDialogProvider>
+   
   );
 }
 
