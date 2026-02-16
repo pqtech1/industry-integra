@@ -53,7 +53,6 @@ const SupportPage = () => {
               >
                 {CONTACT_DETAILS.phone}
               </a>
-              <p className="text-xs text-gray-500 mt-2">Mon-Fri, 9am-6pm</p>
             </div>
 
             {/* Email */}
