@@ -77,11 +77,7 @@ const Header = () => {
 
   // Toggle mobile dropdown
   const toggleDropdown = (name) => {
-    if (openDropdown === name) {
-      setOpenDropdown(null);
-    } else {
-      setOpenDropdown(name);
-    }
+    setOpenDropdown(openDropdown === name ? null : name);
   };
 
   return (
@@ -113,25 +109,19 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden lg:block">
           <NavigationMenu>
-            <NavigationMenuList className="gap-0">
+            <NavigationMenuList>
               {/* Platform Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700 transition-colors duration-200"
-                  onClick={() => setOpenDropdown(null)}
-                >
+                <NavigationMenuTrigger className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700">
                   Platform
                 </NavigationMenuTrigger>
-                <NavigationMenuContent
-                  className="bg-white shadow-2xl rounded-lg p-0"
-                  onPointerLeave={() => setOpenDropdown(null)}
-                >
+                <NavigationMenuContent className="bg-white shadow-2xl rounded-lg p-0">
                   <div className="grid w-[800px] grid-cols-2">
-                    {/* Left Column */}
+                    {/* Left Column - Platform Overview */}
                     <div className="p-8">
                       <div className="mb-6">
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="h-10 w-10 rounded-lg bg-green-50 flex items-center justify-center transition-transform hover:scale-105">
+                          <div className="h-10 w-10 rounded-lg bg-green-50 flex items-center justify-center">
                             <Cpu className="h-5 w-5 text-green-600" />
                           </div>
                           <div>
@@ -155,125 +145,138 @@ const Header = () => {
                             Platform Overview
                           </h4>
                           <div className="space-y-2">
-                            <HashLink
-                              to="/what-is-industry-integra-360"
-                              className="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 group transition-all duration-200 hover:shadow-sm"
-                              smooth
-                              onClick={() => setOpenDropdown(null)}
-                            >
-                              <div className="h-8 w-8 rounded-lg bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition-colors">
-                                <Target className="h-4 w-4 text-green-600" />
-                              </div>
-                              <div>
-                                <div className="text-sm font-medium text-gray-900 group-hover:text-green-700 transition-colors">
-                                  What is INTEGRA 360
+                            <NavigationMenuLink asChild>
+                              <HashLink
+                                to="/what-is-industry-integra-360"
+                                smooth
+                                className="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 group transition-all duration-200 hover:shadow-sm"
+                                onClick={() => setOpenDropdown(null)}
+                              >
+                                <div className="h-8 w-8 rounded-lg bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition-colors">
+                                  <Target className="h-4 w-4 text-green-600" />
                                 </div>
-                                <div className="text-xs text-gray-500">
-                                  Learn about our platform
+                                <div>
+                                  <div className="text-sm font-medium text-gray-900 group-hover:text-green-700 transition-colors">
+                                    What is INTEGRA 360
+                                  </div>
+                                  <div className="text-xs text-gray-500">
+                                    Learn about our platform
+                                  </div>
                                 </div>
-                              </div>
-                            </HashLink>
-                            <HashLink
-                              to="/platform-architecture"
-                              className="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 group transition-all duration-200 hover:shadow-sm"
-                              smooth
-                              onClick={() => setOpenDropdown(null)}
-                            >
-                              <div className="h-8 w-8 rounded-lg bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition-colors">
-                                <Server className="h-4 w-4 text-green-600" />
-                              </div>
-                              <div>
-                                <div className="text-sm font-medium text-gray-900 group-hover:text-green-700 transition-colors">
-                                  Platform Architecture
+                              </HashLink>
+                            </NavigationMenuLink>
+
+                            <NavigationMenuLink asChild>
+                              <HashLink
+                                to="/platform-architecture"
+                                smooth
+                                className="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 group transition-all duration-200 hover:shadow-sm"
+                                onClick={() => setOpenDropdown(null)}
+                              >
+                                <div className="h-8 w-8 rounded-lg bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition-colors">
+                                  <Server className="h-4 w-4 text-green-600" />
                                 </div>
-                                <div className="text-xs text-gray-500">
-                                  Scalable and reliable design
+                                <div>
+                                  <div className="text-sm font-medium text-gray-900 group-hover:text-green-700 transition-colors">
+                                    Platform Architecture
+                                  </div>
+                                  <div className="text-xs text-gray-500">
+                                    Scalable and reliable design
+                                  </div>
                                 </div>
-                              </div>
-                            </HashLink>
+                              </HashLink>
+                            </NavigationMenuLink>
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Right Column */}
+                    {/* Right Column - Core Modules */}
                     <div className="p-8">
                       <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-6">
                         Core Modules
                       </h4>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-4">
-                          <HashLink
-                            to="/industry-integra-for-process"
-                            className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-green-200 hover:bg-green-50"
-                            smooth
-                            onClick={() => setOpenDropdown(null)}
-                          >
-                            <div className="flex items-center gap-3 mb-2">
-                              <Monitor className="h-5 w-5 text-green-600" />
-                              <span className="text-sm font-medium text-gray-900">
-                                Process Monitoring
-                              </span>
-                            </div>
-                            <p className="text-xs text-gray-500">
-                              Real-time process efficiency and production
-                              insights
-                            </p>
-                          </HashLink>
+                          <NavigationMenuLink asChild>
+                            <HashLink
+                              to="/industry-integra-for-process"
+                              smooth
+                              className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-green-200 hover:bg-green-50"
+                              onClick={() => setOpenDropdown(null)}
+                            >
+                              <div className="flex items-center gap-3 mb-2">
+                                <Monitor className="h-5 w-5 text-green-600" />
+                                <span className="text-sm font-medium text-gray-900">
+                                  Process Monitoring
+                                </span>
+                              </div>
+                              <p className="text-xs text-gray-500">
+                                Real-time process efficiency and production
+                                insights
+                              </p>
+                            </HashLink>
+                          </NavigationMenuLink>
 
-                          <HashLink
-                            to="/industry-integra-for-energy"
-                            className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-green-200 hover:bg-green-50"
-                            smooth
-                            onClick={() => setOpenDropdown(null)}
-                          >
-                            <div className="flex items-center gap-3 mb-2">
-                              <Zap className="h-5 w-5 text-green-600" />
-                              <span className="text-sm font-medium text-gray-900">
-                                Energy Management
-                              </span>
-                            </div>
-                            <p className="text-xs text-gray-500">
-                              Monitor and optimize energy usage and costs
-                            </p>
-                          </HashLink>
+                          <NavigationMenuLink asChild>
+                            <HashLink
+                              to="/industry-integra-for-energy"
+                              smooth
+                              className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-green-200 hover:bg-green-50"
+                              onClick={() => setOpenDropdown(null)}
+                            >
+                              <div className="flex items-center gap-3 mb-2">
+                                <Zap className="h-5 w-5 text-green-600" />
+                                <span className="text-sm font-medium text-gray-900">
+                                  Energy Management
+                                </span>
+                              </div>
+                              <p className="text-xs text-gray-500">
+                                Monitor and optimize energy usage and costs
+                              </p>
+                            </HashLink>
+                          </NavigationMenuLink>
                         </div>
 
                         <div className="space-y-4">
-                          <HashLink
-                            to="/industry-integra-for-building"
-                            className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-green-200 hover:bg-green-50"
-                            smooth
-                            onClick={() => setOpenDropdown(null)}
-                          >
-                            <div className="flex items-center gap-3 mb-2">
-                              <BarChart3 className="h-5 w-5 text-green-600" />
-                              <span className="text-sm font-medium text-gray-900">
-                                Building Management
-                              </span>
-                            </div>
-                            <p className="text-xs text-gray-500">
-                              HVAC, utilities, and building performance
-                              monitoring
-                            </p>
-                          </HashLink>
+                          <NavigationMenuLink asChild>
+                            <HashLink
+                              to="/industry-integra-for-building"
+                              smooth
+                              className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-green-200 hover:bg-green-50"
+                              onClick={() => setOpenDropdown(null)}
+                            >
+                              <div className="flex items-center gap-3 mb-2">
+                                <BarChart3 className="h-5 w-5 text-green-600" />
+                                <span className="text-sm font-medium text-gray-900">
+                                  Building Management
+                                </span>
+                              </div>
+                              <p className="text-xs text-gray-500">
+                                HVAC, utilities, and building performance
+                                monitoring
+                              </p>
+                            </HashLink>
+                          </NavigationMenuLink>
 
-                          <HashLink
-                            to="/industry-integra-for-factory"
-                            className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-green-200 hover:bg-green-50"
-                            smooth
-                            onClick={() => setOpenDropdown(null)}
-                          >
-                            <div className="flex items-center gap-3 mb-2">
-                              <Shield className="h-5 w-5 text-green-600" />
-                              <span className="text-sm font-medium text-gray-900">
-                                Factory Intelligence
-                              </span>
-                            </div>
-                            <p className="text-xs text-gray-500">
-                              Quality, traceability, and compliance control
-                            </p>
-                          </HashLink>
+                          <NavigationMenuLink asChild>
+                            <HashLink
+                              to="/industry-integra-for-factory"
+                              smooth
+                              className="block p-3 rounded-lg hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 bg-white border border-gray-100 hover:border-green-200 hover:bg-green-50"
+                              onClick={() => setOpenDropdown(null)}
+                            >
+                              <div className="flex items-center gap-3 mb-2">
+                                <Shield className="h-5 w-5 text-green-600" />
+                                <span className="text-sm font-medium text-gray-900">
+                                  Factory Intelligence
+                                </span>
+                              </div>
+                              <p className="text-xs text-gray-500">
+                                Quality, traceability, and compliance control
+                              </p>
+                            </HashLink>
+                          </NavigationMenuLink>
                         </div>
                       </div>
                     </div>
@@ -283,17 +286,10 @@ const Header = () => {
 
               {/* AI Solutions Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700 transition-colors duration-200"
-                  onClick={() => setOpenDropdown(null)}
-                >
+                <NavigationMenuTrigger className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700">
                   AI Solutions
                 </NavigationMenuTrigger>
-
-                <NavigationMenuContent
-                  className="bg-white shadow-2xl rounded-xl p-0 overflow-hidden"
-                  onPointerLeave={() => setOpenDropdown(null)}
-                >
+                <NavigationMenuContent className="bg-white shadow-2xl rounded-xl p-0 overflow-hidden">
                   <div className="grid w-[950px] grid-cols-3">
                     {/* LEFT SIDE – AI INTRO */}
                     <div className="col-span-1 bg-gradient-to-br from-green-50 to-white p-8 border-r">
@@ -306,7 +302,6 @@ const Header = () => {
                             AI-Powered Automation
                           </h3>
                         </div>
-
                         <p className="text-sm text-gray-600 leading-relaxed">
                           Intelligent automation solutions powered by Artificial
                           Intelligence, real-time analytics, and smart
@@ -319,94 +314,103 @@ const Header = () => {
                     <div className="col-span-2 p-8">
                       <div className="grid grid-cols-2 gap-6">
                         {/* PROCESS AUTOMATION */}
-                        <HashLink
-                          to="/ai-solutions-for-process-automation"
-                          className="group rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 bg-white"
-                          smooth
-                          onClick={() => setOpenDropdown(null)}
-                        >
-                          <img
-                            src="modules/process-bg.webp"
-                            alt="Process Automation"
-                            className="h-32 w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                          <div className="p-4">
-                            <h4 className="text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
-                              Process Automation
-                            </h4>
-                            <p className="text-xs text-gray-500 mt-1">
-                              AI-driven production monitoring and optimization.
-                            </p>
-                          </div>
-                        </HashLink>
+                        <NavigationMenuLink asChild>
+                          <HashLink
+                            to="/ai-solutions-for-process-automation"
+                            smooth
+                            className="group rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 bg-white"
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            <img
+                              src="modules/process-bg.webp"
+                              alt="Process Automation"
+                              className="h-32 w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                            <div className="p-4">
+                              <h4 className="text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
+                                Process Automation
+                              </h4>
+                              <p className="text-xs text-gray-500 mt-1">
+                                AI-driven production monitoring and
+                                optimization.
+                              </p>
+                            </div>
+                          </HashLink>
+                        </NavigationMenuLink>
 
                         {/* BUILDING AUTOMATION */}
-                        <HashLink
-                          to="/ai-solutions-for-building-automation"
-                          className="group rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 bg-white"
-                          smooth
-                          onClick={() => setOpenDropdown(null)}
-                        >
-                          <img
-                            src="modules/building-bg.webp"
-                            alt="Building Automation"
-                            className="h-32 w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                          <div className="p-4">
-                            <h4 className="text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
-                              Building Automation
-                            </h4>
-                            <p className="text-xs text-gray-500 mt-1">
-                              Smart HVAC, lighting, and facility intelligence.
-                            </p>
-                          </div>
-                        </HashLink>
+                        <NavigationMenuLink asChild>
+                          <HashLink
+                            to="/ai-solutions-for-building-automation"
+                            smooth
+                            className="group rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 bg-white"
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            <img
+                              src="modules/building-bg.webp"
+                              alt="Building Automation"
+                              className="h-32 w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                            <div className="p-4">
+                              <h4 className="text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
+                                Building Automation
+                              </h4>
+                              <p className="text-xs text-gray-500 mt-1">
+                                Smart HVAC, lighting, and facility intelligence.
+                              </p>
+                            </div>
+                          </HashLink>
+                        </NavigationMenuLink>
 
                         {/* FACTORY AUTOMATION */}
-                        <HashLink
-                          to="/ai-solutions-for-factory-automation"
-                          className="group rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 bg-white"
-                          smooth
-                          onClick={() => setOpenDropdown(null)}
-                        >
-                          <img
-                            src="modules/factory-bg.webp"
-                            alt="Factory Automation"
-                            className="h-32 w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                          <div className="p-4">
-                            <h4 className="text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
-                              Factory Intelligence
-                            </h4>
-                            <p className="text-xs text-gray-500 mt-1">
-                              AI-based quality, traceability, and compliance
-                              control.
-                            </p>
-                          </div>
-                        </HashLink>
+                        <NavigationMenuLink asChild>
+                          <HashLink
+                            to="/ai-solutions-for-factory-automation"
+                            smooth
+                            className="group rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 bg-white"
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            <img
+                              src="modules/factory-bg.webp"
+                              alt="Factory Automation"
+                              className="h-32 w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                            <div className="p-4">
+                              <h4 className="text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
+                                Factory Intelligence
+                              </h4>
+                              <p className="text-xs text-gray-500 mt-1">
+                                AI-based quality, traceability, and compliance
+                                control.
+                              </p>
+                            </div>
+                          </HashLink>
+                        </NavigationMenuLink>
 
                         {/* ENERGY AUTOMATION */}
-                        <HashLink
-                          to="/ai-solutions-for-energy-automation"
-                          className="group rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 bg-white"
-                          smooth
-                          onClick={() => setOpenDropdown(null)}
-                        >
-                          <img
-                            src="modules/energy-bg.webp"
-                            alt="Energy Automation"
-                            className="h-32 w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                          <div className="p-4">
-                            <h4 className="text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
-                              Energy Automation
-                            </h4>
-                            <p className="text-xs text-gray-500 mt-1">
-                              Intelligent energy monitoring and cost
-                              optimization.
-                            </p>
-                          </div>
-                        </HashLink>
+                        <NavigationMenuLink asChild>
+                          <HashLink
+                            to="/ai-solutions-for-energy-automation"
+                            smooth
+                            className="group rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 bg-white"
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            <img
+                              src="modules/energy-bg.webp"
+                              alt="Energy Automation"
+                              className="h-32 w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                            <div className="p-4">
+                              <h4 className="text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
+                                Energy Automation
+                              </h4>
+                              <p className="text-xs text-gray-500 mt-1">
+                                Intelligent energy monitoring and cost
+                                optimization.
+                              </p>
+                            </div>
+                          </HashLink>
+                        </NavigationMenuLink>
                       </div>
                     </div>
                   </div>
@@ -415,22 +419,16 @@ const Header = () => {
 
               {/* Solutions Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700 transition-colors duration-200"
-                  onClick={() => setOpenDropdown(null)}
-                >
+                <NavigationMenuTrigger className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700">
                   Solutions
                 </NavigationMenuTrigger>
-                <NavigationMenuContent
-                  className="bg-white shadow-2xl rounded-lg p-0"
-                  onPointerLeave={() => setOpenDropdown(null)}
-                >
+                <NavigationMenuContent className="bg-white shadow-2xl rounded-lg p-0">
                   <div className="grid w-[800px] grid-cols-2">
                     {/* Left Column */}
                     <div className="p-8">
                       <div className="mb-6">
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="h-10 w-10 rounded-lg bg-green-50 flex items-center justify-center transition-transform hover:scale-105">
+                          <div className="h-10 w-10 rounded-lg bg-green-50 flex items-center justify-center">
                             <Factory className="h-5 w-5 text-green-600" />
                           </div>
                           <div>
@@ -449,38 +447,43 @@ const Header = () => {
                       </div>
 
                       <div className="space-y-4">
-                        <HashLink
-                          to="/solutions#predictive-maintenance"
-                          className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-all duration-200 hover:shadow-sm"
-                          smooth
-                          onClick={() => setOpenDropdown(null)}
-                        >
-                          <Activity className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
-                          <div>
-                            <div className="text-sm font-medium text-gray-900 group-hover:text-green-700 transition-colors">
-                              Predictive Maintenance
+                        <NavigationMenuLink asChild>
+                          <HashLink
+                            to="/solutions#predictive-maintenance"
+                            smooth
+                            className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-all duration-200 hover:shadow-sm"
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            <Activity className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
+                            <div>
+                              <div className="text-sm font-medium text-gray-900 group-hover:text-green-700 transition-colors">
+                                Predictive Maintenance
+                              </div>
+                              <div className="text-xs text-gray-500">
+                                Reduce downtime with AI insights
+                              </div>
                             </div>
-                            <div className="text-xs text-gray-500">
-                              Reduce downtime with AI insights
+                          </HashLink>
+                        </NavigationMenuLink>
+
+                        <NavigationMenuLink asChild>
+                          <HashLink
+                            to="/solutions#energy-optimization"
+                            smooth
+                            className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-all duration-200 hover:shadow-sm"
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            <Zap className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
+                            <div>
+                              <div className="text-sm font-medium text-gray-900 group-hover:text-green-700 transition-colors">
+                                Energy Optimization
+                              </div>
+                              <div className="text-xs text-gray-500">
+                                Cut energy costs by up to 30%
+                              </div>
                             </div>
-                          </div>
-                        </HashLink>
-                        <HashLink
-                          to="/solutions#energy-optimization"
-                          className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-all duration-200 hover:shadow-sm"
-                          smooth
-                          onClick={() => setOpenDropdown(null)}
-                        >
-                          <Zap className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
-                          <div>
-                            <div className="text-sm font-medium text-gray-900 group-hover:text-green-700 transition-colors">
-                              Energy Optimization
-                            </div>
-                            <div className="text-xs text-gray-500">
-                              Cut energy costs by up to 30%
-                            </div>
-                          </div>
-                        </HashLink>
+                          </HashLink>
+                        </NavigationMenuLink>
                       </div>
                     </div>
 
@@ -498,15 +501,16 @@ const Header = () => {
                               "FMCG",
                               "Chemical",
                             ].map((industry) => (
-                              <HashLink
-                                to="/solutions#by-industry"
-                                key={industry}
-                                className="block text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all duration-200"
-                                smooth
-                                onClick={() => setOpenDropdown(null)}
-                              >
-                                {industry}
-                              </HashLink>
+                              <NavigationMenuLink asChild key={industry}>
+                                <HashLink
+                                  to="/solutions#by-industry"
+                                  smooth
+                                  className="block text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all duration-200"
+                                  onClick={() => setOpenDropdown(null)}
+                                >
+                                  {industry}
+                                </HashLink>
+                              </NavigationMenuLink>
                             ))}
                           </div>
                         </div>
@@ -521,29 +525,32 @@ const Header = () => {
                               "Remote Monitoring",
                               "Industry 4.0",
                             ].map((usecase) => (
-                              <HashLink
-                                to="/solutions#use-cases"
-                                key={usecase}
-                                className="block text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all duration-200"
-                                smooth
-                                onClick={() => setOpenDropdown(null)}
-                              >
-                                {usecase}
-                              </HashLink>
+                              <NavigationMenuLink asChild key={usecase}>
+                                <HashLink
+                                  to="/solutions#use-cases"
+                                  smooth
+                                  className="block text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all duration-200"
+                                  onClick={() => setOpenDropdown(null)}
+                                >
+                                  {usecase}
+                                </HashLink>
+                              </NavigationMenuLink>
                             ))}
                           </div>
                         </div>
                       </div>
                       <div className="mt-8 pt-6 border-t">
-                        <HashLink
-                          to="/solutions"
-                          className="text-sm font-medium text-green-600 hover:text-green-800 inline-flex items-center gap-1 group transition-all"
-                          smooth
-                          onClick={() => setOpenDropdown(null)}
-                        >
-                          Explore all solutions
-                          <ChevronDown className="h-4 w-4 -rotate-90 group-hover:translate-x-1 transition-transform" />
-                        </HashLink>
+                        <NavigationMenuLink asChild>
+                          <HashLink
+                            to="/solutions"
+                            smooth
+                            className="text-sm font-medium text-green-600 hover:text-green-800 inline-flex items-center gap-1 group transition-all"
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            Explore all solutions
+                            <ChevronDown className="h-4 w-4 -rotate-90 group-hover:translate-x-1 transition-transform" />
+                          </HashLink>
+                        </NavigationMenuLink>
                       </div>
                     </div>
                   </div>
@@ -552,22 +559,16 @@ const Header = () => {
 
               {/* Services Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700 transition-colors duration-200"
-                  onClick={() => setOpenDropdown(null)}
-                >
+                <NavigationMenuTrigger className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700">
                   Services
                 </NavigationMenuTrigger>
-                <NavigationMenuContent
-                  className="bg-white shadow-2xl rounded-lg p-0"
-                  onPointerLeave={() => setOpenDropdown(null)}
-                >
+                <NavigationMenuContent className="bg-white shadow-2xl rounded-lg p-0">
                   <div className="grid w-[800px] grid-cols-2">
                     {/* Left Column */}
                     <div className="p-8">
                       <div className="mb-6">
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="h-10 w-10 rounded-lg bg-green-50 flex items-center justify-center transition-transform hover:scale-105">
+                          <div className="h-10 w-10 rounded-lg bg-green-50 flex items-center justify-center">
                             <Wrench className="h-5 w-5 text-green-600" />
                           </div>
                           <div>
@@ -586,38 +587,43 @@ const Header = () => {
                       </div>
 
                       <div className="space-y-4">
-                        <HashLink
-                          to="/services#implementation-consulting"
-                          className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-all duration-200 hover:shadow-sm"
-                          smooth
-                          onClick={() => setOpenDropdown(null)}
-                        >
-                          <Settings className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
-                          <div>
-                            <div className="text-sm font-medium text-gray-900 group-hover:text-green-700 transition-colors">
-                              Implementation Consulting
+                        <NavigationMenuLink asChild>
+                          <HashLink
+                            to="/services#implementation-consulting"
+                            smooth
+                            className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-all duration-200 hover:shadow-sm"
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            <Settings className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
+                            <div>
+                              <div className="text-sm font-medium text-gray-900 group-hover:text-green-700 transition-colors">
+                                Implementation Consulting
+                              </div>
+                              <div className="text-xs text-gray-500">
+                                Strategic roadmap and planning
+                              </div>
                             </div>
-                            <div className="text-xs text-gray-500">
-                              Strategic roadmap and planning
+                          </HashLink>
+                        </NavigationMenuLink>
+
+                        <NavigationMenuLink asChild>
+                          <HashLink
+                            to="/services#system-integration"
+                            smooth
+                            className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-all duration-200 hover:shadow-sm"
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            <Network className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
+                            <div>
+                              <div className="text-sm font-medium text-gray-900 group-hover:text-green-700 transition-colors">
+                                System Integration
+                              </div>
+                              <div className="text-xs text-gray-500">
+                                Seamless connectivity solutions
+                              </div>
                             </div>
-                          </div>
-                        </HashLink>
-                        <HashLink
-                          to="/services#system-integration"
-                          className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-all duration-200 hover:shadow-sm"
-                          smooth
-                          onClick={() => setOpenDropdown(null)}
-                        >
-                          <Network className="h-5 w-5 text-green-600 transition-transform group-hover:scale-110" />
-                          <div>
-                            <div className="text-sm font-medium text-gray-900 group-hover:text-green-700 transition-colors">
-                              System Integration
-                            </div>
-                            <div className="text-xs text-gray-500">
-                              Seamless connectivity solutions
-                            </div>
-                          </div>
-                        </HashLink>
+                          </HashLink>
+                        </NavigationMenuLink>
                       </div>
                     </div>
 
@@ -635,15 +641,16 @@ const Header = () => {
                               "SCADA Configuration",
                               "Data Integration",
                             ].map((service) => (
-                              <HashLink
-                                to="/services#technical-services"
-                                key={service}
-                                className="block text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all duration-200"
-                                smooth
-                                onClick={() => setOpenDropdown(null)}
-                              >
-                                {service}
-                              </HashLink>
+                              <NavigationMenuLink asChild key={service}>
+                                <HashLink
+                                  to="/services#technical-services"
+                                  smooth
+                                  className="block text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all duration-200"
+                                  onClick={() => setOpenDropdown(null)}
+                                >
+                                  {service}
+                                </HashLink>
+                              </NavigationMenuLink>
                             ))}
                           </div>
                         </div>
@@ -658,45 +665,50 @@ const Header = () => {
                               "ERP Integration",
                               "Mobile Applications",
                             ].map((service) => (
-                              <HashLink
-                                to="/services#software-services"
-                                key={service}
-                                className="block text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all duration-200"
-                                smooth
-                                onClick={() => setOpenDropdown(null)}
-                              >
-                                {service}
-                              </HashLink>
+                              <NavigationMenuLink asChild key={service}>
+                                <HashLink
+                                  to="/services#software-services"
+                                  smooth
+                                  className="block text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all duration-200"
+                                  onClick={() => setOpenDropdown(null)}
+                                >
+                                  {service}
+                                </HashLink>
+                              </NavigationMenuLink>
                             ))}
                           </div>
                         </div>
                       </div>
                       <div className="mt-8 pt-6 border-t">
-                        <HashLink
-                          to="/services"
-                          className="text-sm font-medium text-green-600 hover:text-green-800 inline-flex items-center gap-1 group transition-all"
-                          smooth
-                          onClick={() => setOpenDropdown(null)}
-                        >
-                          View all services
-                          <ChevronDown className="h-4 w-4 -rotate-90 group-hover:translate-x-1 transition-transform" />
-                        </HashLink>
+                        <NavigationMenuLink asChild>
+                          <HashLink
+                            to="/services"
+                            smooth
+                            className="text-sm font-medium text-green-600 hover:text-green-800 inline-flex items-center gap-1 group transition-all"
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            View all services
+                            <ChevronDown className="h-4 w-4 -rotate-90 group-hover:translate-x-1 transition-transform" />
+                          </HashLink>
+                        </NavigationMenuLink>
                       </div>
                     </div>
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              {/* Simple Links */}
+              {/* Support Link */}
               <NavigationMenuItem>
-                <HashLink
-                  to="/support"
-                  className="inline-flex h-9 items-center justify-center px-4 text-sm font-medium text-gray-700 hover:text-green-700 transition-colors duration-200"
-                  smooth
-                  onClick={() => setOpenDropdown(null)}
-                >
-                  Support
-                </HashLink>
+                <NavigationMenuLink asChild>
+                  <HashLink
+                    to="/support"
+                    smooth
+                    className="inline-flex h-9 items-center justify-center px-4 text-sm font-medium text-gray-700 hover:text-green-700 transition-colors duration-200"
+                    onClick={() => setOpenDropdown(null)}
+                  >
+                    Support
+                  </HashLink>
+                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -738,7 +750,8 @@ const Header = () => {
                     </div>
                     <div>
                       <div className="text-lg font-bold text-gray-900">
-                        Industry <span className="text-green-600">INTEGRA</span> 360
+                        Industry <span className="text-green-600">INTEGRA</span>{" "}
+                        360
                       </div>
                       <div className="text-xs text-gray-500">
                         Industrial Platform
@@ -757,7 +770,9 @@ const Header = () => {
                       >
                         <span>Platform</span>
                         <ChevronDown
-                          className={`h-4 w-4 transition-transform ${openDropdown === "platform" ? "rotate-180" : ""}`}
+                          className={`h-4 w-4 transition-transform ${
+                            openDropdown === "platform" ? "rotate-180" : ""
+                          }`}
                         />
                       </button>
 
@@ -830,7 +845,9 @@ const Header = () => {
                       >
                         <span>AI Solutions</span>
                         <ChevronDown
-                          className={`h-4 w-4 transition-transform ${openDropdown === "ai" ? "rotate-180" : ""}`}
+                          className={`h-4 w-4 transition-transform ${
+                            openDropdown === "ai" ? "rotate-180" : ""
+                          }`}
                         />
                       </button>
 
@@ -880,7 +897,9 @@ const Header = () => {
                       >
                         <span>Solutions</span>
                         <ChevronDown
-                          className={`h-4 w-4 transition-transform ${openDropdown === "solutions" ? "rotate-180" : ""}`}
+                          className={`h-4 w-4 transition-transform ${
+                            openDropdown === "solutions" ? "rotate-180" : ""
+                          }`}
                         />
                       </button>
 
@@ -996,7 +1015,9 @@ const Header = () => {
                       >
                         <span>Services</span>
                         <ChevronDown
-                          className={`h-4 w-4 transition-transform ${openDropdown === "services" ? "rotate-180" : ""}`}
+                          className={`h-4 w-4 transition-transform ${
+                            openDropdown === "services" ? "rotate-180" : ""
+                          }`}
                         />
                       </button>
 

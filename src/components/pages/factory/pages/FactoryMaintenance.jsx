@@ -44,11 +44,12 @@ import {
   RotateCcw,
   Search,
   Target,
-  
   Trash2,
   TrendingUp as TrendingUpIcon,
   TrendingDown as TrendingDownIcon,
   XCircle,
+  DollarSign,
+  Grid,
 } from "lucide-react";
 import {
   AreaChart,

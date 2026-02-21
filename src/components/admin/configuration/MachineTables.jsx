@@ -60,7 +60,18 @@ const MachinesPage = () => {
       const response = await api.get(`/machines/${module_id}`);
 
       if (response.data.success) {
-        setMachines(response.data.machines);
+        // Handle both lowercase and UPPERCASE column names
+        const machinesData = response.data.machines.map((machine) => ({
+          id: machine.id || machine.ID,
+          node_no: machine.node_no || machine.NODE_NO,
+          machine_name: machine.machine_name || machine.MACHINE_NAME,
+          machine_node_id: machine.machine_node_id || machine.MACHINE_NODE_ID,
+          min_table_name: machine.min_table_name || machine.MIN_TABLE_NAME,
+          hour_table_name: machine.hour_table_name || machine.HOUR_TABLE_NAME,
+          total_no_tags: machine.total_no_tags || machine.TOTAL_NO_TAGS || 0,
+          module_id: machine.module_id || machine.MODULE_ID,
+        }));
+        setMachines(machinesData);
       } else {
         toast.error(response.data.message || "Failed to load machines");
       }
@@ -82,22 +93,29 @@ const MachinesPage = () => {
       console.log("API Response:", response.data);
 
       if (response.data.success) {
-        setMachines(response.data.machines);
+        // Handle both lowercase and UPPERCASE column names
+        const machinesData = response.data.machines.map((machine) => ({
+          id: machine.id || machine.ID,
+          node_no: machine.node_no || machine.NODE_NO,
+          machine_name: machine.machine_name || machine.MACHINE_NAME,
+          machine_node_id: machine.machine_node_id || machine.MACHINE_NODE_ID,
+          min_table_name: machine.min_table_name || machine.MIN_TABLE_NAME,
+          hour_table_name: machine.hour_table_name || machine.HOUR_TABLE_NAME,
+          total_no_tags: machine.total_no_tags || machine.TOTAL_NO_TAGS || 0,
+          module_id: machine.module_id || machine.MODULE_ID,
+        }));
+        setMachines(machinesData);
 
-        // Show success message with details
-        const newMachines =
-          response.data.processed_results?.filter((r) => r.action === "created")
-            .length || 0;
-        const updatedMachines =
-          response.data.processed_results?.filter((r) => r.action === "updated")
-            .length || 0;
+        // Show success message with details from stats
+        const stats = response.data.stats || {};
 
         toast.success(
           <div>
             <div className="font-semibold">{response.data.message}</div>
-            {newMachines > 0 && <div>New machines: {newMachines}</div>}
-            {updatedMachines > 0 && (
-              <div>Updated machines: {updatedMachines}</div>
+            {stats.created > 0 && <div>New machines: {stats.created}</div>}
+            {stats.updated > 0 && <div>Updated machines: {stats.updated}</div>}
+            {stats.new_tags_added > 0 && (
+              <div>New tags added: {stats.new_tags_added}</div>
             )}
           </div>,
           { duration: 4000 },
@@ -396,6 +414,8 @@ const MachinesPage = () => {
                             <TooltipTrigger asChild>
                               <Button
                                 size="icon"
+                                variant="outline"
+                                className="hover:bg-emerald-50 hover:text-emerald-600 hover:border-emerald-200"
                                 onClick={() => handleView(machine)}
                               >
                                 <Eye size={16} />

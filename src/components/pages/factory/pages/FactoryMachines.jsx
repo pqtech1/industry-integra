@@ -47,12 +47,15 @@ import {
   Server,
   Tag,
   Target,
-  
   Trash2,
   TrendingUp as TrendingUpIcon,
   TrendingDown as TrendingDownIcon,
   Volume2,
   XCircle,
+  Grid,
+  List,
+  Search,
+  Plus,
 } from "lucide-react";
 import {
   AreaChart,
