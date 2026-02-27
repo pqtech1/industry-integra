@@ -317,12 +317,30 @@ const ScadaConfiguration = () => {
 
             <div className="space-y-2">
               <Label>Protocol</Label>
-              <Input
-                name="protocol"
-                value={formData.protocol}
-                onChange={handleChange}
-                placeholder="Enter protocol"
-              />
+
+              <Select
+                value={formData.protocol || ""}
+                onValueChange={(value) =>
+                  handleChange({ target: { name: "protocol", value } })
+                }
+              >
+                <SelectTrigger className="w-full text-left">
+                  <SelectValue
+                    placeholder="Select a protocol"
+                    className="text-muted-foreground"
+                  />
+                </SelectTrigger>
+
+                <SelectContent className="bg-white">
+                  <SelectItem value="opc_da">OPC DA</SelectItem>
+                  <SelectItem value="opc_hda">OPC HDA</SelectItem>
+                  <SelectItem value="opc_ua_da">OPC UA DA</SelectItem>
+                  <SelectItem value="opc_ua_hda">OPC UA HDA</SelectItem>
+                  <SelectItem value="modbus">Modbus</SelectItem>
+                  <SelectItem value="mqtt">MQTT</SelectItem>
+                  <SelectItem value="profinet">Profinet</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="space-y-2">
