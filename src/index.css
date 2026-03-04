@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
@@ -160,16 +159,15 @@
   p {
     @apply text-base md:text-base text-gray-600 mb-4;
   }
-  
-.react-confirm-dialog-overlay {
-  background-color: rgba(0, 0, 0, 0.4) !important;
-}
 
-.react-confirm-dialog {
-  background-color: white !important;
-  color: black !important;
-}
+  .react-confirm-dialog-overlay {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+  }
 
+  .react-confirm-dialog {
+    background-color: white !important;
+    color: black !important;
+  }
 }
 
 @layer utilities {
@@ -195,6 +193,28 @@
       transform: translateY(0);
     }
   }
+
+  @keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    14% {
+      transform: scale(1.10);
+    }
+    28% {
+      transform: scale(1);
+    }
+    42% {
+      transform: scale(1.11);
+    }
+    70% {
+      transform: scale(1);
+    }
+  }
+  .animate-heartbeat {
+    animation: heartbeat 2.5s infinite;
+  }
+
   .glass {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);

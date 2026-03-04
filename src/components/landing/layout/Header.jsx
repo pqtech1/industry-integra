@@ -634,22 +634,34 @@ const Header = () => {
                           <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">
                             Technical Services
                           </h4>
+
                           <div className="space-y-3">
                             {[
-                              "PLC Programming",
-                              "Cloud Infrastructure",
-                              "SCADA Configuration",
-                              "Data Integration",
+                              {
+                                name: "PLC Programming",
+                                path: "/plc-programming-services",
+                              },
+                              {
+                                name: "Cloud Infrastructure",
+                                path: "/cloud-infrastructure-services",
+                              },
+                              {
+                                name: "SCADA Configuration",
+                                path: "/scada-services",
+                              },
+                              {
+                                name: "Data Integration",
+                                path: "/data-integration-services",
+                              },
                             ].map((service) => (
-                              <NavigationMenuLink asChild key={service}>
-                                <HashLink
-                                  to="/services#technical-services"
-                                  smooth
+                              <NavigationMenuLink asChild key={service.name}>
+                                <Link
+                                  to={service.path}
                                   className="block text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all duration-200"
                                   onClick={() => setOpenDropdown(null)}
                                 >
-                                  {service}
-                                </HashLink>
+                                  {service.name}
+                                </Link>
                               </NavigationMenuLink>
                             ))}
                           </div>
