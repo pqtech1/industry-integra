@@ -646,7 +646,7 @@ const Header = () => {
                                 path: "/cloud-infrastructure-services",
                               },
                               {
-                                name: "SCADA Configuration",
+                                name: "SCADA Services",
                                 path: "/scada-services",
                               },
                               {
@@ -1089,7 +1089,7 @@ const Header = () => {
                               onClick={handleHashLinkClick}
                               smooth
                             >
-                              SCADA Configuration
+                              SCADA Services
                             </HashLink>
                             <HashLink
                               to="/services#technical-services"
