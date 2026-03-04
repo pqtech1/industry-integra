@@ -182,7 +182,10 @@ const PLCServices = () => {
                 communication protocols, delivering tailored solutions across
                 various industries.
               </p>
-              <a href="https://www.positivequadrant.in/contact-us" className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md shadow-md transition-all duration-300">
+              <a
+                href="https://www.positivequadrant.in/contact-us"
+                className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md shadow-md transition-all duration-300"
+              >
                 Get A Quote →
               </a>
             </div>

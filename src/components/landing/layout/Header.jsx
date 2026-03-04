@@ -722,6 +722,18 @@ const Header = () => {
                   </HashLink>
                 </NavigationMenuLink>
               </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link
+                    to="/protocols-we-serve"
+                    smooth
+                    className="inline-flex h-9 items-center justify-center px-4 text-sm font-medium text-gray-700 hover:text-green-700 transition-colors duration-200"
+                    onClick={() => setOpenDropdown(null)}
+                  >
+                    Protocols We Serve
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </nav>
