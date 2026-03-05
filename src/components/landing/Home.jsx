@@ -25,7 +25,8 @@ import {
   BatteryCharging,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@/components/ui/card";
 import { AnimatedList } from "@/components/ui/animated-list";
 import { Highlighter } from "@/components/ui/highlighter";
 import { LightRays } from "@/components/ui/light-rays";
@@ -128,149 +129,57 @@ const Homepage = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative w-full overflow-hidden">
-        <div className="relative py-12 lg:py-16 min-h-[85vh] flex items-center">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 ">
-              {/* Left Content */}
-              <div className="text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 text-green-700 text-sm font-medium mb-6">
-                  <Zap className="h-4 w-4" />
-                  Industry 4.0 Ready Platform
-                </div>
+      <section className="relative  py-15 ">
+        {/* dotted background */}
+        <div className="absolute inset-0 bg-[radial-gradient(#cfd6cf_1px,transparent_1px)] [background-size:16px_16px] opacity-100"></div>
 
-                <h1 className="">
-                  Transform Your Manufacturing with{" "}
-                  <span className="text-green-600 whitespace-nowrap">
-                    <WordRotate
-                      words={[
-                        "Real-Time Control",
-                        "Live System Insight",
-                        "Smarter Operations",
-                        "Connected Systems",
-                      ]}
-                      className="text-green-600"
-                    />
-                  </span>
-                </h1>
-
-                <p className="mb-8">
-                  Industry{" "}
-                  <Highlighter action="underline" color="#FF9800">
-                    INTEGRA 360
-                  </Highlighter>{" "}
-                  is a unified{" "}
-                  <Highlighter action="highlight" color="#E3F2FD">
-                    Industry 4.0 platform
-                  </Highlighter>{" "}
-                  that brings together{" "}
-                  <Highlighter action="underline" color="#4CAF50">
-                    process monitoring
-                  </Highlighter>
-                  , energy management, quality tracking, and asset performance
-                  into one connected manufacturing ecosystem.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <Button
-                    size="lg"
-                    className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all"
-                  >
-                    <a
-                      href="https://positivequadrant.in/contact-us"
-                      className="flex items-center gap-2"
-                    >
-                      Request a Demo
-                      <ArrowRight className="h-5 w-5" />
-                    </a>
-                  </Button>
-
-                  {/* <Link to="/platform/overview">
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="px-8 py-6 text-lg border-2"
-                    >
-                      <Play className="h-5 w-5 mr-2" />
-                      Watch Platform Tour
-                    </Button>
-                  </Link> */}
-                </div>
-              </div>
-
-              {/* Right Dashboard */}
-              <div className="flex justify-center lg:justify-end mt-6 lg:mt-0">
-                <div className="w-full max-w-md h-[480px] lg:h-[550px] bg-white rounded-2xl border border-gray-200 shadow-xl flex flex-col overflow-hidden">
-                  {/* Header */}
-                  <div className="bg-gradient-to-r from-green-600 to-emerald-600 p-4">
-                    <div className="flex items-center gap-3">
-                      <Factory className="h-8 w-8 text-white" />
-                      <div>
-                        <h3 className="text-lg font-semibold text-white">
-                          Plant Status Dashboard
-                        </h3>
-                        <p className="text-green-100 text-sm">
-                          Live Updates • Mumbai Plant
-                        </p>
-                      </div>
-                      <div className="ml-auto h-2 w-2 rounded-full bg-green-300 animate-pulse" />
-                    </div>
-                  </div>
-
-                  {/* Animated List Area */}
-                  <div className="h-[320px] lg:h-[380px] overflow-hidden p-4">
-                    <AnimatedList delay={2800}>
-                      <DashboardItem
-                        icon={<Activity />}
-                        title="Production Line A"
-                        value="96% OEE • 420 units/hr"
-                        status="ok"
-                      />
-                      <DashboardItem
-                        icon={<Cpu />}
-                        title="Machine Health"
-                        value="12/12 Machines Online"
-                        status="ok"
-                      />
-                      <DashboardItem
-                        icon={<BatteryCharging />}
-                        title="Energy Consumption"
-                        value="−12% vs Yesterday"
-                        status="warn"
-                      />
-                      <DashboardItem
-                        icon={<Factory />}
-                        title="Quality Metrics"
-                        value="First Pass Yield 99.2%"
-                        status="ok"
-                      />
-                      <DashboardItem
-                        icon={<Activity />}
-                        title="Downtime Analysis"
-                        value="Last event: 18 hrs ago"
-                        status="ok"
-                      />
-                    </AnimatedList>
-                  </div>
-
-                  {/* Footer */}
-                  <div className="border-t border-gray-200 p-3 bg-gray-50">
-                    <div className="flex items-center justify-between text-sm text-gray-600">
-                      <div className="flex items-center gap-2">
-                        <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-                        Live Updates
-                      </div>
-                      <span className="flex items-center gap-1">
-                        <CheckCircle className="h-4 w-4 text-green-500" />9
-                        Systems Active
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="relative max-w-6xl mx-auto px-6 text-center">
+          {/* Small badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6">
+            <Zap className="h-4 w-4" />
+            Industry 4.0 Ready Platform
           </div>
+
+          {/* Heading */}
+          <h1 className="text-5xl font-semibold text-green-900 leading-tight">
+            Transform Your Manufacturing with{" "}
+            <span className=" px-2 rounded-md whitespace-nowrap">
+              <WordRotate
+                words={[
+                  "Real-Time Control",
+                  "Live System Insight",
+                  "Smarter Operations",
+                  "Connected Systems",
+                ]}
+              />
+            </span>
+          </h1>
+
+          {/* Description */}
+          <p className="text-gray-600  max-w-xl mx-auto">
+            Industry{" "}
+            <span className="font-semibold text-green-700">INTEGRA 360</span> is
+            a unified Industry 4.0 platform that brings together process
+            monitoring, energy management, quality tracking, and asset
+            performance into one connected manufacturing ecosystem.
+          </p>
+
+          {/* CTA */}
+          <div className="flex items-center justify-center mt-8 gap-4">
+            <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-5 text-lg shadow-md">
+              <a
+                href="https://positivequadrant.in/contact-us"
+                className="flex items-center gap-2"
+              >
+                Request a Demo
+                <ArrowRight className="h-5 w-5" />
+              </a>
+            </Button>
+          </div>
+
+          <p className="text-xs text-gray-400 mt-3">
+            Industry 4.0 Platform ✦ Built for Smart Manufacturing
+          </p>
         </div>
       </section>
 

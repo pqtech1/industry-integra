@@ -57,218 +57,188 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const IndustrialProtocolWeServe = () => {
   const protocolCategories = [
     {
-      name: "Process Automation",
-      icon: <GaugeIcon className="w-5 h-5" />,
-      description:
-        "Oil & Gas, Chemical, Pharma, Steel, Cement, Food Processing",
-      subcategories: [
-        {
-          name: "OPC Standards",
-          protocols: [
-            "OPC DA (Data Access)",
-            "OPC UA (Unified Architecture)",
-            "OPC HDA (Historical Data Access)",
-            "OPC AE (Alarms & Events)",
-          ],
-        },
-        {
-          name: "Fieldbus Protocols",
-          protocols: [
-            "Modbus RTU",
-            "Modbus TCP/IP",
-            "PROFIBUS DP",
-            "PROFIBUS PA",
-            "FOUNDATION Fieldbus H1",
-            "FOUNDATION Fieldbus HSE",
-          ],
-        },
-        {
-          name: "Industrial Ethernet",
-          protocols: ["PROFINET", "EtherNet/IP", "EtherCAT"],
-        },
-        {
-          name: "Legacy / Serial Communication",
-          protocols: ["RS-232", "RS-485"],
-        },
-        {
-          name: "Device Communication",
-          protocols: ["HART Protocol", "WirelessHART"],
-        },
-        {
-          name: "Distributed Control System Protocols",
-          protocols: [
-            "Honeywell Experion Protocols",
-            "Yokogawa CENTUM Communication",
-            "Emerson DeltaV Communication",
-          ],
-        },
+      name: "OPC Standards",
+      icon: <Layers className="w-5 h-5" />,
+      protocols: [
+        "OPC DA (Data Access)",
+        "OPC UA (Unified Architecture)",
+        "OPC HDA (Historical Data Access)",
+        "OPC AE (Alarms & Events)",
       ],
     },
     {
-      name: "Factory Automation",
-      icon: <FactoryIcon className="w-5 h-5" />,
-      description: "Automotive, Electronics, FMCG, Textile",
-      subcategories: [
-        {
-          name: "Industrial Ethernet Protocols",
-          protocols: [
-            "PROFINET",
-            "EtherNet/IP",
-            "EtherCAT",
-            "POWERLINK",
-            "SERCOS III",
-          ],
-        },
-        {
-          name: "Machine-Level Protocols",
-          protocols: [
-            "CC-Link",
-            "CC-Link IE",
-            "Mechatrolink",
-            "DeviceNet",
-            "ControlNet",
-          ],
-        },
-        {
-          name: "PLC Communication",
-          protocols: [
-            "Siemens S7 Protocol",
-            "Mitsubishi MELSEC Communication",
-            "Omron FINS Protocol",
-          ],
-        },
-        {
-          name: "Robotics Integration",
-          protocols: [
-            "FANUC Ethernet Protocol",
-            "ABB Robot Communication",
-            "KUKA Robot Interface",
-          ],
-        },
-        {
-          name: "Vision System Communication",
-          protocols: ["GigE Vision", "GenICam"],
-        },
+      name: "Fieldbus Protocols",
+      icon: <Cable className="w-5 h-5" />,
+      protocols: [
+        "Modbus RTU",
+        "Modbus TCP/IP",
+        "PROFIBUS DP",
+        "PROFIBUS PA",
+        "FOUNDATION Fieldbus H1",
+        "FOUNDATION Fieldbus HSE",
       ],
     },
     {
-      name: "Energy Automation",
+      name: "Industrial Ethernet",
+      icon: <Network className="w-5 h-5" />,
+      protocols: [
+        "PROFINET",
+        "EtherNet/IP",
+        "EtherCAT",
+        "POWERLINK",
+        "SERCOS III",
+      ],
+    },
+    {
+      name: "Machine-Level Protocols",
+      icon: <Cpu className="w-5 h-5" />,
+      protocols: [
+        "CC-Link",
+        "CC-Link IE",
+        "Mechatrolink",
+        "DeviceNet",
+        "ControlNet",
+      ],
+    },
+    {
+      name: "PLC Communication",
+      icon: <Server className="w-5 h-5" />,
+      protocols: [
+        "Siemens S7 Protocol",
+        "Mitsubishi MELSEC Communication",
+        "Omron FINS Protocol",
+      ],
+    },
+    {
+      name: "Robotics Integration",
+      icon: <Zap className="w-5 h-5" />,
+      protocols: [
+        "FANUC Ethernet Protocol",
+        "ABB Robot Communication",
+        "KUKA Robot Interface",
+      ],
+    },
+    {
+      name: "Vision System Communication",
+      icon: <Cctv className="w-5 h-5" />,
+      protocols: ["GigE Vision", "GenICam"],
+    },
+    {
+      name: "Legacy / Serial Communication",
+      icon: <Radio className="w-5 h-5" />,
+      protocols: ["RS-232", "RS-485"],
+    },
+    {
+      name: "Device Communication",
+      icon: <Bluetooth className="w-5 h-5" />,
+      protocols: ["HART Protocol", "WirelessHART"],
+    },
+    {
+      name: "Distributed Control System Protocols",
+      icon: <Gauge className="w-5 h-5" />,
+      protocols: [
+        "Honeywell Experion Protocols",
+        "Yokogawa CENTUM Communication",
+        "Emerson DeltaV Communication",
+      ],
+    },
+    {
+      name: "Power Utility Protocols",
       icon: <ZapIcon className="w-5 h-5" />,
-      description: "Power Plants, Substations, Smart Grid, Utilities",
-      subcategories: [
-        {
-          name: "Power Utility Protocols",
-          protocols: [
-            "IEC 61850",
-            "IEC 60870-5-101",
-            "IEC 60870-5-104",
-            "DNP3",
-          ],
-        },
-        {
-          name: "Meter Communication",
-          protocols: ["DLMS / COSEM", "Modbus Energy Meter Protocol", "M-Bus"],
-        },
-        {
-          name: "Smart Grid Communication",
-          protocols: ["IEEE 2030.5", "MQTT (Energy IoT)"],
-        },
-        {
-          name: "Substation Automation",
-          protocols: [
-            "GOOSE Messaging",
-            "MMS (Manufacturing Message Specification)",
-          ],
-        },
+      protocols: ["IEC 61850", "IEC 60870-5-101", "IEC 60870-5-104", "DNP3"],
+    },
+    {
+      name: "Meter Communication",
+      icon: <Activity className="w-5 h-5" />,
+      protocols: ["DLMS / COSEM", "Modbus Energy Meter Protocol", "M-Bus"],
+    },
+    {
+      name: "Smart Grid Communication",
+      icon: <Wifi className="w-5 h-5" />,
+      protocols: ["IEEE 2030.5", "MQTT (Energy IoT)"],
+    },
+    {
+      name: "Substation Automation",
+      icon: <Power className="w-5 h-5" />,
+      protocols: [
+        "GOOSE Messaging",
+        "MMS (Manufacturing Message Specification)",
       ],
     },
     {
-      name: "Building Automation",
+      name: "Building Control Protocols",
       icon: <BuildingIcon className="w-5 h-5" />,
-      description: "Smart Buildings, HVAC, Lighting, Security",
-      subcategories: [
-        {
-          name: "Building Control Protocols",
-          protocols: ["BACnet", "BACnet/IP", "BACnet MSTP"],
-        },
-        {
-          name: "Building Device Networks",
-          protocols: ["KNX", "LonWorks"],
-        },
-        {
-          name: "HVAC Communication",
-          protocols: ["Modbus (HVAC Controllers)", "OPC UA"],
-        },
-        {
-          name: "Lighting Automation",
-          protocols: ["DALI", "KNX Lighting Control"],
-        },
-        {
-          name: "IoT / Smart Building Protocols",
-          protocols: ["Zigbee", "Z-Wave", "MQTT", "Thread"],
-        },
-      ],
+      protocols: ["BACnet", "BACnet/IP", "BACnet MSTP"],
     },
     {
-      name: "Industrial IoT & Cloud",
+      name: "Building Device Networks",
+      icon: <Building2 className="w-5 h-5" />,
+      protocols: ["KNX", "LonWorks"],
+    },
+    {
+      name: "HVAC Communication",
+      icon: <Thermometer className="w-5 h-5" />,
+      protocols: ["Modbus (HVAC Controllers)", "OPC UA"],
+    },
+    {
+      name: "Lighting Automation",
+      icon: <Waves className="w-5 h-5" />,
+      protocols: ["DALI", "KNX Lighting Control"],
+    },
+    {
+      name: "IoT / Smart Building Protocols",
+      icon: <Cloud className="w-5 h-5" />,
+      protocols: ["Zigbee", "Z-Wave", "MQTT", "Thread"],
+    },
+    {
+      name: "Messaging Protocols",
+      icon: <Share2 className="w-5 h-5" />,
+      protocols: ["MQTT", "AMQP", "Apache Kafka", "WebSockets"],
+    },
+    {
+      name: "API Integration",
+      icon: <Code2 className="w-5 h-5" />,
+      protocols: ["REST APIs", "GraphQL APIs"],
+    },
+    {
+      name: "Cloud Integration",
       icon: <CloudIcon className="w-5 h-5" />,
-      description: "Cross-Industry Integration Layer",
-      subcategories: [
-        {
-          name: "Messaging Protocols",
-          protocols: ["MQTT", "AMQP", "Apache Kafka", "WebSockets"],
-        },
-        {
-          name: "API Integration",
-          protocols: ["REST APIs", "GraphQL APIs"],
-        },
-        {
-          name: "Cloud Integration",
-          protocols: ["Azure IoT Hub", "AWS IoT Core", "Google Cloud IoT"],
-        },
+      protocols: ["Azure IoT Hub", "AWS IoT Core", "Google Cloud IoT"],
+    },
+    {
+      name: "Machine Sources",
+      icon: <FactoryIcon className="w-5 h-5" />,
+      protocols: ["PLC tags", "RTUs", "SCADA systems", "DCS systems"],
+    },
+    {
+      name: "Sensors",
+      icon: <ThermometerIcon className="w-5 h-5" />,
+      protocols: [
+        "Temperature sensors",
+        "Pressure transmitters",
+        "Flow meters",
+        "Vibration sensors",
+        "Energy meters",
       ],
     },
     {
-      name: "Data Source Connectivity",
+      name: "Databases",
       icon: <Database className="w-5 h-5" />,
-      description: "Comprehensive data collection capabilities",
-      subcategories: [
-        {
-          name: "Machine Sources",
-          protocols: ["PLC tags", "RTUs", "SCADA systems", "DCS systems"],
-        },
-        {
-          name: "Sensors",
-          protocols: [
-            "Temperature sensors",
-            "Pressure transmitters",
-            "Flow meters",
-            "Vibration sensors",
-            "Energy meters",
-          ],
-        },
-        {
-          name: "Databases",
-          protocols: ["SQL Server", "PostgreSQL", "MySQL", "Oracle"],
-        },
-        {
-          name: "Industrial Historians",
-          protocols: [
-            "OSIsoft PI",
-            "Wonderware Historian",
-            "Ignition Historian",
-          ],
-        },
-        {
-          name: "Enterprise Systems",
-          protocols: ["ERP", "MES", "SAP", "Production Management Systems"],
-        },
-      ],
+      protocols: ["SQL Server", "PostgreSQL", "MySQL", "Oracle"],
+    },
+    {
+      name: "Industrial Historians",
+      icon: <HardDrive className="w-5 h-5" />,
+      protocols: ["OSIsoft PI", "Wonderware Historian", "Ignition Historian"],
+    },
+    {
+      name: "Enterprise Systems",
+      icon: <Globe className="w-5 h-5" />,
+      protocols: ["ERP", "MES", "SAP", "Production Management Systems"],
     },
   ];
 
@@ -478,60 +448,35 @@ const IndustrialProtocolWeServe = () => {
             </p>
           </div>
 
-          {/* Category Tabs */}
-          <Tabs defaultValue="Process Automation" className="w-full">
-            <TabsList className="w-full flex flex-wrap h-auto bg-transparent gap-2 mb-12 justify-center">
-              {protocolCategories.map((category) => (
-                <TabsTrigger
-                  key={category.name}
-                  value={category.name}
-                  className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-full px-6 py-3 text-sm font-medium transition-all border border-slate-200 data-[state=active]:border-green-600"
-                >
-                  <span className="flex items-center gap-2">
-                    <span className="text-current">{category.icon}</span>
-                    {category.name}
-                  </span>
-                </TabsTrigger>
-              ))}
-            </TabsList>
-
-            {protocolCategories.map((category) => (
-              <TabsContent
-                key={category.name}
-                value={category.name}
-                className="mt-0"
+          {/* Protocol Categories - Original Design Style */}
+          <div className="space-y-8">
+            {protocolCategories.map((category, idx) => (
+              <div
+                key={idx}
+                className="border border-slate-200 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 bg-white"
               >
-                <div className="mb-8">
-                  <p className="text-lg text-slate-600 bg-slate-50 rounded-xl p-4 inline-block">
-                    {category.description}
-                  </p>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-xl bg-green-600/10 flex items-center justify-center text-green-600">
+                    {category.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900">
+                    {category.name}
+                  </h3>
                 </div>
-                <div className="space-y-8">
-                  {category.subcategories.map((subcategory, idx) => (
-                    <div
-                      key={idx}
-                      className="border border-slate-200 rounded-2xl p-6 hover:shadow-lg transition-shadow"
+                <div className="flex flex-wrap gap-3">
+                  {category.protocols.map((protocol, pIdx) => (
+                    <Badge
+                      key={pIdx}
+                      variant="outline"
+                      className="px-4 py-2 text-sm font-normal bg-slate-50 hover:bg-green-600/5 hover:border-green-600/30 transition-colors rounded-full"
                     >
-                      <h3 className="text-lg font-semibold text-slate-900 mb-4 pb-2 border-b border-slate-100">
-                        {subcategory.name}
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {subcategory.protocols.map((protocol, pIdx) => (
-                          <Badge
-                            key={pIdx}
-                            variant="outline"
-                            className="px-4 py-2 text-sm font-normal bg-white hover:bg-green-600/5 hover:border-green-600/30 transition-colors"
-                          >
-                            {protocol}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
+                      {protocol}
+                    </Badge>
                   ))}
                 </div>
-              </TabsContent>
+              </div>
             ))}
-          </Tabs>
+          </div>
         </div>
       </section>
 

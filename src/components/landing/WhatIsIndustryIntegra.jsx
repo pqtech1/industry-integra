@@ -272,28 +272,43 @@ const WhatIsIndustryIntegra = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-8 md:py-12 overflow-hidden px-4">
-        <div className="container mx-auto relative">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 text-green-700 text-sm font-medium mb-6 border border-green-200">
-                <FaLightbulb className="h-4 w-4" />
-                Transform Your Manufacturing Operations
+      <section className="relative py-12 md:py-16 px-4 overflow-hidden">
+        <div className="container mx-auto">
+          <div className="grid lg:grid-cols-2 items-center gap-10 rounded-3xl overflow-hidden">
+            {/* LEFT CONTENT */}
+            <div className="relative p-8 md:p-12 text-white">
+              {/* gradient */}
+              <div className="absolute inset-0 bg-gradient-to-r to-transparent"></div>
+
+              <div className="relative z-10 max-w-xl">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-600 text-white text-sm font-medium mb-6 border border-green-400/40">
+                  <FaLightbulb className="h-4 w-4" />
+                  Transform Your Manufacturing Operations
+                </div>
+
+                <h1 className=" mb-6 text-4xl md:text-5xl font-bold leading-tight">
+                  What is
+                  <span className="block text-green-600 mt-2">
+                    Industry-Integra?
+                  </span>
+                </h1>
+
+                <p className="text-lg">
+                  The complete Industrial IoT platform that unifies your entire
+                  manufacturing ecosystem, providing real-time visibility,
+                  predictive analytics, and automated optimization across
+                  production, maintenance, quality, and energy management.
+                </p>
               </div>
+            </div>
 
-              <h1 className="mb-6">
-                What is
-                <span className="block text-green-600 mt-2">
-                  Industry-Integra?
-                </span>
-              </h1>
-
-              <p className="mb-8">
-                The complete Industrial IoT platform that unifies your entire
-                manufacturing ecosystem, providing real-time visibility,
-                predictive analytics, and automated optimization across
-                production, maintenance, quality, and energy management.
-              </p>
+            {/* RIGHT IMAGE */}
+            <div className="relative h-[320px] md:h-[420px] lg:h-full">
+              <img
+                src="dashboards/industry-integra-login-screen.webp"
+                alt="Industry Integra Dashboard"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>

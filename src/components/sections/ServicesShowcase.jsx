@@ -32,6 +32,7 @@ const ServicesShowcase = () => {
     {
       category: "Professional Services",
       color: "blue",
+      image: "services/all-services/professional-services.avif",
       items: [
         {
           title: "End-to-end Implementation",
@@ -62,6 +63,7 @@ const ServicesShowcase = () => {
     {
       category: "Technical Services",
       color: "green",
+      image: "services/all-services/technical-services.avif",
       items: [
         {
           title: "PLC Programming",
@@ -91,6 +93,7 @@ const ServicesShowcase = () => {
     {
       category: "Software Services",
       color: "purple",
+      image: "services/all-services/software-services.avif",
       items: [
         {
           title: "Custom Development",
@@ -118,6 +121,7 @@ const ServicesShowcase = () => {
     {
       category: "AI & Analytics",
       color: "indigo",
+      image: "services/all-services/ai-analytics.webp",
       items: [
         {
           title: "Predictive Analytics",
@@ -148,6 +152,7 @@ const ServicesShowcase = () => {
     {
       category: "Smart Factory",
       color: "orange",
+      image: "services/all-services/smart-factory.avif",
       items: [
         {
           title: "Plant Digitization",
@@ -177,6 +182,7 @@ const ServicesShowcase = () => {
     {
       category: "Commissioning & Support",
       color: "red",
+      image: "services/all-services/commissioning-support.avif",
       items: [
         {
           title: "Factory Acceptance Testing",
@@ -248,11 +254,11 @@ const ServicesShowcase = () => {
   };
 
   return (
-    <section className=" bg-white">
+    <section className="bg-white py-16">
       <div className="container mx-auto px-4 md:px-6">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-700 text-sm font-medium mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-green-600 text-sm font-medium mb-4">
             <Wrench className="h-4 w-4" />
             Our Services
           </div>
@@ -264,122 +270,132 @@ const ServicesShowcase = () => {
             End-to-end services for digital transformation and manufacturing
             excellence
           </p>
+
+          {/* View All Services Link in Header */}
+          <div className="mt-6">
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 px-6 py-3 text-blue-500 font-medium rounded-lg hover:underline transition-colors"
+            >
+              View All Services
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
 
-        {/* Services Grid */}
-        <div className="space-y-8">
+        {/* Alternating Services Sections */}
+        <div className="space-y-24">
           {services.map((serviceGroup, index) => {
             const colors = colorClasses[serviceGroup.color];
+            const isEven = index % 2 === 0;
 
             return (
-              <div key={index} className="">
-                {/* Category Header */}
-                <div className="flex justify-between">
-                  {/* Left Side: Icon + Title */}
-                  <div className="flex items-center gap-3">
-                    <div
-                      className={`p-2 rounded-lg ${colors.iconBg} flex items-center justify-center`}
-                    >
-                      {serviceGroup.category === "Professional Services" && (
-                        <Users className="h-5 w-5" />
-                      )}
-                      {serviceGroup.category === "Technical Services" && (
-                        <Settings className="h-5 w-5" />
-                      )}
-                      {serviceGroup.category === "Software Services" && (
-                        <Code className="h-5 w-5" />
-                      )}
-                      {serviceGroup.category === "AI & Analytics" && (
-                        <Brain className="h-5 w-5" />
-                      )}
-                      {serviceGroup.category === "Smart Factory" && (
-                        <Factory className="h-5 w-5" />
-                      )}
-                      {serviceGroup.category === "Commissioning & Support" && (
-                        <Shield className="h-5 w-5" />
-                      )}
-                    </div>
-
-                    <h3
-                      className={`text-xl mt-4 font-bold leading-none ${colors.text}`}
-                    >
-                      {serviceGroup.category}
-                    </h3>
-                  </div>
-
-                  {/* Right Side: View More */}
-                  <Link
-                    to={`/services/${serviceGroup.category
-                      .toLowerCase()
-                      .replace(/ & /g, "-")
-                      .replace(/\s+/g, "-")}`}
-                    className={`flex items-center gap-1 text-sm font-medium ${colors.button} hover:underline`}
+              <div key={index} className="relative">
+                <div
+                  className={`grid lg:grid-cols-2 gap-8 items-stretch ${
+                    isEven ? "" : "lg:grid-flow-dense"
+                  }`}
+                >
+                  {/* Image Section - Touching edges */}
+                  <div
+                    className={`relative h-full min-h-[500px] ${
+                      isEven
+                        ? "lg:-ml-6 xl:-ml-12"
+                        : "lg:-mr-6 xl:-mr-12 lg:col-start-2"
+                    }`}
                   >
-                    View More
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
+                    <div className="absolute inset-0 overflow-hidden rounded-2xl lg:rounded-none lg:rounded-l-2xl shadow-xl">
+                      <img
+                        src={serviceGroup.image}
+                        alt={serviceGroup.category}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.target.src =
+                            "https://via.placeholder.com/800x600?text=Service+Image";
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
 
-                {/* Services Grid - Always 4 columns */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {serviceGroup.items.map((service, serviceIndex) => (
-                    <Card
-                      key={serviceIndex}
-                      className={`border ${colors.border} hover:shadow-md transition-shadow duration-300 h-full`}
-                    >
-                      <CardContent className="p-5 h-full flex flex-col">
-                        {/* Service Icon */}
-                        <div
-                          className={`p-3 rounded-lg ${colors.iconBg} inline-flex mb-4`}
-                        >
-                          {service.icon}
+                      {/* Category Title Overlay - FIXED PADDING */}
+                      <div className="absolute bottom-6 left-6 lg:left-12 xl:left-16 right-6">
+                        <div className="flex items-center gap-3">
+                          <div
+                            className={`p-3 rounded-lg bg-white/20 backdrop-blur-sm ${colors.iconBg} bg-opacity-90`}
+                          >
+                            {serviceGroup.category ===
+                              "Professional Services" && (
+                              <Users className="h-6 w-6" />
+                            )}
+                            {serviceGroup.category === "Technical Services" && (
+                              <Settings className="h-6 w-6" />
+                            )}
+                            {serviceGroup.category === "Software Services" && (
+                              <Code className="h-6 w-6" />
+                            )}
+                            {serviceGroup.category === "AI & Analytics" && (
+                              <Brain className="h-6 w-6" />
+                            )}
+                            {serviceGroup.category === "Smart Factory" && (
+                              <Factory className="h-6 w-6" />
+                            )}
+                            {serviceGroup.category ===
+                              "Commissioning & Support" && (
+                              <Shield className="h-6 w-6" />
+                            )}
+                          </div>
+                          <h3
+                            className={`text-2xl font-bold text-white drop-shadow-lg`}
+                          >
+                            {serviceGroup.category}
+                          </h3>
                         </div>
 
-                        {/* Service Title */}
-                        <h4 className="font-semibold text-gray-900 mb-2">
-                          {service.title}
-                        </h4>
-
-                        {/* Service Description */}
-                        <p className="text-sm text-gray-600 flex-grow">
-                          {service.description}
+                        {/* Quick Stats or Tagline */}
+                        <p className="text-white/90 text-sm mt-2 max-w-md drop-shadow-lg lg:pl-14">
+                          {serviceGroup.items.length} specialized solutions for
+                          your business
                         </p>
-                      </CardContent>
-                    </Card>
-                  ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content Section */}
+                  <div
+                    className={`py-8 ${
+                      isEven ? "lg:pl-8" : "lg:pr-8 lg:col-start-1"
+                    }`}
+                  >
+                    {/* Services Grid */}
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      {serviceGroup.items.map((service, serviceIndex) => (
+                        <Card
+                          key={serviceIndex}
+                          className={`border ${colors.border} hover:shadow-lg transition-all duration-300 h-full group hover:scale-[1.02] cursor-pointer`}
+                        >
+                          <CardContent className="p-5 h-full flex flex-col">
+                            <div
+                              className={`p-2.5 rounded-lg ${colors.iconBg} inline-flex mb-3 w-fit group-hover:scale-110 transition-transform`}
+                            >
+                              {service.icon}
+                            </div>
+                            <h4 className="font-semibold text-gray-900 mb-2 text-base">
+                              {service.title}
+                            </h4>
+                            <p className="text-sm text-gray-600 flex-grow">
+                              {service.description}
+                            </p>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* Summary */}
-        <div className="mt-16 max-w-4xl mx-auto">
-          <div
-            className={`bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-8 border ${colorClasses.blue.border}`}
-          >
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="md:w-2/3">
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                  Ready to Transform Your Operations?
-                </h3>
-                <p className="text-gray-700">
-                  Our comprehensive service portfolio covers every aspect of
-                  industrial digital transformation, from initial consultation
-                  to ongoing support and maintenance.
-                </p>
-              </div>
-              <div className="md:w-1/3">
-                <a
-                  href="https://positivequadrant.in/contact-us"
-                  className="inline-flex items-center justify-center w-full px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  Contact Us
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Summary CTA */}
       </div>
     </section>
   );

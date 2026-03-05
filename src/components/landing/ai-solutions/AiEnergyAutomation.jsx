@@ -28,6 +28,12 @@ import {
   Award,
   ChevronRight,
   Calendar,
+  Radio,
+  Wifi,
+  Cable,
+  Server,
+  Globe,
+  Shield,
 } from "lucide-react";
 
 import AIIconDashboard from "../../sections/AIIconDashboard";
@@ -248,8 +254,6 @@ const AiEnergyAutomation = () => {
       features:
         "Smart Meter Integration, Anomaly Detection, Basic Monitoring, Alert Correlation",
       impact: "Immediate visibility, 10-15% waste reduction",
-      color: "bg-green-50 border-green-200",
-      badge: "bg-green-100 text-green-700",
     },
     {
       phase: "Phase 2",
@@ -258,8 +262,6 @@ const AiEnergyAutomation = () => {
       features:
         "Demand Forecasting, Price Prediction, Renewable Generation Forecasting, Weather Integration",
       impact: "Proactive planning, 15-20% cost optimization",
-      color: "bg-green-50 border-green-300",
-      badge: "bg-green-200 text-green-800",
     },
     {
       phase: "Phase 3",
@@ -268,8 +270,6 @@ const AiEnergyAutomation = () => {
       features:
         "RL-based Load Balancing, Battery Dispatch, HVAC Optimization, Peak Shaving",
       impact: "25-35% peak demand reduction",
-      color: "bg-green-50 border-green-400",
-      badge: "bg-green-300 text-green-900",
     },
     {
       phase: "Phase 4",
@@ -278,8 +278,6 @@ const AiEnergyAutomation = () => {
       features:
         "Multi-Agent Coordination, VPP Integration, Carbon Tracking, Predictive Maintenance",
       impact: "Fully autonomous energy management",
-      color: "bg-green-50 border-green-500",
-      badge: "bg-green-500 text-white",
     },
     {
       phase: "Phase 5",
@@ -288,30 +286,51 @@ const AiEnergyAutomation = () => {
       features:
         "Multi-Site Orchestration, Energy Trading, Grid Services, Circular Economy",
       impact: "Energy-positive operations",
-      color: "bg-green-600 border-green-600",
-      badge: "bg-white text-green-700",
-      dark: true,
+    },
+  ];
+
+  const protocolCategories = [
+    {
+      name: "Power Utility Protocols",
+      protocols: [
+        "IEC 61850",
+        "IEC 60870-5-101",
+        "IEC 60870-5-104",
+        "DNP3 (Distributed Network Protocol)",
+      ],
+    },
+    {
+      name: "Meter Communication",
+      protocols: ["DLMS / COSEM", "Modbus Energy Meter Protocol", "M-Bus"],
+    },
+    {
+      name: "Smart Grid Communication",
+      protocols: ["IEEE 2030.5", "MQTT (Energy IoT)"],
+    },
+    {
+      name: "Substation Automation",
+      protocols: [
+        "GOOSE Messaging",
+        "MMS (Manufacturing Message Specification)",
+      ],
     },
   ];
 
   return (
     <>
       {/* ==================== HERO ==================== */}
-      <section className="w-full bg-gray-50 py-10 md:py-15 lg:py-20">
+      <section className="w-full bg-gray-50 py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Content */}
             <div className="space-y-6">
-              <Badge className="bg-green-600 text-white px-4 py-1 text-sm font-medium">
+              <Badge className="bg-green-600 text-white px-4 py-1 text-sm font-medium border-0">
                 AI Energy Automation
               </Badge>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] text-black">
-                Automate Your Energy{" "}
-                <span className="text-green-600">Management</span> with AI
-              </h1>
+              <h1>Automate Your Energy Management with AI</h1>
 
-              <p className="text-lg text-gray-700 max-w-xl">
+              <p className="text-lg">
                 Transform manual energy tracking into intelligent automated
                 systems. Reduce costs by 25-35%, eliminate waste, ensure
                 reliability, and achieve your sustainability goals using
@@ -322,7 +341,7 @@ const AiEnergyAutomation = () => {
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button
                   size="lg"
-                  className="bg-green-600 hover:bg-green-700 px-8"
+                  className="bg-green-600 hover:bg-green-700 text-white px-8"
                 >
                   Get Started
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -337,7 +356,7 @@ const AiEnergyAutomation = () => {
                 </Button>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 text-sm text-gray-600 pt-6">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 text-sm pt-6">
                 <div className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-green-600" /> RL Load Balancing
                 </div>
@@ -366,7 +385,7 @@ const AiEnergyAutomation = () => {
       </section>
 
       {/* ==================== WHY AI ==================== */}
-      <section className="w-full bg-white py-10 md:py-15 lg:py-20">
+      <section className="w-full bg-white py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Image */}
@@ -381,18 +400,16 @@ const AiEnergyAutomation = () => {
 
             {/* Right Content */}
             <div className="space-y-8 order-1 lg:order-2">
-              <h2 className="text-3xl md:text-4xl font-bold text-black">
-                Why Implement AI in Your Energy Automation?
-              </h2>
+              <h2>Why Implement AI in Your Energy Automation?</h2>
 
-              <p className="text-lg text-gray-700 max-w-lg">
+              <p className="text-lg">
                 Traditional energy management systems are reactive — they show
                 you what happened. AI-powered energy automation turns your
                 infrastructure into a predictive, self-optimizing smart grid
                 that actively reduces costs and carbon.
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {[
                   "Automates monitoring and control of energy systems across buildings, factories, and renewable installations using reinforcement learning agents that continuously optimize.",
                   "Provides predictive demand forecasting with TimeGPT and weather ML models, enabling proactive load management and peak shaving.",
@@ -404,47 +421,84 @@ const AiEnergyAutomation = () => {
                 ].map((text, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <Check className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">{text}</p>
+                    <p className="text-gray-600">{text}</p>
                   </div>
                 ))}
               </div>
-
-              <p className="text-sm text-gray-600 max-w-md">
-                AI turns your energy infrastructure into a smart,
-                self-optimizing system that continuously reduces costs and
-                carbon emissions.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ==================== HOW AI TRANSFORMS ==================== */}
-      <section className="w-full bg-gray-50 py-10 md:py-15 lg:py-20">
+      {/* ==================== ENERGY AUTOMATION PROTOCOLS ==================== */}
+      <section className="w-full bg-gray-50 py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-black">
-              How AI Transforms Your Energy Management
-            </h2>
-            <p className="text-gray-700 mt-4 text-lg">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <Badge className="bg-green-600 text-white px-4 py-1 text-sm font-medium border-0 mb-4">
+              Energy Automation Protocols
+            </Badge>
+            <h2>Energy Automation Protocols</h2>
+            <p className="text-lg text-gray-600 mt-4">
+              Power Plants, Substations, Smart Grid, Utilities
+            </p>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              These protocols are used in power distribution and energy
+              monitoring systems for reliable communication between grid assets.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {protocolCategories.map((category, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg transition-all duration-300"
+              >
+                <h3 className="text-green-600 font-semibold mb-4 pb-2 border-b border-gray-100">
+                  {category.name}
+                </h3>
+                <div className="space-y-2">
+                  {category.protocols.map((protocol, pIdx) => (
+                    <div key={pIdx} className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-green-600" />
+                      <span className="text-gray-700 text-sm">{protocol}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-gray-500 text-sm">
+              Comprehensive protocol support for substation automation, meter
+              communication, and smart grid integration.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== HOW AI TRANSFORMS ==================== */}
+      <section className="w-full bg-white py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2>How AI Transforms Your Energy Management</h2>
+            <p className="text-lg text-gray-600 mt-4">
               From manual monitoring to intelligent, self-optimizing energy
               systems — see how AI revolutionizes your operations step by step.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {steps.map((step, index) => (
               <div
                 key={index}
-                className="bg-white rounded-3xl shadow-lg p-8 flex flex-col hover:shadow-xl transition-all duration-300"
+                className="bg-gray-50 rounded-3xl shadow-lg p-8 flex flex-col hover:shadow-xl transition-all duration-300"
               >
                 <div className="flex items-center gap-4 mb-4">
                   {step.icon}
-                  <h3 className="text-green-600 font-bold text-xl">
-                    {step.title}
-                  </h3>
+                  <h3 className="text-green-600 font-bold">{step.title}</h3>
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -454,13 +508,11 @@ const AiEnergyAutomation = () => {
       </section>
 
       {/* ==================== ENERGY SOURCES & AI ==================== */}
-      <section className="w-full bg-white py-10 md:py-15 lg:py-20">
+      <section className="w-full bg-gray-50 py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-black">
-              AI-Powered Energy Assets
-            </h2>
-            <p className="text-gray-700 mt-4 text-lg">
+            <h2>AI-Powered Energy Assets</h2>
+            <p className="text-lg text-gray-600 mt-4">
               Intelligent automation for every energy source in your portfolio
             </p>
           </div>
@@ -469,13 +521,13 @@ const AiEnergyAutomation = () => {
             {energySources.map((source, index) => (
               <div
                 key={index}
-                className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-all duration-300"
+                className="bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex flex-col items-center text-center">
-                  <div className="p-4 bg-white rounded-2xl shadow-sm mb-4">
+                  <div className="p-4 bg-green-50 rounded-2xl shadow-sm mb-4">
                     {source.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-green-600 mb-3">
+                  <h3 className="text-green-600 font-bold mb-3">
                     {source.name}
                   </h3>
                   <p className="text-gray-600 text-sm">
@@ -489,31 +541,27 @@ const AiEnergyAutomation = () => {
       </section>
 
       {/* ==================== KEY BENEFITS ==================== */}
-      <section className="w-full bg-gray-50 py-10 md:py-15 lg:py-20">
+      <section className="w-full bg-white py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-black">
-              Key Benefits of AI Energy Automation
-            </h2>
-            <p className="text-gray-700 text-lg mt-4">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2>Key Benefits of AI Energy Automation</h2>
+            <p className="text-lg text-gray-600 mt-4">
               Implementing AI in your energy operations delivers measurable
               results with proven ROI.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-10">
+          <div className="grid md:grid-cols-2 gap-8">
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="bg-white rounded-3xl p-8 flex flex-col hover:shadow-lg transition-all duration-300"
+                className="bg-gray-50 rounded-3xl p-8 flex flex-col hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center gap-4 mb-4">
                   {benefit.icon}
-                  <h3 className="text-green-600 font-bold text-xl">
-                    {benefit.title}
-                  </h3>
+                  <h3 className="text-green-600 font-bold">{benefit.title}</h3>
                 </div>
-                <p className="text-gray-700">{benefit.description}</p>
+                <p className="text-gray-600">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -521,21 +569,19 @@ const AiEnergyAutomation = () => {
       </section>
 
       {/* ==================== AGENTIC ENERGY AGENTS ==================== */}
-      <section className="w-full bg-white py-10 md:py-15 lg:py-20">
+      <section className="w-full bg-gray-50 py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Content */}
             <div className="space-y-8">
               <div>
-                <Badge className="bg-green-100 text-green-700 px-4 py-1 text-sm font-medium mb-4">
+                <Badge className="bg-green-100 text-green-700 px-4 py-1 text-sm font-medium mb-4 border-0">
                   Agentic AI for Energy
                 </Badge>
-                <h2 className="text-3xl md:text-4xl font-bold text-black">
-                  Autonomous Energy Agents That Optimize 24/7
-                </h2>
+                <h2>Autonomous Energy Agents That Optimize 24/7</h2>
               </div>
 
-              <p className="text-lg text-gray-700">
+              <p className="text-lg text-gray-600">
                 Reinforcement Learning agents continuously monitor, decide, and
                 act to optimize your energy ecosystem — responding to price
                 signals, weather changes, and demand patterns in real-time
@@ -563,7 +609,7 @@ const AiEnergyAutomation = () => {
                       <span className="font-semibold text-black">
                         {item.label}:{" "}
                       </span>
-                      <span className="text-gray-700">{item.desc}</span>
+                      <span className="text-gray-600">{item.desc}</span>
                     </div>
                   </div>
                 ))}
@@ -575,16 +621,16 @@ const AiEnergyAutomation = () => {
               {agenticEnergyAgents.map((agent, index) => (
                 <div
                   key={index}
-                  className="bg-gray-50 rounded-2xl p-6 flex items-start gap-4 hover:shadow-md transition-all duration-300"
+                  className="bg-white rounded-2xl p-6 flex items-start gap-4 hover:shadow-md transition-all duration-300"
                 >
-                  <div className="flex-shrink-0 bg-white rounded-xl p-3 shadow-sm">
+                  <div className="flex-shrink-0 bg-green-50 rounded-xl p-3">
                     {agent.icon}
                   </div>
                   <div>
                     <h3 className="text-green-600 font-bold text-lg mb-1">
                       {agent.agent}
                     </h3>
-                    <p className="text-gray-700 text-sm leading-relaxed">
+                    <p className="text-gray-600 text-sm leading-relaxed">
                       {agent.description}
                     </p>
                   </div>
@@ -596,13 +642,11 @@ const AiEnergyAutomation = () => {
       </section>
 
       {/* ==================== AI TECHNOLOGY STACK ==================== */}
-      <section className="w-full bg-gray-50 py-10 md:py-15 lg:py-20">
+      <section className="w-full bg-white py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-black">
-              AI Technology Stack for Energy
-            </h2>
-            <p className="text-gray-700 mt-4 text-lg">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2>AI Technology Stack for Energy</h2>
+            <p className="text-lg text-gray-600 mt-4">
               A comprehensive suite of AI technologies working together — each
               layer purpose-built to tackle specific energy challenges.
             </p>
@@ -612,7 +656,7 @@ const AiEnergyAutomation = () => {
             {aiEnergyTechStack.map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col gap-3 hover:shadow-md transition-all duration-300"
+                className="bg-gray-50 rounded-2xl border border-gray-100 p-6 flex flex-col gap-3 hover:shadow-md transition-all duration-300"
               >
                 <div className="flex items-center gap-3">
                   {item.icon}
@@ -620,10 +664,10 @@ const AiEnergyAutomation = () => {
                     {item.tech}
                   </h3>
                 </div>
-                <p className="text-gray-700 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   {item.what}
                 </p>
-                <div className="mt-auto pt-3 border-t border-gray-100">
+                <div className="mt-auto pt-3 border-t border-gray-200">
                   <p className="text-xs text-gray-500 font-medium">Used in:</p>
                   <p className="text-xs text-gray-600 mt-1">{item.where}</p>
                 </div>
@@ -634,15 +678,15 @@ const AiEnergyAutomation = () => {
       </section>
 
       {/* ==================== FORECASTING MODELS ==================== */}
-      <section className="w-full bg-white py-10 md:py-15 lg:py-20">
+      <section className="w-full bg-gray-50 py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-black">
+              <h2>
                 State-of-the-Art{" "}
                 <span className="text-green-600">Forecasting</span> Models
               </h2>
-              <p className="text-lg text-gray-700">
+              <p className="text-lg text-gray-600">
                 Predict energy consumption, renewable generation, and market
                 prices with unprecedented accuracy using foundation models and
                 neural forecasting.
@@ -663,8 +707,8 @@ const AiEnergyAutomation = () => {
                 ))}
               </div>
             </div>
-            <div className="bg-gray-50 rounded-3xl p-8">
-              <h3 className="text-xl font-bold text-black mb-4">
+            <div className="bg-white rounded-3xl p-8 shadow-md">
+              <h3 className="text-green-600 font-bold mb-4">
                 Forecast Accuracy
               </h3>
               <div className="space-y-4">
@@ -723,37 +767,35 @@ const AiEnergyAutomation = () => {
       </section>
 
       {/* ==================== CARBON INTELLIGENCE ==================== */}
-      <section className="w-full bg-gray-50 py-10 md:py-15 lg:py-20">
+      <section className="w-full bg-white py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <Badge className="bg-green-600 text-white px-4 py-1 text-sm font-medium mb-4">
+            <Badge className="bg-green-600 text-white px-4 py-1 text-sm font-medium border-0 mb-4">
               Carbon Intelligence
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-black">
-              AI-Powered Sustainability
-            </h2>
-            <p className="text-gray-700 mt-4 text-lg">
+            <h2>AI-Powered Sustainability</h2>
+            <p className="text-lg text-gray-600 mt-4">
               Go beyond simple kWh x factor calculations with dynamic carbon
               tracking
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-3xl p-8 shadow-lg">
-              <h3 className="text-xl font-bold text-black mb-6">
+            <div className="bg-gray-50 rounded-3xl p-8">
+              <h3 className="text-green-600 font-bold mb-6">
                 Dynamic Emission Tracking
               </h3>
               <ul className="space-y-4">
                 {carbonFeatures.map((feature, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <Check className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
-                    <span className="text-gray-700">{feature}</span>
+                    <span className="text-gray-600">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-green-600 rounded-3xl p-8 shadow-lg text-white">
-              <h3 className="text-xl font-bold mb-4">Real-World Impact</h3>
+            <div className="bg-green-600 rounded-3xl p-8 text-white">
+              <h3 className="text-white font-bold mb-4">Real-World Impact</h3>
               <div className="space-y-6">
                 <div>
                   <div className="text-4xl font-bold mb-2">35%</div>
@@ -780,13 +822,11 @@ const AiEnergyAutomation = () => {
       </section>
 
       {/* ==================== AI TOOLS & TECHNOLOGIES ==================== */}
-      <section className="w-full bg-white py-10 md:py-15 lg:py-20">
+      <section className="w-full bg-gray-50 py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-black">
-              AI Tools & Technologies in Energy Automation
-            </h2>
-            <p className="text-gray-700 mt-4 text-lg">
+            <h2>AI Tools & Technologies in Energy Automation</h2>
+            <p className="text-lg text-gray-600 mt-4">
               Modern AI-powered energy automation combines reinforcement
               learning, predictive analytics, and optimization engines to
               deliver intelligent energy management.
@@ -797,17 +837,17 @@ const AiEnergyAutomation = () => {
             <AIIconDashboard />
           </div>
 
-          <div className="bg-gray-50 rounded-3xl border border-gray-200 p-8 md:p-12 text-center shadow-sm">
-            <h3 className="text-2xl md:text-3xl font-semibold text-black">
+          <div className="bg-white rounded-3xl border border-gray-200 p-8 md:p-12 text-center">
+            <h3 className="text-gray-900 font-semibold mb-6">
               Powered by the Latest AI Innovations
             </h3>
-            <p className="mt-6 text-gray-600 max-w-3xl mx-auto text-lg">
+            <p className="text-gray-600 max-w-3xl mx-auto text-lg">
               We use Stable-Baselines3 for reinforcement learning, Nixtla
               TimeGPT for forecasting, and custom optimization engines to
               deliver future-ready energy automation solutions.
             </p>
 
-            <div className="mt-8 inline-flex items-center justify-center px-8 py-3.5 bg-green-600 text-white font-medium rounded-2xl shadow-md">
+            <div className="mt-8 inline-flex items-center justify-center px-8 py-3.5 bg-green-600 text-white font-medium rounded-2xl">
               Delivering Intelligent Energy Automation with RL
             </div>
           </div>
@@ -815,70 +855,43 @@ const AiEnergyAutomation = () => {
       </section>
 
       {/* ==================== IMPLEMENTATION ROADMAP ==================== */}
-      <section className="w-full bg-gray-50 py-10 md:py-15 lg:py-20">
+      <section className="w-full bg-white py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-black">
-              Energy AI Implementation Roadmap
-            </h2>
-            <p className="text-gray-700 mt-4 text-lg">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2>Energy AI Implementation Roadmap</h2>
+            <p className="text-lg text-gray-600 mt-4">
               A phased approach that delivers value from day one — building
               toward a fully autonomous, carbon-positive energy operation.
             </p>
           </div>
 
           <div className="relative">
-            {/* Connecting line */}
-            <div className="hidden lg:block absolute top-8 left-0 right-0 h-0.5 bg-green-200 z-0 mx-16" />
-
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {roadmap.map((item, index) => (
                 <div
                   key={index}
-                  className={`rounded-2xl border-2 p-6 flex flex-col gap-4 transition-all duration-300 hover:shadow-lg ${item.color}`}
+                  className="bg-gray-50 rounded-2xl border border-gray-200 p-6 flex flex-col gap-4 transition-all duration-300 hover:shadow-lg"
                 >
-                  {/* Phase badge + dot */}
                   <div className="flex flex-col items-start gap-2">
-                    <div
-                      className={`hidden lg:block w-4 h-4 rounded-full border-2 border-white shadow ${item.dark ? "bg-white" : "bg-green-600"} self-center mb-1`}
-                    />
-                    <span
-                      className={`text-xs font-bold px-3 py-1 rounded-full ${item.badge}`}
-                    >
+                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-green-100 text-green-700">
                       {item.phase}
                     </span>
-                    <span
-                      className={`text-xs font-medium ${item.dark ? "text-green-100" : "text-gray-500"}`}
-                    >
+                    <span className="text-xs font-medium text-gray-500">
                       {item.timeline}
                     </span>
                   </div>
 
-                  <h3
-                    className={`font-bold text-xl ${item.dark ? "text-white" : "text-black"}`}
-                  >
-                    {item.title}
-                  </h3>
+                  <h3 className="text-green-600 font-bold">{item.title}</h3>
 
-                  <p
-                    className={`text-sm leading-relaxed ${item.dark ? "text-green-100" : "text-gray-700"}`}
-                  >
+                  <p className="text-sm text-gray-600 leading-relaxed">
                     {item.features}
                   </p>
 
-                  <div
-                    className={`mt-auto pt-4 border-t ${item.dark ? "border-green-500" : "border-green-200"}`}
-                  >
-                    <p
-                      className={`text-xs font-semibold ${item.dark ? "text-green-200" : "text-green-700"}`}
-                    >
+                  <div className="mt-auto pt-4 border-t border-gray-200">
+                    <p className="text-xs font-semibold text-green-600">
                       Impact
                     </p>
-                    <p
-                      className={`text-xs mt-1 ${item.dark ? "text-white" : "text-gray-700"}`}
-                    >
-                      {item.impact}
-                    </p>
+                    <p className="text-xs text-gray-600 mt-1">{item.impact}</p>
                   </div>
                 </div>
               ))}
@@ -887,7 +900,7 @@ const AiEnergyAutomation = () => {
 
           {/* Vision statement */}
           <div className="mt-12 bg-green-600 rounded-3xl p-8 md:p-12 text-white text-center">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+            <h3 className="text-white font-bold mb-4">
               The Ultimate Energy Vision
             </h3>
             <p className="text-green-100 max-w-3xl mx-auto text-lg leading-relaxed">

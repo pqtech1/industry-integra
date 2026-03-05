@@ -22,6 +22,15 @@ import {
   Shield,
   Network,
   ChevronRight,
+  Target,
+  Cable,
+  Radio,
+  Wifi,
+  Server,
+  HardDrive,
+  Gauge,
+  Layers,
+  Repeat,
 } from "lucide-react";
 
 import AIIconDashboard from "../../sections/AIIconDashboard";
@@ -145,59 +154,6 @@ const AiProcessAutomation = () => {
     },
   ];
 
-  const roadmap = [
-    {
-      phase: "Phase 1",
-      title: "Foundation",
-      timeline: "Month 1–3",
-      features:
-        "Anomaly Detection, Alert Correlation, Energy Forecasting, NL Query Interface",
-      impact: "Immediate noise reduction; faster insights for managers",
-      color: "bg-green-50 border-green-200",
-      badge: "bg-green-100 text-green-700",
-    },
-    {
-      phase: "Phase 2",
-      title: "Prediction",
-      timeline: "Month 3–6",
-      features:
-        "Predictive Maintenance, Quality Defect Prediction, Throughput Forecasting, Computer Vision Inspection",
-      impact: "Proactive operations; 20–30% downtime reduction",
-      color: "bg-green-50 border-green-300",
-      badge: "bg-green-200 text-green-800",
-    },
-    {
-      phase: "Phase 3",
-      title: "Copilot",
-      timeline: "Month 6–9",
-      features:
-        "Plant Copilot (RAG), NL-to-SQL Full Implementation, Auto-generated Reports, Maintenance AI Assistant",
-      impact: "Every operator and manager works 40% faster",
-      color: "bg-green-50 border-green-400",
-      badge: "bg-green-300 text-green-900",
-    },
-    {
-      phase: "Phase 4",
-      title: "Agents",
-      timeline: "Month 9–15",
-      features: "Maintenance Agent, Energy Agent, Quality Guardian Agent",
-      impact: "First truly autonomous operations; 35% energy savings",
-      color: "bg-green-50 border-green-500",
-      badge: "bg-green-500 text-white",
-    },
-    {
-      phase: "Phase 5",
-      title: "Autonomous",
-      timeline: "Month 15–24",
-      features:
-        "Multi-Agent Orchestration (Factory Brain), Digital Twin, RL-based Scheduling, Full Agentic Operations",
-      impact: "Self-optimizing factory; competitive moat achieved",
-      color: "bg-green-600 border-green-600",
-      badge: "bg-white text-green-700",
-      dark: true,
-    },
-  ];
-
   const agentTypes = [
     {
       agent: "Maintenance Agent",
@@ -225,24 +181,108 @@ const AiProcessAutomation = () => {
     },
   ];
 
+  const roadmap = [
+    {
+      phase: "Phase 1",
+      title: "Foundation",
+      timeline: "Month 1–3",
+      features:
+        "Anomaly Detection, Alert Correlation, Energy Forecasting, NL Query Interface",
+      impact: "Immediate noise reduction; faster insights for managers",
+    },
+    {
+      phase: "Phase 2",
+      title: "Prediction",
+      timeline: "Month 3–6",
+      features:
+        "Predictive Maintenance, Quality Defect Prediction, Throughput Forecasting, Computer Vision Inspection",
+      impact: "Proactive operations; 20–30% downtime reduction",
+    },
+    {
+      phase: "Phase 3",
+      title: "Copilot",
+      timeline: "Month 6–9",
+      features:
+        "Plant Copilot (RAG), NL-to-SQL Full Implementation, Auto-generated Reports, Maintenance AI Assistant",
+      impact: "Every operator and manager works 40% faster",
+    },
+    {
+      phase: "Phase 4",
+      title: "Agents",
+      timeline: "Month 9–15",
+      features: "Maintenance Agent, Energy Agent, Quality Guardian Agent",
+      impact: "First truly autonomous operations; 35% energy savings",
+    },
+    {
+      phase: "Phase 5",
+      title: "Autonomous",
+      timeline: "Month 15–24",
+      features:
+        "Multi-Agent Orchestration (Factory Brain), Digital Twin, RL-based Scheduling, Full Agentic Operations",
+      impact: "Self-optimizing factory; competitive moat achieved",
+    },
+  ];
+
+  const protocolCategories = [
+    {
+      name: "OPC Standards",
+      protocols: [
+        "OPC DA (Data Access)",
+        "OPC UA (Unified Architecture)",
+        "OPC HDA (Historical Data Access)",
+        "OPC AE (Alarms & Events)",
+      ],
+    },
+    {
+      name: "Fieldbus Protocols",
+      protocols: [
+        "Modbus RTU",
+        "Modbus TCP/IP",
+        "PROFIBUS DP",
+        "PROFIBUS PA",
+        "FOUNDATION Fieldbus H1",
+        "FOUNDATION Fieldbus HSE",
+      ],
+    },
+    {
+      name: "Industrial Ethernet",
+      protocols: ["PROFINET", "EtherNet/IP", "EtherCAT"],
+    },
+    {
+      name: "Legacy / Serial Communication",
+      protocols: ["RS-232", "RS-485"],
+    },
+    {
+      name: "Device Communication",
+      protocols: ["HART Protocol", "WirelessHART"],
+    },
+    {
+      name: "Distributed Control System Protocols",
+      protocols: [
+        "Honeywell Experion Protocols",
+        "Yokogawa CENTUM Communication",
+        "Emerson DeltaV Communication",
+      ],
+    },
+  ];
+
   return (
     <>
       {/* ==================== HERO ==================== */}
-      <section className="w-full bg-gray-50 py-10 md:py-15 lg:py-20">
+      <section className="w-full bg-gray-50 py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Content */}
             <div className="space-y-6">
-              <Badge className="bg-green-600 text-white px-4 py-1 text-sm font-medium">
+              <Badge className="bg-green-600 text-white px-4 py-1 text-sm font-medium border-0">
                 AI Process Automation
               </Badge>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] text-black">
-                Automate Your Business{" "}
-                <span className="text-green-600">Processes</span> with AI
+              <h1 className="text-black">
+                Automate Your Business Processes with AI
               </h1>
 
-              <p className="text-lg text-gray-700 max-w-xl">
+              <p className="text-lg">
                 Transform manual workflows into intelligent automated systems.
                 Reduce operational costs, eliminate human errors, and increase
                 productivity using advanced AI-driven automation.
@@ -251,7 +291,7 @@ const AiProcessAutomation = () => {
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button
                   size="lg"
-                  className="bg-green-600 hover:bg-green-700 px-8"
+                  className="bg-green-600 hover:bg-green-700 text-white px-8"
                 >
                   Get Started
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -266,10 +306,19 @@ const AiProcessAutomation = () => {
                 </Button>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 text-sm text-gray-600 pt-6">
-                <div>✔ Smart Workflow Automation</div>
-                <div>✔ Real-time Insights</div>
-                <div>✔ Scalable Infrastructure</div>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 text-sm pt-6">
+                <div className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-green-600" />
+                  <span>Smart Workflow Automation</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-green-600" />
+                  <span>Real-time Insights</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-green-600" />
+                  <span>Scalable Infrastructure</span>
+                </div>
               </div>
             </div>
 
@@ -287,7 +336,7 @@ const AiProcessAutomation = () => {
       </section>
 
       {/* ==================== WHY AI ==================== */}
-      <section className="w-full bg-white py-10 md:py-15 lg:py-20">
+      <section className="w-full bg-white py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Image */}
@@ -302,18 +351,16 @@ const AiProcessAutomation = () => {
 
             {/* Right Content */}
             <div className="space-y-8 order-1 lg:order-2">
-              <h2 className="text-3xl md:text-4xl font-bold text-black">
-                Why Implement AI in Your Process Automation?
-              </h2>
+              <h2>Why Implement AI in Your Process Automation?</h2>
 
-              <p className="text-lg text-gray-700 max-w-lg">
+              <p className="text-lg">
                 Traditional systems are reactive — they show you what happened.
                 AI-driven process automation goes further by enabling
                 intelligent decision-making, predicting outcomes, and optimizing
                 workflows in real time.
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {[
                   "Automates repetitive tasks across departments—finance, HR, supply chain, and operations—reducing manual errors and saving hours.",
                   "Provides predictive insights, enabling teams to anticipate bottlenecks, prevent downtime, and optimize resource allocation.",
@@ -325,46 +372,85 @@ const AiProcessAutomation = () => {
                 ].map((text, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <Check className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">{text}</p>
+                    <p className="text-gray-600">{text}</p>
                   </div>
                 ))}
               </div>
-
-              <p className="text-sm text-gray-600 max-w-md">
-                Implementing AI in process automation transforms traditional
-                workflows into smart, self-optimizing systems.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ==================== HOW AI TRANSFORMS ==================== */}
-      <section className="w-full bg-gray-50 py-10 md:py-15 lg:py-20">
+      {/* ==================== PROCESS AUTOMATION PROTOCOLS ==================== */}
+      <section className="w-full bg-gray-50 py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-black">
-              How AI Transforms Your Processes
-            </h2>
-            <p className="text-gray-700 mt-4 text-lg">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <Badge className="bg-green-600 text-white px-4 py-1 text-sm font-medium border-0 mb-4">
+              Industrial Protocols
+            </Badge>
+            <h2>Process Automation Protocols</h2>
+            <p className="text-lg text-gray-600 mt-4">
+              Oil & Gas, Chemical, Pharma, Steel, Cement, Food Processing
+            </p>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              These protocols are widely used in continuous process industries
+              to ensure reliable and efficient communication between control
+              systems and field devices.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {protocolCategories.map((category, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg transition-all duration-300"
+              >
+                <h3 className="text-green-600 font-semibold mb-4 pb-2 border-b border-gray-100">
+                  {category.name}
+                </h3>
+                <div className="space-y-2">
+                  {category.protocols.map((protocol, pIdx) => (
+                    <div key={pIdx} className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-green-600" />
+                      <span className="text-gray-700 text-sm">{protocol}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-gray-500 text-sm">
+              Comprehensive protocol support for seamless integration with
+              existing DCS, PLC, and field instrumentation systems.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== HOW AI TRANSFORMS ==================== */}
+      <section className="w-full bg-white py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2>How AI Transforms Your Processes</h2>
+            <p className="text-lg text-gray-600 mt-4">
               From manual workflows to intelligent, automated systems — see how
               AI revolutionizes your operations step by step.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {steps.map((step, index) => (
               <div
                 key={index}
-                className="bg-white rounded-3xl shadow-lg p-8 flex flex-col hover:shadow-xl transition-all duration-300"
+                className="bg-gray-50 rounded-3xl p-8 flex flex-col hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center gap-4 mb-4">
                   {step.icon}
-                  <h3 className="text-green-600 font-bold text-xl">
-                    {step.title}
-                  </h3>
+                  <h3 className="text-green-600 font-bold">{step.title}</h3>
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -374,31 +460,27 @@ const AiProcessAutomation = () => {
       </section>
 
       {/* ==================== KEY BENEFITS ==================== */}
-      <section className="w-full bg-white py-10 md:py-15 lg:py-20">
+      <section className="w-full bg-gray-50 py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-black">
-              Key Benefits of AI Process Automation
-            </h2>
-            <p className="text-gray-700 text-lg mt-4">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2>Key Benefits of AI Process Automation</h2>
+            <p className="text-lg text-gray-600 mt-4">
               Implementing AI in your workflows delivers tangible results for
               your business.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-10">
+          <div className="grid md:grid-cols-2 gap-8">
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="bg-gray-50 rounded-3xl p-8 flex flex-col hover:shadow-lg transition-all duration-300"
+                className="bg-white rounded-3xl p-8 flex flex-col hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center gap-4 mb-4">
                   {benefit.icon}
-                  <h3 className="text-green-600 font-bold text-xl">
-                    {benefit.title}
-                  </h3>
+                  <h3 className="text-green-600 font-bold">{benefit.title}</h3>
                 </div>
-                <p className="text-gray-700">{benefit.description}</p>
+                <p className="text-gray-600">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -406,37 +488,79 @@ const AiProcessAutomation = () => {
       </section>
 
       {/* ==================== AI TECHNOLOGY STACK ==================== */}
-      <section className="w-full bg-gray-50 py-10 md:py-15 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-black">
-              AI Technology Stack
+      <section className="relative w-full bg-[#050505] py-20 md:py-24 overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="container relative mx-auto px-6 lg:px-8">
+          {/* Header with Badge */}
+          <div className="flex flex-col items-center text-center mb-16">
+            <span className="px-4 py-1.5 mb-6 rounded-full border border-green-500/30 bg-green-500/5 text-green-400 text-xs font-bold tracking-widest uppercase">
+              The Engine Room
+            </span>
+
+            <h2 className="text-white">
+              AI Technology <span className="text-green-400">Stack</span>
             </h2>
-            <p className="text-gray-700 mt-4 text-lg">
-              A comprehensive suite of AI technologies working together — each
-              layer purpose-built to tackle specific challenges across your
-              operations.
+
+            <p className="text-gray-400 max-w-xl text-lg leading-relaxed mt-4">
+              A hyper-connected ecosystem of proprietary models, engineered to
+              transform complex operational data into decisive action.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Bento-Inspired Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {aiTechStack.map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col gap-3 hover:shadow-md transition-all duration-300"
+                className="group relative bg-white/[0.03] border border-white/10 rounded-3xl p-8 flex flex-col transition-all duration-500 hover:bg-white/[0.06] hover:-translate-y-2 hover:border-green-500/40 overflow-hidden"
               >
-                <div className="flex items-center gap-3">
-                  {item.icon}
-                  <h3 className="text-green-600 font-bold text-sm leading-tight">
+                {/* Background Icon Watermark */}
+                <div
+                  className="absolute -bottom-8 -right-8 text-white/[0.03] group-hover:text-green-500/[0.05] transition-colors duration-500 pointer-events-none"
+                  style={{
+                    fontSize: "18rem",
+                    transform: "rotate(-15deg)",
+                  }}
+                >
+                  {React.cloneElement(item.icon, {
+                    className: "w-full h-full",
+                    strokeWidth: 1,
+                  })}
+                </div>
+
+                {/* Main Content */}
+                <div className="relative z-10 flex flex-col flex-grow">
+                  {/* Icon */}
+                  <div className="mb-6 self-start inline-flex p-3 rounded-2xl bg-gradient-to-br from-green-500/20 to-transparent text-green-400 group-hover:scale-110 transition-transform duration-500">
+                    {item.icon}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-white font-bold mb-3 group-hover:text-green-300 transition-colors">
                     {item.tech}
                   </h3>
+
+                  {/* Description */}
+                  <p className="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
+                    {item.what}
+                  </p>
+
+                  {/* Footer */}
+                  <div className="pt-6 border-t border-white/5 mt-auto">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-green-500 font-bold">
+                      Deployment
+                    </span>
+                    <p className="text-sm text-gray-300 mt-2 font-medium">
+                      {item.where}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  {item.what}
-                </p>
-                <div className="mt-auto pt-3 border-t border-gray-100">
-                  <p className="text-xs text-gray-500 font-medium">Used in:</p>
-                  <p className="text-xs text-gray-600 mt-1">{item.where}</p>
+
+                {/* Decorative Corner Light */}
+                <div className="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity z-20">
+                  <div className="w-1 h-1 bg-green-400 rounded-full shadow-[0_0_8px_#34d399]" />
                 </div>
               </div>
             ))}
@@ -445,76 +569,114 @@ const AiProcessAutomation = () => {
       </section>
 
       {/* ==================== AGENTIC AI ==================== */}
-      <section className="w-full bg-white py-10 md:py-15 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Content */}
-            <div className="space-y-8">
+      <section className="relative w-full bg-[#030303] py-20 md:py-24 overflow-hidden">
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 2px 2px, rgba(34, 197, 94, 0.15) 1px, transparent 0)`,
+              backgroundSize: "40px 40px",
+            }}
+          />
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#030303] via-transparent to-[#030303]" />
+        </div>
+
+        <div className="container relative mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* LEFT CONTENT: The Philosophy */}
+            <div className="space-y-10 lg:sticky lg:top-24">
               <div>
-                <Badge className="bg-green-100 text-green-700 px-4 py-1 text-sm font-medium mb-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-xs font-bold tracking-widest uppercase mb-6">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                  </span>
                   Agentic AI
-                </Badge>
-                <h2 className="text-3xl md:text-4xl font-bold text-black">
-                  Autonomous AI Agents That Act — Not Just Advise
+                </div>
+                <h2 className="text-white">
+                  Autonomous Agents{" "}
+                  <span className="text-green-400">That Act</span>
                 </h2>
+                <p className="mt-6 text-lg text-gray-400 leading-relaxed max-w-lg">
+                  Moving beyond "Chat." Our agents perceive environments,
+                  execute high-stakes actions, and self-correct in real-time.
+                </p>
               </div>
 
-              <p className="text-lg text-gray-700">
-                Agentic AI goes beyond answering questions. Agents perceive
-                their environment, make decisions, execute actions, observe
-                results, and loop — autonomously achieving goals without human
-                intervention at every step.
-              </p>
-
-              <div className="space-y-4">
+              {/* Feature List */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   {
                     label: "Goals",
-                    desc: "Each agent is assigned specific operational goals to achieve",
+                    icon: <Target className="w-4 h-4" />,
+                    desc: "Target-driven logic",
                   },
                   {
                     label: "Tools",
-                    desc: "Agents use real tools — ERP APIs, SCADA systems, scheduling engines",
+                    icon: <Zap className="w-4 h-4" />,
+                    desc: "Direct ERP/SCADA APIs",
                   },
                   {
                     label: "Memory",
-                    desc: "Agents remember what they've done and what they've seen",
+                    icon: <Database className="w-4 h-4" />,
+                    desc: "Contextual persistence",
                   },
                   {
                     label: "Planning",
-                    desc: "Multi-step sequences are planned and self-corrected automatically",
+                    icon: <Cpu className="w-4 h-4" />,
+                    desc: "Multi-step recursion",
                   },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <ChevronRight className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                  <div
+                    key={i}
+                    className="group flex items-start gap-3 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-green-500/30 transition-all"
+                  >
+                    <div className="mt-1 text-green-500 group-hover:scale-110 transition-transform">
+                      {item.icon}
+                    </div>
                     <div>
-                      <span className="font-semibold text-black">
-                        {item.label}:{" "}
-                      </span>
-                      <span className="text-gray-700">{item.desc}</span>
+                      <div className="text-sm font-bold text-white uppercase tracking-wider">
+                        {item.label}
+                      </div>
+                      <div className="text-xs text-gray-500 mt-1">
+                        {item.desc}
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Right — Agent Cards */}
-            <div className="grid grid-cols-1 gap-5">
+            {/* RIGHT CONTENT: The Agents */}
+            <div className="relative flex flex-col gap-4">
+              <div className="absolute -inset-10 bg-green-500/10 blur-[100px] rounded-full pointer-events-none" />
+
               {agentTypes.map((agent, index) => (
                 <div
                   key={index}
-                  className="bg-gray-50 rounded-2xl p-6 flex items-start gap-4 hover:shadow-md transition-all duration-300"
+                  className="group relative bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-3xl p-6 transition-all duration-500 hover:bg-white/[0.07] hover:translate-x-2"
                 >
-                  <div className="flex-shrink-0 bg-white rounded-xl p-3 shadow-sm">
-                    {agent.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-green-600 font-bold text-lg mb-1">
-                      {agent.agent}
-                    </h3>
-                    <p className="text-gray-700 text-sm leading-relaxed">
-                      {agent.description}
-                    </p>
+                  <div className="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-green-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                  <div className="flex items-center gap-5">
+                    <div className="relative flex-shrink-0">
+                      <div className="absolute -inset-2 bg-green-500/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="relative bg-[#0a0a0a] border border-white/10 rounded-2xl p-4 shadow-xl text-green-400 group-hover:text-white transition-colors">
+                        {agent.icon}
+                      </div>
+                    </div>
+
+                    <div className="flex-grow">
+                      <div className="flex items-center justify-between mb-1">
+                        <h3 className="text-white font-bold group-hover:text-green-400 transition-colors">
+                          {agent.agent}
+                        </h3>
+                        <ChevronRight className="w-4 h-4 text-gray-600 group-hover:text-green-500 transform group-hover:translate-x-1 transition-all" />
+                      </div>
+                      <p className="text-gray-400 text-sm leading-relaxed max-w-md">
+                        {agent.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -524,13 +686,11 @@ const AiProcessAutomation = () => {
       </section>
 
       {/* ==================== AI TOOLS & TECHNOLOGIES ==================== */}
-      <section className="w-full bg-gray-50 py-10 md:py-15 lg:py-20">
+      <section className="w-full bg-white py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-black">
-              AI Tools & Technologies in Process Automation
-            </h2>
-            <p className="text-gray-700 mt-4 text-lg">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2>AI Tools & Technologies in Process Automation</h2>
+            <p className="text-lg text-gray-600 mt-4">
               Modern AI-powered process automation uses a combination of RPA,
               ML, and analytics tools to optimize workflows and drive
               efficiency.
@@ -541,17 +701,17 @@ const AiProcessAutomation = () => {
             <AIIconDashboard />
           </div>
 
-          <div className="bg-white rounded-3xl border border-gray-200 p-8 md:p-12 text-center shadow-sm">
-            <h3 className="text-2xl md:text-3xl font-semibold text-black">
+          <div className="bg-gray-50 rounded-3xl border border-gray-200 p-8 md:p-12 text-center">
+            <h3 className="text-gray-900 font-semibold mb-6">
               Powered by the Latest AI Innovations
             </h3>
-            <p className="mt-6 text-gray-600 max-w-3xl mx-auto text-lg">
+            <p className="text-gray-600 max-w-3xl mx-auto text-lg">
               We leverage modern AI frameworks, advanced LLM ecosystems, and
               scalable machine learning tools to deliver intelligent,
               future-ready automation solutions.
             </p>
 
-            <div className="mt-8 inline-flex items-center justify-center px-8 py-3.5 bg-green-600 text-white font-medium rounded-2xl shadow-md">
+            <div className="mt-8 inline-flex items-center justify-center px-8 py-3.5 bg-green-600 text-white font-medium rounded-2xl">
               Delivering Intelligent Automation with Modern AI
             </div>
           </div>
@@ -559,70 +719,43 @@ const AiProcessAutomation = () => {
       </section>
 
       {/* ==================== IMPLEMENTATION ROADMAP ==================== */}
-      <section className="w-full bg-white py-10 md:py-15 lg:py-20">
+      <section className="w-full bg-gray-50 py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-black">
-              AI Implementation Roadmap
-            </h2>
-            <p className="text-gray-700 mt-4 text-lg">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2>AI Implementation Roadmap</h2>
+            <p className="text-lg text-gray-600 mt-4">
               A phased approach that delivers value from day one — building
               toward a fully autonomous, self-optimizing operation.
             </p>
           </div>
 
           <div className="relative">
-            {/* Connecting line */}
-            <div className="hidden lg:block absolute top-8 left-0 right-0 h-0.5 bg-green-200 z-0 mx-16" />
-
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {roadmap.map((item, index) => (
                 <div
                   key={index}
-                  className={`rounded-2xl border-2 p-6 flex flex-col gap-4 transition-all duration-300 hover:shadow-lg ${item.color}`}
+                  className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col gap-4 transition-all duration-300 hover:shadow-lg"
                 >
-                  {/* Phase badge + dot */}
                   <div className="flex flex-col items-start gap-2">
-                    <div
-                      className={`hidden lg:block w-4 h-4 rounded-full border-2 border-white shadow ${item.dark ? "bg-white" : "bg-green-600"} self-center mb-1`}
-                    />
-                    <span
-                      className={`text-xs font-bold px-3 py-1 rounded-full ${item.badge}`}
-                    >
+                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-green-100 text-green-700">
                       {item.phase}
                     </span>
-                    <span
-                      className={`text-xs font-medium ${item.dark ? "text-green-100" : "text-gray-500"}`}
-                    >
+                    <span className="text-xs font-medium text-gray-500">
                       {item.timeline}
                     </span>
                   </div>
 
-                  <h3
-                    className={`font-bold text-xl ${item.dark ? "text-white" : "text-black"}`}
-                  >
-                    {item.title}
-                  </h3>
+                  <h3 className="text-green-600 font-bold">{item.title}</h3>
 
-                  <p
-                    className={`text-sm leading-relaxed ${item.dark ? "text-green-100" : "text-gray-700"}`}
-                  >
+                  <p className="text-sm text-gray-600 leading-relaxed">
                     {item.features}
                   </p>
 
-                  <div
-                    className={`mt-auto pt-4 border-t ${item.dark ? "border-green-500" : "border-green-200"}`}
-                  >
-                    <p
-                      className={`text-xs font-semibold ${item.dark ? "text-green-200" : "text-green-700"}`}
-                    >
+                  <div className="mt-auto pt-4 border-t border-gray-100">
+                    <p className="text-xs font-semibold text-green-600">
                       Impact
                     </p>
-                    <p
-                      className={`text-xs mt-1 ${item.dark ? "text-white" : "text-gray-700"}`}
-                    >
-                      {item.impact}
-                    </p>
+                    <p className="text-xs text-gray-600 mt-1">{item.impact}</p>
                   </div>
                 </div>
               ))}
@@ -631,9 +764,7 @@ const AiProcessAutomation = () => {
 
           {/* Vision statement */}
           <div className="mt-12 bg-green-600 rounded-3xl p-8 md:p-12 text-white text-center">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              The Ultimate Vision
-            </h3>
+            <h3 className="text-white font-bold mb-4">The Ultimate Vision</h3>
             <p className="text-green-100 max-w-3xl mx-auto text-lg leading-relaxed">
               A factory at full AI capability is a self-aware, self-optimizing
               operation where AI agents continuously monitor, predict, and act

@@ -29,6 +29,16 @@ import {
   Globe,
   Phone,
   Mail,
+  Wrench as WrenchIcon,
+  Settings as SettingsIcon,
+  Layout,
+  Layers,
+  Code,
+  CloudCog,
+  HardDrive,
+  Radio,
+  Cable,
+  Gauge,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -88,31 +98,35 @@ const Header = () => {
           : "bg-white shadow-sm"
       }`}
     >
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
-        {/* Logo */}
+      <div className="container mx-auto flex h-20 items-center justify-between px-4 lg:px-8 relative">
+        {/* Logo - Left */}
         <HashLink
           to="/"
-          className="flex items-center cursor-pointer"
+          className="flex items-center cursor-pointer flex-shrink-0"
           smooth
           onClick={() => handleLinkClick("/")}
         >
-          <div className="flex h-15 w-15 items-center justify-center">
-            <img src="logo.png" alt="Industry INTEGRA Logo" />
+          <div className="flex h-12 w-12 items-center justify-center">
+            <img
+              src="logo.png"
+              alt="Industry INTEGRA Logo"
+              className="h-10 w-10"
+            />
           </div>
-          <div className="flex flex-col">
-            <span className="text-lg lg:text-2xl font-bold text-gray-900">
+          <div className="flex flex-col ml-2">
+            <span className="text-xl lg:text-2xl font-bold text-gray-900 leading-tight">
               Industry <span className="text-green-600">INTEGRA</span> 360
             </span>
           </div>
         </HashLink>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:block">
-          <NavigationMenu>
-            <NavigationMenuList>
+        {/* Desktop Navigation - Center */}
+        <nav className="hidden lg:block flex w-full justify-end ">
+          <NavigationMenu className="flex w-full justify-end">
+            <NavigationMenuList className="gap-1">
               {/* Platform Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700">
+                <NavigationMenuTrigger className="h-10 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700">
                   Platform
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-white shadow-2xl rounded-lg p-0">
@@ -286,7 +300,7 @@ const Header = () => {
 
               {/* AI Solutions Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700">
+                <NavigationMenuTrigger className="h-10 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700">
                   AI Solutions
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-white shadow-2xl rounded-xl p-0 overflow-hidden">
@@ -419,7 +433,7 @@ const Header = () => {
 
               {/* Solutions Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700">
+                <NavigationMenuTrigger className="h-10 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700">
                   Solutions
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-white shadow-2xl rounded-lg p-0">
@@ -559,7 +573,7 @@ const Header = () => {
 
               {/* Services Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="h-9 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700">
+                <NavigationMenuTrigger className="h-10 px-4 text-sm font-medium text-gray-700 hover:text-green-700 data-[state=open]:text-green-700">
                   Services
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-white shadow-2xl rounded-lg p-0">
@@ -715,22 +729,23 @@ const Header = () => {
                   <HashLink
                     to="/support"
                     smooth
-                    className="inline-flex h-9 items-center justify-center px-4 text-sm font-medium text-gray-700 hover:text-green-700 transition-colors duration-200"
+                    className="inline-flex h-10 items-center justify-center px-4 text-sm font-medium text-gray-700 hover:text-green-700 transition-colors duration-200"
                     onClick={() => setOpenDropdown(null)}
                   >
                     Support
                   </HashLink>
                 </NavigationMenuLink>
               </NavigationMenuItem>
+
+              {/* Protocols We Serve Link */}
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
                     to="/protocols-we-serve"
-                    smooth
-                    className="inline-flex h-9 items-center justify-center px-4 text-sm font-medium text-gray-700 hover:text-green-700 transition-colors duration-200"
+                    className="inline-flex h-10 items-center justify-center px-4 text-sm font-medium text-gray-700 hover:text-green-700 transition-colors duration-200"
                     onClick={() => setOpenDropdown(null)}
                   >
-                    Protocols We Serve
+                    Protocols
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -738,18 +753,36 @@ const Header = () => {
           </NavigationMenu>
         </nav>
 
-        {/* Right Side: Contact & Mobile Menu */}
-        <div className="flex items-center gap-4">
-          {/* Animated Demo Button */}
-          <a
-            href="https://positivequadrant.in/contact-us"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button className="relative bg-gradient-to-r from-green-600 via-green-500 to-green-600 hover:from-green-700 hover:via-green-600 hover:to-green-700 shadow-lg hover:shadow-xl text-white transition-all duration-300 group overflow-hidden animate-gradient-x">
-              Request Demo
-            </Button>
-          </a>
+        {/* Right Side: Rotated Demo Button & Mobile Menu */}
+        <div className="flex items-center gap-4 relative">
+          {/* Rotated Request Demo Button - Fixed on Right Center */}
+          <div className="hidden lg:block fixed right-0 top-[400px] z-50">
+            <div
+              style={{
+                transform: "rotate(90deg)",
+                transformOrigin: "right top",
+              }}
+            >
+              <a
+                href="https://positivequadrant.in/contact-us"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <Button
+                  className="animate-heartbeat bg-gradient-to-r from-green-600 via-green-500 to-green-600 
+        hover:from-green-700 hover:via-green-600 hover:to-green-700 
+        shadow-lg hover:shadow-xl text-white transition-all duration-300 
+        whitespace-nowrap"
+                  style={{
+                    minWidth: "120px",
+                  }}
+                >
+                  Request Demo
+                </Button>
+              </a>
+            </div>
+          </div>
 
           {/* Mobile Menu Button */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
@@ -1067,38 +1100,34 @@ const Header = () => {
                             <h4 className="text-xs font-semibold text-gray-500 uppercase mb-2">
                               Technical Services
                             </h4>
-                            <HashLink
-                              to="/services#technical-services"
+                            <Link
+                              to="/plc-programming-services"
                               className="block py-2 text-sm text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-lg px-3 transition"
                               onClick={handleHashLinkClick}
-                              smooth
                             >
                               PLC Programming
-                            </HashLink>
-                            <HashLink
-                              to="/services#technical-services"
+                            </Link>
+                            <Link
+                              to="/cloud-infrastructure-services"
                               className="block py-2 text-sm text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-lg px-3 transition"
                               onClick={handleHashLinkClick}
-                              smooth
                             >
                               Cloud Infrastructure
-                            </HashLink>
-                            <HashLink
-                              to="/services#technical-services"
+                            </Link>
+                            <Link
+                              to="/scada-services"
                               className="block py-2 text-sm text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-lg px-3 transition"
                               onClick={handleHashLinkClick}
-                              smooth
                             >
                               SCADA Services
-                            </HashLink>
-                            <HashLink
-                              to="/services#technical-services"
+                            </Link>
+                            <Link
+                              to="/data-integration-services"
                               className="block py-2 text-sm text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-lg px-3 transition"
                               onClick={handleHashLinkClick}
-                              smooth
                             >
                               Data Integration
-                            </HashLink>
+                            </Link>
                           </div>
                           <div className="pt-2">
                             <h4 className="text-xs font-semibold text-gray-500 uppercase mb-2">
@@ -1147,6 +1176,17 @@ const Header = () => {
                           </HashLink>
                         </div>
                       )}
+                    </div>
+
+                    {/* Protocols Link */}
+                    <div className="border-b pb-4">
+                      <Link
+                        to="/protocols-we-serve"
+                        className="block font-medium text-gray-900 hover:text-green-600 transition"
+                        onClick={handleHashLinkClick}
+                      >
+                        Protocols We Serve
+                      </Link>
                     </div>
 
                     {/* Support Link */}

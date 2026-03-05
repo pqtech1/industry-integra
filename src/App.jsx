@@ -107,6 +107,8 @@ import PLCServices from "./components/landing/services/PLCServices";
 import ScrollToTop from "./components/ScrollToTop";
 import ScadaServices from "./components/landing/services/ScadaServices";
 import IndustrialProtocolWeServe from "./components/landing/IndustrialProtocolWeServe";
+import CloudSupportServices from "./components/landing/services/CloudSupportServices";
+import DataIntegrationPage from "./components/landing/services/DataIntegrationPage";
 
 // Single Tracking Component - SIMPLIFIED
 const TrackingListener = () => {
@@ -197,8 +199,19 @@ function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/plc-programming-services" element={<PLCServices />} />
             <Route path="/scada-services" element={<ScadaServices />} />
+            <Route
+              path="/cloud-infrastructure-services"
+              element={<CloudSupportServices />}
+            />
+            <Route
+              path="/data-integration-services"
+              element={<DataIntegrationPage />}
+            />
             <Route path="/support" element={<SupportPage />} />
-            <Route path="/protocols-we-serve" element={< IndustrialProtocolWeServe/>} />
+            <Route
+              path="/protocols-we-serve"
+              element={<IndustrialProtocolWeServe />}
+            />
             <Route
               path="/ai-solutions-for-process-automation"
               element={<AiProcessAutomation />}
