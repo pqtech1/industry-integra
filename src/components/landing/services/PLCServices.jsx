@@ -41,52 +41,114 @@ const PLCServices = () => {
       brand: "Siemens",
       logo: "services/plcs/brand-logo/Siemens-Logo.wine.svg",
       items: [
-        "SIMATIC S7-1200 / S7-1500 — Mid-range industrial PLCs",
-        "SIMATIC S7-300 / S7-400 — Traditional workhorse PLCs",
-        "SIMATIC ET200 — Distributed I/O & compact modules",
+        "SIMATIC S7-200 — Compact micro PLC",
+        "SIMATIC S7-300 — Traditional modular PLC",
+        "SIMATIC S7-400 — High-end process automation PLC",
+        "SIMATIC S7-1200 — Modern compact PLC for automation",
+        "SIMATIC S7-1500 — Advanced high-performance PLC",
+        "Siemens ET200 Series — Distributed I/O & compact PLC modules",
       ],
     },
+
     {
       brand: "Rockwell Automation (Allen-Bradley)",
       logo: "services/plcs/brand-logo/rockwell-automation.svg",
       items: [
         "ControlLogix — High-performance modular PLCs",
-        "CompactLogix — Mid-range controller",
-        "MicroLogix / Micro800 — Small footprint PLCs",
+        "CompactLogix — Mid-range industrial controller",
+        "MicroLogix — Small machine automation PLC",
+        "Micro800 Series — Compact micro PLC family",
+        "PLC-5 — Legacy industrial PLC platform",
       ],
     },
+
     {
       brand: "Schneider Electric",
       logo: "services/plcs/brand-logo/Schneider_Electric-Logo.wine.svg",
       items: [
-        "Modicon M340 / M580 — Industrial process controllers",
-        "Modicon Nano / Quantum — Scalable automation",
+        "Modicon M221 — Compact machine controller",
+        "Modicon M241 — High-speed machine PLC",
+        "Modicon M340 — Mid-range industrial PLC",
+        "Modicon M580 — ePAC advanced automation controller",
+        "Modicon Quantum — Large-scale industrial automation PLC",
       ],
     },
-    {
-      brand: "ABB",
-      logo: "services/plcs/brand-logo/ABB_Group-Logo.wine.svg",
-      items: ["AC500 — Modular automation PLCs", "Freelance DCS hybrid system"],
-    },
+
     {
       brand: "Mitsubishi Electric",
       logo: "services/plcs/brand-logo/Mitsubishi_Electric-Logo.wine.svg",
-      items: ["MELSEC-FX / MELSEC-Q Series — Widely used in Asian factories"],
+      items: [
+        "MELSEC FX Series — Compact micro PLC",
+        "MELSEC Q Series — Modular high-performance PLC",
+        "MELSEC L Series — Cost-effective modular PLC",
+        "MELSEC iQ-R Series — Advanced automation controller",
+      ],
     },
+
     {
       brand: "Omron",
       logo: "services/plcs/brand-logo/Omron-Logo.wine.svg",
-      items: ["CJ / CP / NX Series — Factory automation controllers"],
+      items: [
+        "CP Series — Compact machine PLC",
+        "CJ Series — Modular automation PLC",
+        "NX Series — Advanced machine automation controller",
+        "NJ Series — High-speed motion control PLC",
+      ],
     },
+
+    {
+      brand: "ABB",
+      logo: "services/plcs/brand-logo/ABB_Group-Logo.wine.svg",
+      items: [
+        "AC500 — Modular industrial PLC",
+        "AC800M — Process automation controller",
+      ],
+    },
+
+    {
+      brand: "Delta",
+      logo: "services/plcs/brand-logo/delta.jpg",
+      items: [
+        "DVP Series — Compact industrial PLC",
+        "AS Series — High-performance motion PLC",
+      ],
+    },
+
+    {
+      brand: "Beckhoff",
+      logo: "services/plcs/brand-logo/Beckhoff.png",
+      items: [
+        "IPC Controllers — Industrial PC based PLC",
+        "TwinCAT Controllers — PC-based automation platform",
+      ],
+    },
+
+    {
+      brand: "B&R Automation",
+      logo: "services/plcs/brand-logo/B&R Automation.png",
+      items: [
+        "Industrial Controllers — Advanced motion and automation systems",
+      ],
+    },
+
     {
       brand: "Yokogawa",
       logo: "services/plcs/brand-logo/Yokogawa_Electric-Logo.wine.svg",
-      items: ["DCS and PLC hybrids for process plants"],
+      items: ["Yokogawa Controllers — Process automation controllers"],
     },
+
     {
       brand: "Honeywell",
       logo: "services/plcs/brand-logo/Honeywell-Logo.wine.svg",
-      items: ["DCS and PLC hybrid systems for industrial process plants"],
+      items: [
+        "Honeywell Controllers — Industrial process automation controllers",
+      ],
+    },
+
+    {
+      brand: "Emerson",
+      logo: "services/plcs/brand-logo/Emerson_Electric-Logo.wine.svg",
+      items: ["Emerson Controllers — Process control and automation systems"],
     },
   ];
 
@@ -294,7 +356,7 @@ const PLCServices = () => {
                   <img
                     src={brand.logo}
                     alt={brand.brand}
-                    className="h-20 object-contain rotate-[-90deg]"
+                    className="h-30 object-contain rotate-[-90deg]"
                   />
                 </div>
 

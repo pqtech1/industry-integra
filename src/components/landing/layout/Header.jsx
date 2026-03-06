@@ -63,6 +63,26 @@ const Header = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const navigate = useNavigate();
 
+
+  const softwareServices = [
+    {
+      name: "Custom Development",
+      path: "/services/custom-development",
+    },
+    {
+      name: "IIoT and Edge",
+      path: "/services/industrial-iot-and-edge",
+    },
+    {
+      name: "ERP Integration",
+      path: "/services/erp-integration",
+    },
+    {
+      name: "Mobile Applications",
+      path: "/services/mobile-applications",
+    },
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
@@ -667,6 +687,11 @@ const Header = () => {
                                 name: "Data Integration",
                                 path: "/data-integration-services",
                               },
+                             
+                              {
+                                name: "Data & Analytics",
+                                path: "/data-analytics",
+                              },
                             ].map((service) => (
                               <NavigationMenuLink asChild key={service.name}>
                                 <Link
@@ -684,21 +709,17 @@ const Header = () => {
                           <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">
                             Software Services
                           </h4>
+
                           <div className="space-y-3">
-                            {[
-                              "Custom Development",
-                              "IoT Applications",
-                              "ERP Integration",
-                              "Mobile Applications",
-                            ].map((service) => (
-                              <NavigationMenuLink asChild key={service}>
+                            {softwareServices.map((service) => (
+                              <NavigationMenuLink asChild key={service.name}>
                                 <HashLink
-                                  to="/services#software-services"
+                                  to={service.path}
                                   smooth
                                   className="block text-sm font-medium text-gray-900 hover:text-green-700 p-2 rounded-lg hover:bg-green-50 transition-all duration-200"
                                   onClick={() => setOpenDropdown(null)}
                                 >
-                                  {service}
+                                  {service.name}
                                 </HashLink>
                               </NavigationMenuLink>
                             ))}

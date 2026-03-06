@@ -60,6 +60,7 @@ import { Badge } from "@/components/ui/badge";
 
 const IndustrialProtocolWeServe = () => {
   const protocolCategories = [
+    // OPC Standards (Complete)
     {
       name: "OPC Standards",
       icon: <Layers className="w-5 h-5" />,
@@ -70,6 +71,8 @@ const IndustrialProtocolWeServe = () => {
         "OPC AE (Alarms & Events)",
       ],
     },
+
+    // Fieldbus Protocols (Complete)
     {
       name: "Fieldbus Protocols",
       icon: <Cable className="w-5 h-5" />,
@@ -82,6 +85,8 @@ const IndustrialProtocolWeServe = () => {
         "FOUNDATION Fieldbus HSE",
       ],
     },
+
+    // Industrial Ethernet (Complete)
     {
       name: "Industrial Ethernet",
       icon: <Network className="w-5 h-5" />,
@@ -93,6 +98,8 @@ const IndustrialProtocolWeServe = () => {
         "SERCOS III",
       ],
     },
+
+    // Machine-Level Protocols (Complete)
     {
       name: "Machine-Level Protocols",
       icon: <Cpu className="w-5 h-5" />,
@@ -104,6 +111,8 @@ const IndustrialProtocolWeServe = () => {
         "ControlNet",
       ],
     },
+
+    // PLC Communication (Complete)
     {
       name: "PLC Communication",
       icon: <Server className="w-5 h-5" />,
@@ -113,6 +122,8 @@ const IndustrialProtocolWeServe = () => {
         "Omron FINS Protocol",
       ],
     },
+
+    // Robotics Integration (Complete)
     {
       name: "Robotics Integration",
       icon: <Zap className="w-5 h-5" />,
@@ -122,21 +133,29 @@ const IndustrialProtocolWeServe = () => {
         "KUKA Robot Interface",
       ],
     },
+
+    // Vision System Communication (Complete)
     {
       name: "Vision System Communication",
       icon: <Cctv className="w-5 h-5" />,
       protocols: ["GigE Vision", "GenICam"],
     },
+
+    // Legacy / Serial Communication (Complete)
     {
       name: "Legacy / Serial Communication",
       icon: <Radio className="w-5 h-5" />,
       protocols: ["RS-232", "RS-485"],
     },
+
+    // Device Communication (Complete)
     {
       name: "Device Communication",
       icon: <Bluetooth className="w-5 h-5" />,
       protocols: ["HART Protocol", "WirelessHART"],
     },
+
+    // Distributed Control System Protocols (Complete)
     {
       name: "Distributed Control System Protocols",
       icon: <Gauge className="w-5 h-5" />,
@@ -146,21 +165,38 @@ const IndustrialProtocolWeServe = () => {
         "Emerson DeltaV Communication",
       ],
     },
+
+    // Power Utility Protocols (Complete)
     {
       name: "Power Utility Protocols",
       icon: <ZapIcon className="w-5 h-5" />,
-      protocols: ["IEC 61850", "IEC 60870-5-101", "IEC 60870-5-104", "DNP3"],
+      protocols: [
+        "IEC 61850",
+        "IEC 60870-5-101",
+        "IEC 60870-5-104",
+        "DNP3 (Distributed Network Protocol)",
+      ],
     },
+
+    // Meter Communication (Complete)
     {
       name: "Meter Communication",
       icon: <Activity className="w-5 h-5" />,
       protocols: ["DLMS / COSEM", "Modbus Energy Meter Protocol", "M-Bus"],
     },
+
+    // Smart Grid Communication (Updated)
     {
       name: "Smart Grid Communication",
       icon: <Wifi className="w-5 h-5" />,
-      protocols: ["IEEE 2030.5", "MQTT (Energy IoT)"],
+      protocols: [
+        "IEEE 2030.5",
+        "MQTT (Energy IoT)",
+        "IEEE 2030 (Smart Grid Interoperability)",
+      ],
     },
+
+    // Substation Automation (Complete)
     {
       name: "Substation Automation",
       icon: <Power className="w-5 h-5" />,
@@ -169,51 +205,97 @@ const IndustrialProtocolWeServe = () => {
         "MMS (Manufacturing Message Specification)",
       ],
     },
+
+    // Building Control Protocols (Complete)
     {
       name: "Building Control Protocols",
       icon: <BuildingIcon className="w-5 h-5" />,
       protocols: ["BACnet", "BACnet/IP", "BACnet MSTP"],
     },
+
+    // Building Device Networks (Complete)
     {
       name: "Building Device Networks",
       icon: <Building2 className="w-5 h-5" />,
       protocols: ["KNX", "LonWorks"],
     },
+
+    // HVAC Communication (Complete)
     {
       name: "HVAC Communication",
       icon: <Thermometer className="w-5 h-5" />,
       protocols: ["Modbus (HVAC Controllers)", "OPC UA"],
     },
+
+    // Lighting Automation (Complete)
     {
       name: "Lighting Automation",
       icon: <Waves className="w-5 h-5" />,
       protocols: ["DALI", "KNX Lighting Control"],
     },
+
+    // IoT / Smart Building Protocols (Complete)
     {
       name: "IoT / Smart Building Protocols",
       icon: <Cloud className="w-5 h-5" />,
-      protocols: ["Zigbee", "Z-Wave", "MQTT", "Thread"],
+      protocols: [
+        "Zigbee",
+        "Z-Wave",
+        "MQTT",
+        "Thread",
+        "LoRaWAN",
+        "NB-IoT",
+        "5G Industrial Connectivity",
+      ],
     },
+
+    // Messaging Protocols (Updated)
     {
       name: "Messaging Protocols",
       icon: <Share2 className="w-5 h-5" />,
-      protocols: ["MQTT", "AMQP", "Apache Kafka", "WebSockets"],
+      protocols: [
+        "MQTT",
+        "AMQP",
+        "Apache Kafka",
+        "WebSockets",
+        "CoAP (Constrained Application Protocol)",
+      ],
     },
+
+    // API Integration (Complete)
     {
       name: "API Integration",
       icon: <Code2 className="w-5 h-5" />,
-      protocols: ["REST APIs", "GraphQL APIs"],
+      protocols: ["REST APIs", "GraphQL APIs", "OData", "JSON / XML APIs"],
     },
+
+    // Cloud Integration (Updated)
     {
       name: "Cloud Integration",
       icon: <CloudIcon className="w-5 h-5" />,
-      protocols: ["Azure IoT Hub", "AWS IoT Core", "Google Cloud IoT"],
+      protocols: [
+        "Azure IoT Hub",
+        "AWS IoT Core",
+        "Google Cloud IoT",
+        "Edge AI Platforms",
+      ],
     },
+
+    // Machine Sources (Updated)
     {
       name: "Machine Sources",
       icon: <FactoryIcon className="w-5 h-5" />,
-      protocols: ["PLC tags", "RTUs", "SCADA systems", "DCS systems"],
+      protocols: [
+        "PLC tags",
+        "RTUs (Remote Terminal Units)",
+        "SCADA systems",
+        "DCS systems",
+        "HMI Panels",
+        "Edge Devices / IoT Gateway",
+      ],
     },
+
+    // Sensors (Updated)
     {
       name: "Sensors",
       icon: <ThermometerIcon className="w-5 h-5" />,
@@ -223,22 +305,156 @@ const IndustrialProtocolWeServe = () => {
         "Flow meters",
         "Vibration sensors",
         "Energy meters",
+        "Level sensors",
+        "Current sensors",
+        "Power sensors",
+        "Cameras (OCR / Visual data)",
+        "Encoders & Motor Feedback",
       ],
     },
+
+    // Databases (Updated)
     {
       name: "Databases",
       icon: <Database className="w-5 h-5" />,
-      protocols: ["SQL Server", "PostgreSQL", "MySQL", "Oracle"],
+      protocols: [
+        "SQL Server",
+        "PostgreSQL",
+        "MySQL",
+        "Oracle Database",
+        "SQLite",
+        "InfluxDB",
+        "MongoDB",
+      ],
     },
+
+    // Industrial Historians (Updated)
     {
       name: "Industrial Historians",
       icon: <HardDrive className="w-5 h-5" />,
-      protocols: ["OSIsoft PI", "Wonderware Historian", "Ignition Historian"],
+      protocols: [
+        "OSIsoft PI",
+        "Wonderware Historian",
+        "Ignition SQL Historian",
+        "AVEVA Historian",
+        "Canary Historian",
+      ],
     },
+
+    // Enterprise Systems (Updated)
     {
       name: "Enterprise Systems",
       icon: <Globe className="w-5 h-5" />,
-      protocols: ["ERP", "MES", "SAP", "Production Management Systems"],
+      protocols: [
+        "ERP",
+        "MES (Manufacturing Execution Systems)",
+        "SAP",
+        "Oracle ERP",
+        "Microsoft Dynamics",
+        "Production Management Systems",
+        "Data Warehousing",
+      ],
+    },
+
+    // NEW: Edge & Gateway Connectivity
+    {
+      name: "Edge & Gateway Connectivity",
+      icon: <Cpu className="w-5 h-5" />,
+      protocols: [
+        "OPC UA Edge Gateway",
+        "Modbus IoT Gateway",
+        "Edge Computing Nodes",
+        "Industrial Data Loggers",
+      ],
+    },
+
+    // NEW: Wireless Industrial Communication
+    {
+      name: "Wireless Industrial Communication",
+      icon: <Wifi className="w-5 h-5" />,
+      protocols: [
+        "WiFi Industrial Networks",
+        "Zigbee",
+        "LoRaWAN",
+        "NB-IoT",
+        "5G Industrial Connectivity",
+        "WirelessHART",
+      ],
+    },
+
+    // NEW: Process Automation Protocols (Additional)
+    {
+      name: "Process Automation",
+      icon: <Gauge className="w-5 h-5" />,
+      protocols: [
+        "HART Protocol",
+        "WirelessHART",
+        "PROFIBUS PA",
+        "FOUNDATION Fieldbus",
+      ],
+    },
+
+    // NEW: Factory Automation (Additional)
+    {
+      name: "Factory Automation",
+      icon: <FactoryIcon className="w-5 h-5" />,
+      protocols: [
+        "PROFINET",
+        "EtherNet/IP",
+        "EtherCAT",
+        "CC-Link IE",
+        "SERCOS III",
+      ],
+    },
+
+    // NEW: Energy Automation (Additional)
+    {
+      name: "Energy Automation",
+      icon: <ZapIcon className="w-5 h-5" />,
+      protocols: [
+        "IEC 61850",
+        "IEC 60870-5-101/104",
+        "DNP3",
+        "DLMS/COSEM",
+        "M-Bus",
+      ],
+    },
+
+    // NEW: Building Automation (Additional)
+    {
+      name: "Building Automation",
+      icon: <BuildingIcon className="w-5 h-5" />,
+      protocols: ["BACnet", "KNX", "LonWorks", "DALI", "Modbus"],
+    },
+
+    // NEW: Data Interfaces
+    {
+      name: "Data Interfaces",
+      icon: <Share2 className="w-5 h-5" />,
+      protocols: [
+        "REST APIs",
+        "GraphQL APIs",
+        "JSON / XML",
+        "CSV Data Integration",
+        "WebSockets",
+        "OData",
+      ],
+    },
+
+    // NEW: Field Data Sources
+    {
+      name: "Field Data Sources",
+      icon: <Radio className="w-5 h-5" />,
+      protocols: [
+        "Temperature Sensors",
+        "Pressure Transmitters",
+        "Flow Meters",
+        "Vibration Sensors",
+        "Level Sensors",
+        "Encoders",
+        "Cameras",
+        "Energy Meters",
+      ],
     },
   ];
 
@@ -295,48 +511,62 @@ const IndustrialProtocolWeServe = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-600/5 via-transparent to-green-600/5" />
+      <section
+        className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-cover bg-center"
+        style={{
+          backgroundImage: "url('img/protocol-banner-hero.webp')",
+        }}
+      >
+        {/* Dark Overlay for readability */}
+        <div className="absolute inset-0 bg-black/50"></div>
+
+        {/* Green gradient layer */}
+        <div className="absolute inset-0 bg-gradient-to-br from-green-600/10 via-transparent to-green-600/10"></div>
+
+        {/* Pattern layer */}
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(0,0,0,0.02) 1px, transparent 0)`,
+            backgroundImage:
+              "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)",
             backgroundSize: "40px 40px",
           }}
         />
 
-        <div className="max-w-7xl mx-auto relative">
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-4xl">
-            <Badge className="mb-8 bg-green-600/10 text-green-600 hover:bg-green-600/20 border-0 px-5 py-2 text-sm font-medium rounded-full">
+            {/* Badge */}
+            <span className="inline-block mb-8 bg-green-600/20 text-green-400 px-5 py-2 text-sm font-medium rounded-full">
               Industry INTEGRA 360
-            </Badge>
+            </span>
 
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-light tracking-tight text-slate-900 mb-6">
+            {/* Heading */}
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight text-white mb-6">
               Universal Protocol
               <br />
-              <span className="font-semibold text-green-600">Connectivity</span>
+              <span className="font-semibold text-green-400">Connectivity</span>
             </h1>
 
-            <p className="text-xl text-slate-600 mb-10 max-w-2xl leading-relaxed">
+            {/* Description */}
+            <p className="text-lg text-gray-200 mb-10 max-w-2xl leading-relaxed">
               Comprehensive protocol support across process, factory, energy,
               building automation, and IIoT. Connect any device, any system,
-              anywhere.
+              anywhere with secure and scalable industrial communication
+              solutions.
             </p>
 
+            {/* Buttons */}
             <div className="flex flex-wrap gap-4">
-              <Button
-                size="lg"
-                className="bg-green-600 hover:bg-green-700 text-white rounded-full px-8 py-6 text-base font-medium transition-all shadow-lg shadow-green-600/25"
+              <a
+                href="#protocolsWeServe"
+                className="bg-green-600 hover:bg-green-700 text-white rounded-full px-8 py-4 text-base font-medium transition-all shadow-lg shadow-green-600/30"
               >
-                <a href="#protocolsWeServe"> Explore Protocols</a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-slate-200 hover:border-green-600 hover:bg-green-600/5 rounded-full px-8 py-6 text-base font-medium transition-all"
-              >
+                Explore Protocols
+              </a>
+
+              <button className="border-2 border-white/40 text-white hover:bg-white/10 rounded-full px-8 py-4 text-base font-medium transition-all">
                 Integration Guide
-              </Button>
+              </button>
             </div>
           </div>
 
@@ -350,18 +580,21 @@ const IndustrialProtocolWeServe = () => {
                     Protocols Supported
                   </p>
                 </div>
+
                 <div>
                   <p className="text-4xl font-bold text-slate-900">1k+</p>
                   <p className="text-sm text-slate-500 mt-1">
                     Devices Connected
                   </p>
                 </div>
+
                 <div>
                   <p className="text-4xl font-bold text-slate-900">10+</p>
                   <p className="text-sm text-slate-500 mt-1">
                     Years Experience
                   </p>
                 </div>
+
                 <div>
                   <p className="text-4xl font-bold text-slate-900">12</p>
                   <p className="text-sm text-slate-500 mt-1">

@@ -109,6 +109,11 @@ import ScadaServices from "./components/landing/services/ScadaServices";
 import IndustrialProtocolWeServe from "./components/landing/IndustrialProtocolWeServe";
 import CloudSupportServices from "./components/landing/services/CloudSupportServices";
 import DataIntegrationPage from "./components/landing/services/DataIntegrationPage";
+import IiotConnectivity from "./components/landing/services/IiotConnectivity";
+import DataAnalytics from "./components/landing/services/DataAnalytics";
+import CustomDevelopment from "./components/landing/services/CustomDevelopment";
+import ERPIntegration from "./components/landing/services/ERPIntegration";
+import MobileWebDevelopment from "./components/landing/services/MobileWebDevelopment";
 
 // Single Tracking Component - SIMPLIFIED
 const TrackingListener = () => {
@@ -206,6 +211,23 @@ function App() {
             <Route
               path="/data-integration-services"
               element={<DataIntegrationPage />}
+            />
+            <Route
+              path="/services/industrial-iot-and-edge"
+              element={<IiotConnectivity />}
+            />
+            <Route
+              path="/services/erp-integration"
+              element={<ERPIntegration />}
+            />
+            <Route
+              path="/services/mobile-applications"
+              element={<MobileWebDevelopment />}
+            />
+            <Route path="/data-analytics" element={<DataAnalytics />} />
+            <Route
+              path="/services/custom-development"
+              element={<CustomDevelopment />}
             />
             <Route path="/support" element={<SupportPage />} />
             <Route

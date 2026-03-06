@@ -126,35 +126,126 @@ const ScadaServices = () => {
         highlight: true,
       },
       { name: "AVEVA", detail: "Object-oriented Enterprise", highlight: false },
+
       {
         name: "Siemens WinCC",
         detail: "PLC Ecosystem Native",
         highlight: false,
       },
       {
+        name: "Siemens WinCC OA",
+        detail: "Large-scale distributed SCADA",
+        highlight: false,
+      },
+
+      {
+        name: "AVEVA System Platform (Wonderware)",
+        detail: "Enterprise industrial automation",
+        highlight: false,
+      },
+      {
+        name: "AVEVA Edge (InduSoft)",
+        detail: "Lightweight HMI / Edge SCADA",
+        highlight: false,
+      },
+
+      {
         name: "GE iFIX",
         detail: "Energy & Utilities Specialist",
         highlight: false,
       },
       {
-        name: "FactoryTalk",
-        detail: "Allen-Bradley Integration",
+        name: "GE CIMPLICITY",
+        detail: "High performance industrial control",
         highlight: false,
       },
+
       {
         name: "Citect",
         detail: "High-Availability Robustness",
         highlight: false,
       },
       {
+        name: "Schneider EcoStruxure SCADA",
+        detail: "Industrial IoT automation platform",
+        highlight: false,
+      },
+
+      {
+        name: "FactoryTalk",
+        detail: "Allen-Bradley Integration",
+        highlight: false,
+      },
+      {
+        name: "FactoryTalk View SE / ME",
+        detail: "Rockwell industrial HMI/SCADA",
+        highlight: false,
+      },
+
+      {
         name: "VTScada",
         detail: "Real-time Utility Monitoring",
         highlight: false,
       },
+
       { name: "PcVue", detail: "Critical Infrastructure", highlight: false },
+
+      {
+        name: "ICONICS Genesis",
+        detail: "Advanced industrial visualization",
+        highlight: false,
+      },
+
       {
         name: "Rapid SCADA",
         detail: "Open Source Flexibility",
+        highlight: false,
+      },
+      {
+        name: "OpenSCADA",
+        detail: "Modular open-source SCADA",
+        highlight: false,
+      },
+
+      {
+        name: "Yokogawa FAST/TOOLS",
+        detail: "Energy and oil industry SCADA",
+        highlight: false,
+      },
+      {
+        name: "Honeywell Experion",
+        detail: "Process automation platform",
+        highlight: false,
+      },
+      {
+        name: "ABB MicroSCADA",
+        detail: "Power distribution automation",
+        highlight: false,
+      },
+      {
+        name: "ABB Symphony Plus",
+        detail: "Power generation control system",
+        highlight: false,
+      },
+      {
+        name: "Emerson DeltaV",
+        detail: "Advanced process control",
+        highlight: false,
+      },
+
+      {
+        name: "Ignition Perspective",
+        detail: "Web-based SCADA visualization",
+        highlight: false,
+      },
+      {
+        name: "Node-RED SCADA Dashboards",
+        detail: "Flow-based IoT dashboards",
+        highlight: false,
+      },
+      {
+        name: "Grafana Industrial Dashboards",
+        detail: "Real-time industrial analytics",
         highlight: false,
       },
     ];
